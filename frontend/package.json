@@ -2,7 +2,10 @@
   "name": "@frontend/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "npx nx run llp:serve",
+    "build": "npx nx run llp:build"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~16.1.0",
