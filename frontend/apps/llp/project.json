@@ -10,7 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/llp",
+        "outputPath": "dist/llp/browser",
         "index": "apps/llp/src/index.html",
         "main": "apps/llp/src/main.ts",
         "polyfills": ["zone.js"],
@@ -90,6 +90,45 @@
       "options": {
         "buildTarget": "llp:build"
       }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/apps/llp/server",
+        "main": "apps/llp/src/ssr.server.ts",
+        "tsConfig": "apps/llp/tsconfig.server.json"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media",
+          "fileReplacements": [
+            {
+              "replace": "apps/llp/src/environments/environment.ts",
+              "with": "apps/llp/src/environments/environment.prod.ts"
+            }
+          ]
+        },
+        "development": {
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "llp:build:development",
+          "serverTarget": "llp:server:development"
+        },
+        "production": {
+          "browserTarget": "llp:build:production",
+          "serverTarget": "llp:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
     }
   }
 }
