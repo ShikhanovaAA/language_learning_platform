@@ -1,0 +1,80 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+:host {
+  display: block;
+
+  button {
+    cursor: pointer;
+    border: none;
+    display: flex;
+    height: 2.5em;
+    border-radius: vars.$border-radius-xxl;
+    color: colors.$white-color;
+    align-items: center;
+    justify-content: center;
+    width: 9.3em;
+    font-size: 1em;
+    transition: all 0.2s ease;
+
+    &.default {
+      background: colors.$main900;
+
+      &:hover {
+        background: colors.$main800;
+      }
+
+      &:active {
+        background: colors.$main1000;
+      }
+    }
+
+    &.outline {
+      background: colors.$white-color;
+      color: colors.$main900;
+      border: 0.125em solid colors.$main900;
+
+      &:hover {
+        color: colors.$main700;
+        border-color: colors.$main700;
+      }
+
+      &:active {
+        color: colors.$main1000;
+        border-color: colors.$main1000;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      user-select: none;
+      cursor: not-allowed;
+
+      &.default {
+        &:hover {
+          background: colors.$main900;
+        }
+
+        &:active {
+          background: colors.$main900;
+        }
+      }
+
+      &.outline {
+        background: colors.$white-color;
+        color: colors.$main900;
+        border: 0.125em solid colors.$main900;
+
+        &:hover {
+          border-color: colors.$main900;
+          color: colors.$main900;
+        }
+
+        &:active {
+          border-color: colors.$main900;
+          color: colors.$main900;
+        }
+      }
+    }
+  }
+}

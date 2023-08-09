@@ -7,7 +7,8 @@
     "build": "npx nx run llp:build",
     "serve-ssr": "npx nx run llp:serve-ssr",
     "build:prod": "npm run build && npx nx run llp:server -c=production",
-    "build:dev": "npm run build && npx nx run llp:server -c=development"
+    "build:dev": "npm run build && npx nx run llp:server -c=development",
+    "storybook": "npx nx run llp:storybook"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +31,8 @@
     "@nguniversal/builders": "^16.1.2",
     "@nguniversal/express-engine": "^16.1.2",
     "@nx/angular": "16.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -49,9 +52,17 @@
     "@nx/jest": "16.6.0",
     "@nx/js": "16.6.0",
     "@nx/linter": "16.6.0",
+    "@nx/storybook": "16.6.0",
     "@nx/web": "16.6.0",
     "@nx/workspace": "16.6.0",
     "@schematics/angular": "~16.1.0",
+    "@storybook/addon-essentials": "7.2.1",
+    "@storybook/addon-interactions": "^7.1.0",
+    "@storybook/angular": "^7.2.1",
+    "@storybook/core-server": "7.2.1",
+    "@storybook/jest": "~0.1.0",
+    "@storybook/test-runner": "^0.11.0",
+    "@storybook/testing-library": "~0.2.0",
     "@types/jest": "^29.4.0",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.60.1",

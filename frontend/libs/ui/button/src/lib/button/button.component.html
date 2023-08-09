@@ -1,0 +1,8 @@
+<button
+  [ngClass]="buttonStyle"
+  [disabled]="disabled"
+  [class.with-icon]="matIcon"
+>
+  <mat-icon *ngIf="matIcon" [fontIcon]="matIcon"></mat-icon>
+  {{ text }}
+</button>

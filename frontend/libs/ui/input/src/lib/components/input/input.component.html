@@ -1,0 +1,11 @@
+<div class="input-wrapper" [class.with-icon]="!!matIcon">
+  <mat-icon class="icon" *ngIf="matIcon" [fontIcon]="matIcon"></mat-icon>
+  <input
+    [(ngModel)]="value"
+    [disabled]="isDisabled"
+    [placeholder]="placeholder"
+    [style.width]="width"
+    [ngClass]="inputStyle"
+    (blur)="onTouchedFn()"
+  />
+</div>

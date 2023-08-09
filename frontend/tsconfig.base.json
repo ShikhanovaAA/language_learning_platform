@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@llp/util/util-control-component": [
+        "libs/util/util-control-component/src/index.ts"
+      ],
+      "@llp/model": ["libs/model/src/index.ts"],
+      "@llp/theme": ["libs/theme/src/index.ts"],
+      "@llp/ui/button": ["libs/ui/button/src/index.ts"],
+      "@llp/ui/input": ["libs/ui/input/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

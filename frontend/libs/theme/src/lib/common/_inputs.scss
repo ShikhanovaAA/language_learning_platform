@@ -1,0 +1,64 @@
+@use 'libs/theme/src/lib/common/vars';
+@use 'libs/theme/src/lib/theme/colors';
+
+* {
+  color: colors.$third800;
+}
+
+.default-input {
+  border-bottom: 0.125em solid colors.$third400;
+
+  &:hover {
+    border-color: colors.$main800;
+  }
+
+  &:focus-visible,
+  &:active {
+    border-color: colors.$main900;
+  }
+}
+
+.outline-input {
+  border-radius: vars.$border-radius-xxs;
+  border: 0.125em solid colors.$third400;
+
+  &:hover {
+    border-color: colors.$main800;
+  }
+
+  &:focus-visible,
+  &:active {
+    border-color: colors.$main900;
+  }
+}
+
+.filled-input {
+  background: colors.$third400;
+  border-bottom: 0.125em solid transparent;
+
+  &:hover {
+    border-color: colors.$main800;
+  }
+
+  &:focus-visible,
+  &:active {
+    border-color: colors.$main900;
+  }
+}
+
+:host-context(.dark) {
+  .default-input {
+    border-bottom: 0.125em solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+
+    &:hover {
+      border-color: colors.$main800;
+    }
+
+    &:focus-visible,
+    &:active {
+      border-color: colors.$main900;
+    }
+  }
+}

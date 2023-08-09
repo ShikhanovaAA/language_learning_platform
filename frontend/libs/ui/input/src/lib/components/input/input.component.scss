@@ -1,0 +1,50 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+@import 'libs/theme/src/lib/common/inputs';
+
+:host {
+  display: block;
+  width: 100%;
+
+  .input-wrapper {
+    input {
+      padding: 0.7em 1em;
+      color: colors.$third900;
+      border: none;
+      border-radius: vars.$border-radius-xxs vars.$border-radius-xxs 0 0;
+      transition: all 0.2s ease;
+      width: 100%;
+
+      &:focus-visible {
+        outline: none;
+      }
+
+      &.default {
+        @extend .default-input;
+      }
+
+      &.outline {
+        @extend .outline-input;
+      }
+
+      &.filled {
+        @extend .filled-input;
+      }
+    }
+
+    &.with-icon {
+      position: relative;
+
+      .icon {
+        position: absolute;
+        top: 0.16em;
+        left: 0.25em;
+        color: colors.$main900;
+      }
+
+      input {
+        padding: 0.625em 2.625em;
+      }
+    }
+  }
+}
