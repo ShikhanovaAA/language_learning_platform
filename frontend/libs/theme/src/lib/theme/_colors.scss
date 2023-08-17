@@ -1,6 +1,7 @@
-$main1000: #50E3C2; //violet #6452d6; // blue #5470fc;
-$main900: #2ccdaa; //violet #6D5DD3; // blue #758bfd;
-$main800: #50e3c391; //violet #7b6cdbb5; // blue #758cfda1;
+$main1000: #50E3C2;
+$main900: #2ccdaa;
+$main850: #089d7d;
+$main800: #50e3c391;
 $main700: #7e93fa;
 $main-gradient: linear-gradient(to bottom right, #06735b, #2DCDAA);
 $second-accent: #3B79CF;
@@ -8,6 +9,7 @@ $second-accent: #3B79CF;
 $blockDark: #252733;
 $body: #18181E;
 $header: #202028;
+$input: #161616;
 
 $translucent-block-dark: rgba(0, 0, 0, 0.2);
 $translucent-border-dark: rgba(255, 255, 255, 0.1);
@@ -39,5 +41,6 @@ $positive800: #44c248;
 $positive600: #e6f8e6;
 
 $warning700: #e9ab1c;
+$warning600: #fff200b0;
 
 $white-color: #fff;

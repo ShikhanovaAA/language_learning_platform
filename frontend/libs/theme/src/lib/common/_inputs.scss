@@ -6,15 +6,15 @@
 }
 
 .default-input {
-  border-bottom: 0.125em solid colors.$third400;
+  border-bottom: 0.125em solid colors.$translucent-block-light;
 
   &:hover {
-    border-color: colors.$main800;
+    border-color: colors.$main850;
   }
 
   &:focus-visible,
   &:active {
-    border-color: colors.$main900;
+    border-color: colors.$main850;
   }
 }
 
@@ -23,12 +23,12 @@
   border: 0.125em solid colors.$third400;
 
   &:hover {
-    border-color: colors.$main800;
+    border-color: colors.$main850;
   }
 
   &:focus-visible,
   &:active {
-    border-color: colors.$main900;
+    border-color: colors.$main850;
   }
 }
 
@@ -37,28 +37,33 @@
   border-bottom: 0.125em solid transparent;
 
   &:hover {
-    border-color: colors.$main800;
+    border-color: colors.$main850;
   }
 
   &:focus-visible,
   &:active {
-    border-color: colors.$main900;
+    border-color: colors.$main850;
   }
 }
 
-:host-context(.dark) {
-  .default-input {
-    border-bottom: 0.125em solid rgba(255, 255, 255, 0.2);
-    background: rgba(0, 0, 0, 0.2);
-    color: #fff;
+input,
+textarea,
+select {
+  &:-webkit-autofill {
+    border: 1px solid colors.$main850;
+    -webkit-text-fill-color: colors.$third700;
+    -webkit-box-shadow: 1px 1px 0px 1000px colors.$input inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+    background-color: red !important;
 
-    &:hover {
-      border-color: colors.$main800;
-    }
-
-    &:focus-visible,
-    &:active {
-      border-color: colors.$main900;
+    &,
+    &:hover,
+    &:focus {
+      border: 1px solid colors.$main850;
+      -webkit-text-fill-color: colors.$third700;
+      -webkit-box-shadow: 1px 1px 0px 1000px colors.$input inset !important;
+      transition: background-color 5000s ease-in-out 0s;
+      background-color: red !important;
     }
   }
 }

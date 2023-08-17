@@ -17,6 +17,10 @@
     font-size: 1em;
     transition: all 0.2s ease;
 
+    .icon {
+      margin-right: 0.625em;
+    }
+
     &.default {
       background: colors.$main900;
 
@@ -30,7 +34,7 @@
     }
 
     &.outline {
-      background: colors.$white-color;
+      background: transparent;
       color: colors.$main900;
       border: 0.125em solid colors.$main900;
 

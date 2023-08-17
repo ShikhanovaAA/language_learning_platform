@@ -1,0 +1,35 @@
+<form [formGroup]="registerForm" class="main-block flex-column-middle-center">
+  <p>Sing up</p>
+  <p class="hint">Register to login 😏</p>
+  <div class="fields flex-column-middle-center">
+    <llp-input
+      controlErrors
+      [control]="registerForm.controls['username']"
+      formControlName="username"
+      matIcon="person"
+      placeholder="Username"
+    ></llp-input>
+    <llp-input
+      controlErrors
+      [control]="registerForm.controls['email']"
+      formControlName="email"
+      matIcon="alternate_email"
+      placeholder="Email"
+    ></llp-input>
+    <llp-password-input
+      autocomplete="off"
+      controlErrors
+      [control]="registerForm.controls['password']"
+      formControlName="password"
+      matIcon="password"
+      placeholder="Password"
+    ></llp-password-input>
+  </div>
+  <llp-button
+    [disabled]="!registerForm.valid"
+    text="Register"
+    (click)="registerUser()"
+  ></llp-button>
+
+  <a routerLink="/auth/login">Do you have an account? Then sign in!</a>
+</form>

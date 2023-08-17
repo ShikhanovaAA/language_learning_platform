@@ -1,0 +1,31 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+form {
+  width: 28.875em;
+  margin: 2.5em auto 0;
+  gap: 0.5em;
+  padding: 1.875em;
+  border-radius: vars.$border-radius-s;
+
+  .fields {
+    gap: 1.5625em;
+    width: 100%;
+    margin: 1em 0 2.5em;
+  }
+
+  p {
+    font-size: 1.45em;
+    margin-bottom: 0.3em;
+
+    &.hint {
+      font-size: 1em;
+    }
+  }
+
+  a {
+    color: colors.$main900;
+    text-decoration: none;
+    font-size: 0.85em;
+  }
+}

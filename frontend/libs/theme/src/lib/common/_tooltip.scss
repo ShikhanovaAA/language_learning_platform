@@ -1,0 +1,12 @@
+@use 'libs/theme/src/lib/theme/colors';
+
+.error-tooltip {
+  position: absolute;
+  top: calc(100% + 0.4em);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 0.85em;
+  line-height: 1.07em;
+  color: colors.$warning600 !important;
+}

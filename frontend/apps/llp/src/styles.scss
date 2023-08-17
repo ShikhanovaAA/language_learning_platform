@@ -1,4 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'libs/theme/src/lib/theme/colors';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'libs/theme/src/lib/index';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: none;
+}
+
+body {
+  background-color: colors.$body;
+  color: colors.$white-color;
+
+  .main-block {
+    background-color: colors.$blockDark;
+    box-shadow: 0 0 1.42em 0px colors.$translucent-block-dark;
+  }
+}
+
+.mat-mdc-menu-panel {
+  background-color: transparent;
+  position: relative;
+  box-shadow: none !important;
+  top: 16px;
+  left: 19px;
+}
+
+.mat-mdc-menu-content {
+  background-color: colors.$blockDark;
+  border-radius: $border-radius-xxs;
+
+  * {
+    color: colors.$white-color;
+  }
+}

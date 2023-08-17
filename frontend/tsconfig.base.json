@@ -15,13 +15,28 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@llp/util/util-control-component": [
-        "libs/util/util-control-component/src/index.ts"
+      "@llp/features/auth/data-access": [
+        "libs/features/auth/data-access/src/index.ts"
       ],
+      "@llp/features/auth/pages": ["libs/features/auth/pages/src/index.ts"],
+      "@llp/features/auth/state": ["libs/features/auth/state/src/index.ts"],
       "@llp/model": ["libs/model/src/index.ts"],
+      "@llp/shared/directives/form-control-errors": [
+        "libs/shared/directives/form-control-errors/src/index.ts"
+      ],
+      "@llp/shared/services": ["libs/shared/services/index.ts"],
+      "@llp/shared/utils/cva-component": [
+        "libs/shared/utils/cva-component/src/index.ts"
+      ],
+      "@llp/shared/validators": ["libs/shared/validators/src/index.ts"],
       "@llp/theme": ["libs/theme/src/index.ts"],
       "@llp/ui/button": ["libs/ui/button/src/index.ts"],
-      "@llp/ui/input": ["libs/ui/input/src/index.ts"]
+      "@llp/ui/form-field": ["libs/ui/form-field/src/index.ts"],
+      "@llp/ui/input": ["libs/ui/input/src/index.ts"],
+      "@llp/ui/password-input": ["libs/ui/password-input/src/index.ts"],
+      "@llp/ui/progress-bar": ["libs/ui/progress-bar/src/index.ts"],
+      "@llp/util/meta-reducer": ["libs/util/meta-reducer/index.ts"],
+      "@llp/util/token-service": ["libs/util/token-service/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

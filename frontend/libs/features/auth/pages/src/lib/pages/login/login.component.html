@@ -1,0 +1,29 @@
+<form [formGroup]="loginForm" class="main-block flex-column-middle-center">
+  <p>Sing in</p>
+  <p class="hint">Sign in to be logged in 😏</p>
+  <div class="fields flex-column-middle-center">
+    <llp-input
+      controlErrors
+      [control]="loginForm.controls['email']"
+      formControlName="email"
+      matIcon="alternate_email"
+      placeholder="Email"
+    ></llp-input>
+    <llp-password-input
+      autocomplete="off"
+      controlErrors
+      [control]="loginForm.controls['password']"
+      formControlName="password"
+      matIcon="password"
+      placeholder="Password"
+    ></llp-password-input>
+  </div>
+
+  <llp-button
+    [disabled]="!loginForm.valid"
+    text="Login"
+    (click)="loginUser()"
+  ></llp-button>
+
+  <a routerLink="/auth/register">You still don't have an account?</a>
+</form>

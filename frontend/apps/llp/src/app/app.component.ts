@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GeneralLoadingService } from '@llp/shared/services';
 
 @Component({
   selector: 'frontend-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'llp';
+  isLoading$ = this.generalLoadingService.isLoading$;
+
+  constructor(private generalLoadingService: GeneralLoadingService) {}
 }

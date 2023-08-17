@@ -12,7 +12,17 @@ export default {
       imports: [FormsModule, MatIconModule]
     }),
     componentWrapperDecorator(story => `<div style="width: 300px">${story}</div>`),
-  ]
+  ],
+  argTypes: {
+    buttonStyle: {
+      options: ['default', 'outline'],
+      control: { type: 'radio' },
+    },
+    matIcon: {
+      options: ['home', 'bin'],
+      control: { type: 'radio' },
+    }
+  },
 } as Meta<InputComponent>;
 
 export const Default = {
@@ -23,63 +33,5 @@ export const Default = {
     width: '',
     placeholder: 'Default',
     inputStyle: InputStyle.Default
-  },
-};
-
-export const Outline = {
-  render: (args: InputComponent) => ({
-    props: args,
-  }),
-  args: {
-    width: '',
-    placeholder: 'Outline',
-    inputStyle: InputStyle.Outline
-  },
-};
-
-export const Filled = {
-  render: (args: InputComponent) => ({
-    props: args,
-  }),
-  args: {
-    width: '',
-    placeholder: 'Filled',
-    inputStyle: InputStyle.Filled
-  },
-};
-
-export const FilledWithIcon = {
-  render: (args: InputComponent) => ({
-    props: args,
-  }),
-  args: {
-    placeholder: 'Filled',
-    inputStyle: InputStyle.Filled,
-    labelPosition: LabelPosition.Left,
-    matIcon: 'home'
-  },
-};
-
-export const OutlineWithIcon = {
-  render: (args: InputComponent) => ({
-    props: args,
-  }),
-  args: {
-    placeholder: 'Outline',
-    inputStyle: InputStyle.Outline,
-    labelPosition: LabelPosition.Left,
-    matIcon: 'home'
-  },
-};
-
-export const DefaultWithIcon = {
-  render: (args: InputComponent) => ({
-    props: args,
-  }),
-  args: {
-    placeholder: 'Default',
-    inputStyle: InputStyle.Default,
-    labelPosition: LabelPosition.Left,
-    matIcon: 'home'
   },
 };

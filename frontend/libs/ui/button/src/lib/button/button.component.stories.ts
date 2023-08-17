@@ -1,10 +1,28 @@
 import { ButtonStyle } from '@llp/model';
-import { Meta } from '@storybook/angular';
+import { Meta, componentWrapperDecorator, moduleMetadata } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
+import { MatIconModule } from '@angular/material/icon';
 
 export default {
   title: 'Button',
-  component: ButtonComponent
+  component: ButtonComponent,
+  decorators: [
+    moduleMetadata({
+      imports: [MatIconModule]
+    }),
+    componentWrapperDecorator(story => `<div style="width: 300px">${story}</div>`),
+  ],
+  argTypes: {
+    buttonStyle: {
+      options: ['default', 'outline'],
+      control: 'inline-radio'
+    },
+    matIcon: {
+      control: 'text',
+      description: 'Icon names can be found here 👉 https://fonts.google.com/icons',
+      default: 'pets'
+    }
+  },
 } as Meta<ButtonComponent>;
 
 export const Default = {
@@ -12,26 +30,8 @@ export const Default = {
     props: args,
   }),
   args: {
-    text: "Button"
-  },
-};
-
-export const Outline = {
-  render: (args: ButtonComponent) => ({
-    props: args,
-  }),
-  args: {
     text: "Button",
-    buttonStyle: ButtonStyle.Outline
-  },
-};
-
-export const Disabled = {
-  render: (args: ButtonComponent) => ({
-    props: args,
-  }),
-  args: {
-    text: "Button",
-    disabled: true
+    matIcon: 'pets',
+    disabled: false
   },
 };
