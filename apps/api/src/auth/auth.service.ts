@@ -45,8 +45,9 @@ export class AuthService {
 
   private async validateUser(userDto: LoginUserDto): Promise<User> {
     const user = await this.userService.getUserByEmail(userDto.email);
-    const isPasswordCorrect = await bcrypt.compare(userDto.password, user.password);
+    if (!user) throw new HttpException('User not found', HttpStatus.NOT_FOUND);
 
+    const isPasswordCorrect = await bcrypt.compare(userDto.password, user.password);
     if (user && isPasswordCorrect) return user;
 
     throw new UnauthorizedException({message: 'Incorrect email or password'});

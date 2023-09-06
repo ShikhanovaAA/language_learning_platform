@@ -7,8 +7,6 @@ services:
       service: nx-app
     container_name: api
     command: npm run api-docker-dev
-    ports:
-      - 3000:3000
     networks:
       - llp-app
     depends_on:
@@ -39,7 +37,7 @@ services:
     networks:
       - llp-app
 
-  pg_admin:
+  pgadmin:
     user: root
     container_name: pgadmin
     image: dpage/pgadmin4
@@ -51,8 +49,6 @@ services:
     depends_on:
       - postgres
     restart: unless-stopped
-    ports:
-      - 5050:5050
     networks:
       - llp-app
 
@@ -66,6 +62,7 @@ services:
     depends_on:
       - frontend
       - api
+      - pgadmin
     networks:
       - llp-app
 
