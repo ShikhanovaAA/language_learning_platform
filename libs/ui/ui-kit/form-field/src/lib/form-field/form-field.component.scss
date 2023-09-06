@@ -1,0 +1,44 @@
+@use 'libs/theme/src/lib/theme/colors';
+
+:host {
+  display: block;
+  width: 100%;
+
+  .form-field {
+    width: 100%;
+
+    &.bottom {
+      display: flex;
+      flex-direction: column-reverse;
+
+      label {
+        font-size: 0.75em;
+        margin-top: 0.3125em;
+      }
+    }
+
+    &.top {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-size: 0.75em;
+        margin-bottom: 0.3125em;
+      }
+    }
+
+    &.left {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      label {
+        margin-right: 1em;
+      }
+    }
+
+    .label {
+      color: colors.$third900;
+    }
+  }
+}

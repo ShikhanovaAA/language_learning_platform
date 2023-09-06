@@ -10,7 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment.prod';
 import { clearState } from '@llp/util/meta-reducer';
 import { HttpClientModule } from '@angular/common/http';
-import { UiProgressBarModule } from '@llp/ui/progress-bar';
+import { UiProgressBarModule } from '@llp/ui/ui-kit/progress-bar';
 
 @NgModule({
   declarations: [AppComponent],

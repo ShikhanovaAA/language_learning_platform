@@ -15,7 +15,17 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@llp/ui/toast-notification": ["libs/ui/toast-notification/src/index.ts"],
+      "@llp/ui/ui-kit/form-field": ["libs/ui/ui-kit/form-field/src/index.ts"],
+      "@llp/ui/ui-kit/input": ["libs/ui/ui-kit/input/src/index.ts"],
+      "@llp/ui/ui-kit/password-input": [
+        "libs/ui/ui-kit/password-input/src/index.ts"
+      ],
+      "@llp/ui/ui-kit/progress-bar": [
+        "libs/ui/ui-kit/progress-bar/src/index.ts"
+      ],
+      "@llp/ui/ui-kit/toast-notification": [
+        "libs/ui/ui-kit/toast-notification/src/index.ts"
+      ],
       "@llp/features/auth/data-access": [
         "libs/features/auth/data-access/src/index.ts"
       ],
@@ -31,11 +41,7 @@
       ],
       "@llp/shared/validators": ["libs/shared/validators/src/index.ts"],
       "@llp/theme": ["libs/theme/src/index.ts"],
-      "@llp/ui/button": ["libs/ui/button/src/index.ts"],
-      "@llp/ui/form-field": ["libs/ui/form-field/src/index.ts"],
-      "@llp/ui/input": ["libs/ui/input/src/index.ts"],
-      "@llp/ui/password-input": ["libs/ui/password-input/src/index.ts"],
-      "@llp/ui/progress-bar": ["libs/ui/progress-bar/src/index.ts"],
+      "@llp/ui/ui-kit/button": ["libs/ui/ui-kit/button/src/index.ts"],
       "@llp/util/meta-reducer": ["libs/util/meta-reducer/index.ts"],
       "@llp/util/token-service": ["libs/util/token-service/src/index.ts"]
     }
