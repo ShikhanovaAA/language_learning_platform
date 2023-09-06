@@ -8,10 +8,10 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
   login(user: LoginPayload): Observable<TokenInfo> {
-    return this.httpClient.post<TokenInfo>('api/users/login', user);
+    return this.httpClient.post<TokenInfo>('api/auth/login', user);
   }
 
   register(user: NewUser): Observable<User> {
-    return this.httpClient.post<User>('api/users', user);
+    return this.httpClient.post<User>('api/auth/registration', user);
   }
 }

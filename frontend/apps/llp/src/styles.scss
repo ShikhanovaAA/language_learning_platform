@@ -41,3 +41,8 @@ body {
     color: colors.$white-color;
   }
 }
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: colors.$blockDark !important;
+  border-radius: $border-radius-s !important;
+}

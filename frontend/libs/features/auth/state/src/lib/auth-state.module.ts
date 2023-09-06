@@ -7,12 +7,14 @@ import { AuthEffects } from './+state/auth.effects';
 import { AuthDataAccessModule } from '@llp/features/auth/data-access';
 import { AuthFacade } from './+state/auth.facade';
 import { UtilTokenServiceModule } from '@llp/util/token-service';
+import { UiToastNotificationModule } from '@llp/ui/toast-notification';
 
 @NgModule({
   imports: [
     CommonModule,
     AuthDataAccessModule,
     UtilTokenServiceModule,
+    UiToastNotificationModule,
     StoreModule.forFeature(fromAuth.AUTH_FEATURE_KEY, fromAuth.authReducer),
     EffectsModule.forFeature([AuthEffects]),
   ],

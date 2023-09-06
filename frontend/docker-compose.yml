@@ -1,0 +1,79 @@
+version: '3'
+
+services:
+  api:
+    extends:
+      file: docker-compose.base.yml
+      service: nx-app
+    container_name: api
+    command: npm run api-docker-dev
+    ports:
+      - 3000:3000
+    networks:
+      - llp-app
+    depends_on:
+      - postgres
+
+  frontend:
+    extends:
+      file: docker-compose.base.yml
+      service: nx-app
+    container_name: frontend
+    command: npm run frontend-docker-dev
+    ports:
+      - 4200:4200
+    networks:
+      - llp-app
+
+  postgres:
+    user: root
+    container_name: postgres
+    image: postgres:15-alpine
+    env_file:
+      - apps/api/.development.env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+    ports:
+      - 35000:5432
+    networks:
+      - llp-app
+
+  pg_admin:
+    user: root
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    env_file:
+      - apps/api/.development.env
+    volumes:
+      - pgdata:/var/lib/pgadmin
+      - ./sessions:/var/lib/pgadmin/sessions
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    ports:
+      - 5050:5050
+    networks:
+      - llp-app
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    depends_on:
+      - frontend
+      - api
+    networks:
+      - llp-app
+
+volumes:
+  pgdata:
+  pgadmin-data:
+  mono-node-modules: null
+
+networks:
+  llp-app:
+    driver: bridge

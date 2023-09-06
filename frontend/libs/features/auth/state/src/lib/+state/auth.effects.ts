@@ -7,6 +7,7 @@ import { AuthService } from '@llp/features/auth/data-access';
 import { TokenStorageService } from '@llp/util/token-service';
 import * as AuthActions from './auth.actions';
 import { GeneralLoadingService } from '@llp/shared/services';
+import { ToastNotificationService } from '@llp/ui/toast-notification';
 
 @Injectable()
 export class AuthEffects {
@@ -16,7 +17,8 @@ export class AuthEffects {
     private authService: AuthService,
     private tokenStorageService: TokenStorageService,
     private router: Router,
-    private generalLoadingService: GeneralLoadingService
+    private generalLoadingService: GeneralLoadingService,
+    private notificationService: ToastNotificationService,
   ) {}
 
   authenticateUser$ = createEffect(() =>
@@ -25,7 +27,7 @@ export class AuthEffects {
       switchMap(({ loginPayload }) => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.authService.login(loginPayload).pipe(
-          tap((response: TokenInfo) => this.tokenStorageService.setApiToken(response.access_token)),
+          tap((tokenInfo: TokenInfo) => this.tokenStorageService.setApiToken(tokenInfo.token)),
           switchMap(() => [AuthActions.AuthenticateUserSuccess()]),
           catchError(() => of(AuthActions.AuthenticateUserFail()))
         );
@@ -38,7 +40,11 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(AuthActions.AuthenticateUserSuccess),
         tap(() => {
-          this.router.navigate(['/chats']);
+
+          this.notificationService.showNotification({
+            message: 'Hi there!',
+            icon: 'waving_hand',
+          })
         })
       ),
     { dispatch: false }

@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@llp/ui/toast-notification": ["libs/ui/toast-notification/src/index.ts"],
       "@llp/features/auth/data-access": [
         "libs/features/auth/data-access/src/index.ts"
       ],
