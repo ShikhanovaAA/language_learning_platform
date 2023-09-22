@@ -1,0 +1,10 @@
+<h2>{{ data.title }}</h2>
+<div class="message">{{ data.message }}</div>
+<div class="buttons">
+  <button type="button" class="cancel" (click)="cancel()">
+    {{ data.cancelButtonText || 'Cancel' }}
+  </button>
+  <button type="button" class="confirm" (click)="confirm()">
+    {{ data.confirmButtonText || 'Ok' }}
+  </button>
+</div>

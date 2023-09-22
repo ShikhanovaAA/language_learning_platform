@@ -1,0 +1,34 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+.card {
+  padding: 10px;
+  background: colors.$translucent-block-dark-800;
+  border-radius: vars.$border-radius-l;
+  max-width: 100%;
+
+  h2 {
+    line-height: 1.3em;
+    font-size: 1.3em;
+
+    a {
+      &:hover {
+        color: colors.$main800;
+      }
+    }
+  }
+
+  .text {
+    overflow: hidden;
+    display: -webkit-box;
+    border-top: 1px solid colors.$translucent-block-dark-900;
+    padding-top: 1em;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  .info {
+    opacity: 0.3;
+    margin-top: 20px;
+  }
+}

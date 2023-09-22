@@ -1,0 +1,22 @@
+<ng-container
+  *ngIf="{
+    user: user$ | async,
+    article: article$ | async
+  } as data"
+>
+  <div *ngIf="!!data.article" selectionText>
+    <div class="flex-middle-between info">
+      <llp-article-info [article]="data.article"></llp-article-info>
+      <div class="flex-middle gap-m">
+        <llp-reading-time [text]="data.article.text"></llp-reading-time>
+        <llp-add-article-to-studied
+          [article]="data.article"
+          [user]="data.user"
+          (addToStudied)="addArticleToStudied($event)"
+        ></llp-add-article-to-studied>
+      </div>
+    </div>
+    <h1>{{ data.article.title }}</h1>
+    <quill-view-html [content]="data.article.text"></quill-view-html>
+  </div>
+</ng-container>

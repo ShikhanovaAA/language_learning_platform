@@ -1,0 +1,27 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+.header {
+  margin-bottom: 1.5em;
+
+  h1 {
+    color: colors.$main800;
+  }
+
+  .button-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: vars.$border-radius-l;
+    color: colors.$white-color;
+    background: colors.$main800;
+    padding: 0.6em 2em;
+    text-decoration: none;
+    font-size: 1.2em;
+    width: max-content;
+
+    mat-icon {
+      margin-left: 0.6em;
+    }
+  }
+}

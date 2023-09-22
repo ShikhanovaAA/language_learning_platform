@@ -18,10 +18,17 @@ services:
       service: nx-app
     container_name: frontend
     command: npm run frontend-docker-dev
-    ports:
-      - 4200:4200
     networks:
       - llp-app
+
+  # frontend_ssr:
+  #   extends:
+  #     file: docker-compose.base.yml
+  #     service: nx-app
+  #   container_name: frontend-ssr
+  #   command: npm run frontend-ssr-build-and-serve
+  #   networks:
+  #     - llp-app
 
   postgres:
     user: root
@@ -32,8 +39,6 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     restart: always
-    ports:
-      - 35000:5432
     networks:
       - llp-app
 

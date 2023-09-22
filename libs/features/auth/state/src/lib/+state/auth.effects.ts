@@ -1,4 +1,5 @@
-import { TokenInfo, User } from '@llp/model';
+import { AuthFacade } from '@llp/features/auth/state';
+import { TokenInfo } from '@llp/model';
 import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
@@ -9,7 +10,9 @@ import * as AuthActions from './auth.actions';
 import { GeneralLoadingService } from '@llp/shared/services';
 import { ToastNotificationService } from '@llp/ui/ui-kit/toast-notification';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthEffects {
   private actions$ = inject(Actions);
 
@@ -18,7 +21,8 @@ export class AuthEffects {
     private tokenStorageService: TokenStorageService,
     private router: Router,
     private generalLoadingService: GeneralLoadingService,
-    private notificationService: ToastNotificationService
+    private notificationService: ToastNotificationService,
+    private authFacade: AuthFacade
   ) {}
 
   authenticateUser$ = createEffect(() =>
@@ -40,27 +44,18 @@ export class AuthEffects {
   authenticateUserSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(AuthActions.AuthenticateUserSuccess),
+        ofType(
+          AuthActions.AuthenticateUserSuccess,
+          AuthActions.RegisterUserSuccess
+          ),
         tap(() => {
+          this.authFacade.getUserByToken();
+          this.router.navigateByUrl('/');
           this.notificationService.showNotification({
             message: 'Hi there!',
             icon: 'waving_hand',
           });
         })
-      ),
-    { dispatch: false }
-  );
-
-  authenticateUserFail$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(
-          AuthActions.AuthenticateUserFail,
-          AuthActions.RegisterUserSuccess,
-          AuthActions.RegisterUserFail,
-          AuthActions.AuthenticateUserSuccess
-        ),
-        tap(() => this.generalLoadingService.setIsLoadingFalse())
       ),
     { dispatch: false }
   );
@@ -71,10 +66,24 @@ export class AuthEffects {
       switchMap(({ user }) => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.authService.register(user).pipe(
-          switchMap((user: User) => [
-            AuthActions.RegisterUserSuccess({ user }),
-          ]),
+          tap((tokenInfo: TokenInfo) =>
+            this.tokenStorageService.setApiToken(tokenInfo.token)
+          ),
+          switchMap(() => [AuthActions.RegisterUserSuccess()]),
           catchError(() => of(AuthActions.RegisterUserFail()))
+        );
+      })
+    )
+  );
+
+  getUserByToken$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.GetUserByToken),
+      switchMap(() => {
+        this.generalLoadingService.setIsLoadingTrue();
+        return this.authService.getUserByToken().pipe(
+          switchMap((user) => [AuthActions.GetUserByTokenSuccess({ user })]),
+          catchError(() => of(AuthActions.GetUserByTokenFail()))
         );
       })
     )
@@ -90,5 +99,21 @@ export class AuthEffects {
       switchMap(() => [AuthActions.LogoutSuccess()]),
       catchError(() => of(AuthActions.LogoutFail()))
     )
+  );
+
+  setIsLoadingFalse$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(
+          AuthActions.AuthenticateUserFail,
+          AuthActions.RegisterUserSuccess,
+          AuthActions.RegisterUserFail,
+          AuthActions.AuthenticateUserSuccess,
+          AuthActions.GetUserByTokenFail,
+          AuthActions.GetUserByTokenSuccess
+        ),
+        tap(() => this.generalLoadingService.setIsLoadingFalse())
+      ),
+    { dispatch: false }
   );
 }

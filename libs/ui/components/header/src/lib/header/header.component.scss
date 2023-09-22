@@ -1,0 +1,29 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+header {
+  background: colors.$main800;
+  height: 65px;
+
+  .wrapper {
+    color: colors.$white-color;
+    width: vars.$xl;
+    margin: 0 auto;
+
+    .logo {
+      font-size: 3.5em;
+    }
+
+    nav {
+      padding-left: 2.5em;
+      display: flex;
+      gap: 2.5em;
+
+      a {
+        color: colors.$white-color;
+        text-decoration: none;
+        font-size: 1.3em;
+      }
+    }
+  }
+}

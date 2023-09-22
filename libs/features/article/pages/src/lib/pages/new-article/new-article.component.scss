@@ -1,0 +1,22 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+:host {
+  display: block;
+  background: colors.$blockDark;
+  border-radius: vars.$border-radius-s;
+  padding: 1.25em;
+  min-height: calc(100vh - 108px);
+  box-shadow: 0 0 1.42em 0px colors.$translucent-block-dark-900;
+
+  form {
+    gap: 1.5em;
+  }
+
+  .form-in-select {
+    margin: 0.8em;
+    padding: 0.8em 0.8em 1.2em;
+    background-color: colors.$blockDark;
+    border-radius: vars.$border-radius-xxs;
+  }
+}

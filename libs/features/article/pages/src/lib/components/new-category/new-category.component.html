@@ -1,0 +1,8 @@
+<form [formGroup]="newCategoryForm" class="flex-middles-between">
+  <llp-input formControlName="name" placeholder="Name of category"></llp-input>
+  <llp-input
+    formControlName="description"
+    placeholder="Short description"
+  ></llp-input>
+  <llp-button text="Save category" (click)="saveCategory()"></llp-button>
+</form>

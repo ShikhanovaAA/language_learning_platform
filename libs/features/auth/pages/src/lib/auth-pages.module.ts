@@ -7,7 +7,6 @@ import { UiInputModule } from '@llp/ui/ui-kit/input';
 import { UiFormFieldModule } from '@llp/ui/ui-kit/form-field';
 import { UiButtonModule } from '@llp/ui/ui-kit/button';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthDataAccessModule } from '@llp/features/auth/data-access';
 import { AuthStateModule } from '@llp/features/auth/state';
 import { FormControlErrorsDirectiveModule } from '@llp/shared/directives/form-control-errors';
 import { UiPasswordInputModule } from '@llp/ui/ui-kit/password-input';
@@ -22,7 +21,6 @@ import { AuthLayoutComponent } from './components/auth-layout/auth-layout.compon
     UiButtonModule,
     UiPasswordInputModule,
     ReactiveFormsModule,
-    AuthDataAccessModule,
     AuthStateModule,
     FormControlErrorsDirectiveModule,
   ],

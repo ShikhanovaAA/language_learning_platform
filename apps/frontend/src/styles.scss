@@ -1,0 +1,35 @@
+@use 'libs/theme/src/lib/theme/colors';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'libs/theme/src/lib/index';
+@import 'quill/dist/quill.snow.css';
+@import './assets/styles/quill.scss';
+@import './assets/styles/material.scss';
+
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: none;
+}
+
+body {
+  background-color: colors.$body;
+  color: colors.$white-color;
+
+  .main-block {
+    background-color: colors.$blockDark;
+    box-shadow: 0 0 1.42em 0px colors.$translucent-block-dark-900;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

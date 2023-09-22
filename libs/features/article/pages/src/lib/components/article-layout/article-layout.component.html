@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="categories" *ngIf="categories$ | async as categories">
+    <llp-category-list
+      *ngIf="categories && categories.length"
+      [categories]="categories"
+    ></llp-category-list>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2em;
+
+  .content,
+  .categories {
+    background: colors.$blockDark;
+    border-radius: vars.$border-radius-xxs;
+    padding: 1.25em;
+    box-shadow: 0 0 1.42em 0px colors.$translucent-block-dark-900;
+  }
+
+  .content {
+    min-height: calc(100vh - 108px);
+  }
+
+  .categories {
+    height: fit-content;
+    min-width: 250px;
+  }
+}

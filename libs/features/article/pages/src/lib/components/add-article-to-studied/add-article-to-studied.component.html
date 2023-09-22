@@ -1,0 +1,15 @@
+<ng-container *ngIf="!!user">
+  <mat-icon class="studied" *ngIf="article | isStudied : user; else noStudied">
+    local_library
+  </mat-icon>
+  <ng-template #noStudied>
+    <button
+      type="button"
+      class="add-to-studied"
+      matTooltip="Add an article to the list of studied"
+      (click)="addArticleToStudied(article.id, user.id)"
+    >
+      <mat-icon class="material-symbols-outlined">local_library</mat-icon>
+    </button>
+  </ng-template>
+</ng-container>

@@ -1,0 +1,36 @@
+<h1>New Article</h1>
+<form [formGroup]="newArticleForm" class="flex-column">
+  <ng-container *ngIf="categoryOptions$ | async as categoryOptions">
+    <ng-container *ngIf="categoryOptions.length; else noCategories">
+      <div class="flex-middle-between gap-xs">
+        <llp-input
+          formControlName="title"
+          placeholder="Title of the article"
+        ></llp-input>
+
+        <llp-select
+          placeholder="Select category..."
+          [selectOptions]="categoryOptions"
+          formControlName="categoryId"
+        >
+          <div class="form-in-select">
+            <p>Or you can create another one</p>
+            <llp-new-category
+              (createCategory)="createCategory($event)"
+            ></llp-new-category>
+          </div>
+        </llp-select>
+      </div>
+      <quill-editor
+        formControlName="text"
+        [styles]="{ height: '250px' }"
+      ></quill-editor>
+    </ng-container>
+  </ng-container>
+  <ng-template #noCategories>
+    <llp-new-category
+      (createCategory)="createCategory($event)"
+    ></llp-new-category>
+  </ng-template>
+  <llp-button text="Save Article" (click)="saveArticle()"></llp-button>
+</form>

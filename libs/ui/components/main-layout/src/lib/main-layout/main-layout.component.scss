@@ -1,0 +1,7 @@
+@use 'libs/theme/src/lib/common/vars';
+
+.wrapper {
+  width: vars.$xl;
+  margin: 1.25em auto;
+  min-height: calc(100vh - 108px);
+}

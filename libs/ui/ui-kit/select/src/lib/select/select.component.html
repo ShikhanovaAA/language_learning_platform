@@ -1,0 +1,24 @@
+<label *ngIf="label" for="select">{{ label }}</label>
+<div
+  id="select"
+  class="select"
+  role="listbox"
+  tabindex="0"
+  (keydown.enter)="toggleOptionVisibility()"
+>
+  <div class="selected flex-middle-between" (click)="toggleOptionVisibility()">
+    {{ selectedOption ? selectedOption.label : placeholder }}
+    <mat-icon>{{ isOptionsVisible ? 'expand_less' : 'expand_more' }}</mat-icon>
+  </div>
+  <div class="options" [class.visible]="isOptionsVisible">
+    <div
+      role="option"
+      class="option"
+      *ngFor="let option of selectOptions"
+      (click)="onSelect(option)"
+    >
+      {{ option.label }}
+    </div>
+    <ng-content></ng-content>
+  </div>
+</div>

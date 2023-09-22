@@ -11,7 +11,7 @@ This project is a simple language learning web application developed using the f
 
 ## Project structure
 
-- `./apps/llp/src/app` - This directory contains the main Angular application source code.
+- `./apps/frontend/src/app` - This directory contains the main Angular application source code.
 - `./apps/api/src` - This directory contains the main Nest application source code.
 - `./libs/features` - Feature Modules encapsulate the related components and other resources necessary for that feature.
 - `./libs/models` - Directory is responsible for storing data models used within the application.

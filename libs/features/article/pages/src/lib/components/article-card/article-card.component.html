@@ -1,0 +1,13 @@
+<div class="card">
+  <h2 class="flex-middle-between">
+    <a [routerLink]="['/articles/' + article.id]">{{ article.title }}</a>
+    <llp-reader-count [readers]="article.readers"></llp-reader-count>
+  </h2>
+  <div class="text">
+    {{ article.text | textWithoutHtmlTags }}
+  </div>
+  <div class="info flex-middle-between">
+    <llp-article-info [article]="article"></llp-article-info>
+    <llp-reading-time [text]="article.text"></llp-reading-time>
+  </div>
+</div>

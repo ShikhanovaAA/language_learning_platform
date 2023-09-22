@@ -1,0 +1,27 @@
+@use 'libs/theme/src/lib/theme/colors';
+
+:host {
+  h2 {
+    color: colors.$main800;
+    margin-bottom: 1.3em;
+  }
+
+  .categories {
+    list-style: none;
+    width: max-content;
+
+    li {
+      margin-bottom: 0.8em;
+
+      a {
+        text-decoration: none;
+        color: colors.$white-color;
+        font-size: 1.2em;
+
+        &:hover {
+          color: colors.$main800;
+        }
+      }
+    }
+  }
+}

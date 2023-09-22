@@ -12,7 +12,8 @@
           "lint",
           "test",
           "e2e",
-          "build-storybook"
+          "build-storybook",
+          "server"
         ],
         "accessToken": "NGM4ZWRlN2MtYmNiOS00ZWI0LTg4MjEtNjA2ZDNhYzFjNzdjfHJlYWQtd3JpdGU="
       }

@@ -1,16 +1,16 @@
 import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
-import { CreateUserDto } from '../users/dto/create-user.dto';
-import { UsersService } from '../users/users.service';
+import { CreateUserDto } from '../user/dto/create-user.dto';
+import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
-import { User } from '../users/users.model';
-import { LoginUserDto } from '../users/dto/login-user.dto';
+import { User } from '../user/user.model';
+import { LoginUserDto } from '../user/dto/login-user.dto';
 import { TokenInfo } from '@llp/model';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private userService: UsersService,
+    private userService: UserService,
     private jwtService: JwtService) {}
 
   async login(userDto: LoginUserDto): Promise<TokenInfo> {
@@ -40,7 +40,7 @@ export class AuthService {
 
     return {
       token: this.jwtService.sign(payload)
-    }
+    };
   }
 
   private async validateUser(userDto: LoginUserDto): Promise<User> {

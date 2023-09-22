@@ -1,0 +1,20 @@
+<header class="flex-middle">
+  <div class="wrapper flex-middle-between">
+    <div class="flex-middle">
+      <div class="logo">🎓</div>
+      <nav>
+        <a *ngFor="let menuItem of menuItems" [routerLink]="menuItem.route">
+          {{ menuItem.label }}
+        </a>
+      </nav>
+    </div>
+    <button *ngIf="isLoggidIn; else login" mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+    <ng-template #login>
+      <a [routerLink]="['/auth/login']" routerLinkActive="router-link-active">
+        Login
+      </a>
+    </ng-template>
+  </div>
+</header>

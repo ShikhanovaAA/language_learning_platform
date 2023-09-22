@@ -1,0 +1,7 @@
+<div *ngIf="articlesOfSelectedCategory$ | async as articles" class="articles">
+  <ng-container *ngIf="selectedCategory$ | async as selectedCategory">
+    <h1>{{ selectedCategory.name }}</h1>
+    <h2>{{ selectedCategory.description }}</h2>
+    <llp-article-list [articles]="articles"></llp-article-list>
+  </ng-container>
+</div>

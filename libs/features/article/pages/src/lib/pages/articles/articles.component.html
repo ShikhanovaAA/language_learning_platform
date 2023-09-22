@@ -1,0 +1,18 @@
+<div class="flex-middle-between header">
+  <h1>All articles</h1>
+  <ng-container *ngIf="user$ | async as user">
+    <a
+      *ngIf="user.isAdmin"
+      [routerLink]="['/articles/new']"
+      class="button-link"
+    >
+      New article
+      <mat-icon>add</mat-icon>
+    </a>
+  </ng-container>
+</div>
+<ng-container *ngIf="articles$ | async as articles">
+  <div *ngIf="articles && articles.length">
+    <llp-article-list [articles]="articles"></llp-article-list>
+  </div>
+</ng-container>

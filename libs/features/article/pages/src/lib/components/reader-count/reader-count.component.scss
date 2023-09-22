@@ -1,0 +1,18 @@
+@use 'libs/theme/src/lib/theme/colors';
+
+:host {
+  display: block;
+
+  .bookmarks {
+    font-size: 0.8em;
+
+    mat-icon {
+      width: 1.3em;
+      height: 1.3em;
+      font-size: 1.3em;
+      color: colors.$main800;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@use 'libs/theme/src/lib/theme/colors';
+
+.not-found {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  h1 {
+    font-size: 6em;
+    color: colors.$main800;
+    font-weight: bold;
+  }
+
+  a {
+    text-decoration: none;
+    color: colors.$main800;
+  }
+}

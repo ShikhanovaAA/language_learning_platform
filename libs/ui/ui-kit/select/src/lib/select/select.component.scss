@@ -1,0 +1,50 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+:host {
+  display: block;
+  width: 100%;
+  position: relative;
+
+  .select {
+    position: relative;
+    width: 100%;
+    color: colors.$third700;
+    border-radius: vars.$border-radius-xxs;
+    background: colors.$input;
+    box-shadow: 0px 0.4em 0.5em colors.$translucent-block-dark-900;
+    padding: 0.438em 1em;
+    cursor: pointer;
+
+    &:focus-visible {
+      border: 1px solid;
+    }
+
+    .options {
+      height: 0px;
+      overflow: hidden;
+      position: absolute;
+      border-radius: vars.$border-radius-xxs;
+      background: colors.$input;
+      transition: all 0.3s ease;
+      top: 38px;
+      left: 0px;
+      width: 100%;
+      z-index: 9;
+
+      &.visible {
+        height: auto;
+      }
+
+      .option {
+        padding: 0.438em 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: colors.$main800;
+        }
+      }
+    }
+  }
+}

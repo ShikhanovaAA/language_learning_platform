@@ -1,0 +1,26 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+:host {
+  display: block;
+  background: colors.$blockDark;
+  border-radius: vars.$border-radius-xxs;
+  padding: 1.25em;
+  box-shadow: 0 0 1.42em 0px colors.$translucent-block-dark-900;
+
+  .word {
+    padding: 1em;
+    background-color: colors.$translucent-block-dark-900;
+    border-radius: vars.$border-radius-xxs;
+
+    span {
+      font-size: 1.5em;
+      color: colors.$main800;
+    }
+
+    .example {
+      opacity: 0.8;
+      font-style: italic;
+    }
+  }
+}

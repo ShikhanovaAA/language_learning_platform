@@ -1,0 +1,17 @@
+@use 'libs/theme/src/lib/theme/colors';
+
+:host {
+  display: block;
+  opacity: 0.7;
+
+  .add-to-studied {
+    background: transparent;
+    color: colors.$warning500;
+    display: flex;
+    align-items: center;
+  }
+
+  .studied {
+    color: colors.$main800;
+  }
+}

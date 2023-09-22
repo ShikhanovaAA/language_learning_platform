@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition } from '@angular/material/snack-bar';
 import { ToastNotificationComponent } from './toast-notification/toast-notification.component';
 import { MessageType, ToastData, ToastDuration } from '@llp/model';
 
@@ -12,7 +9,7 @@ export class ToastNotificationService {
 
   showNotification(
     data: ToastData = { message: '', type: MessageType.Info },
-    duration: ToastDuration = ToastDuration.Infinity,
+    duration: ToastDuration = ToastDuration.Long,
     horizontalPosition: MatSnackBarHorizontalPosition = 'end'
   ) {
     return this.snackBar.openFromComponent(ToastNotificationComponent, {

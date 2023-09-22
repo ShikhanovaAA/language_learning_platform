@@ -1,0 +1,61 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+::ng-deep {
+  .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: colors.$blockDark !important;
+    border-radius: vars.$border-radius-xxs !important;
+  }
+}
+
+:host {
+  display: block;
+  padding: 0.8em;
+
+  * {
+    color: colors.$white-color;
+  }
+
+  h2 {
+    font-size: 1.4em;
+    color: colors.$main800;
+    border-bottom: 1px solid colors.$translucent-border-dark;
+    padding-bottom: 0.8em;
+  }
+
+  .message {
+    margin-top: 1.2em;
+    font-size: 1.2em;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+
+    button {
+      border-radius: vars.$border-radius-xxs !important;
+      padding: 0.8em 2em;
+
+      &:focus {
+        outline: none;
+      }
+
+      &.cancel {
+        background: colors.$second900;
+
+        &:hover {
+          background: colors.$second800;
+        }
+      }
+
+      &.confirm {
+        background: colors.$main800;
+
+        &:hover {
+          background: colors.$main900;
+        }
+      }
+    }
+  }
+}
