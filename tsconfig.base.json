@@ -38,6 +38,15 @@
       "@llp/features/dictionary/state": [
         "libs/features/dictionary/state/src/index.ts"
       ],
+      "@llp/features/quizzes/data-access": [
+        "libs/features/quizzes/data-access/src/index.ts"
+      ],
+      "@llp/features/quizzes/pages": [
+        "libs/features/quizzes/pages/src/index.ts"
+      ],
+      "@llp/features/quizzes/state": [
+        "libs/features/quizzes/state/src/index.ts"
+      ],
       "@llp/models": ["libs/models/index.ts"],
       "@llp/shared/directives/form-control-errors": [
         "libs/shared/directives/form-control-errors/src/index.ts"
@@ -75,8 +84,8 @@
       ],
       "@llp/util/guards": ["libs/util/guards/index.ts"],
       "@llp/util/meta-reducer": ["libs/util/meta-reducer/index.ts"],
-      "@llp/util/token-service": ["libs/util/token-service/src/index.ts"],
-      "@llp/util/strings": ["libs/util/shared/strings/index.ts"]
+      "@llp/util/strings": ["libs/util/shared/strings/index.ts"],
+      "@llp/util/token-service": ["libs/util/token-service/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
