@@ -62,6 +62,9 @@
       ],
       "@llp/shared/validators": ["libs/shared/validators/src/index.ts"],
       "@llp/theme": ["libs/theme/src/index.ts"],
+      "@llp/ui/components/dynamic-form": [
+        "libs/ui/components/dynamic-form/src/index.ts"
+      ],
       "@llp/ui/components/header": ["libs/ui/components/header/src/index.ts"],
       "@llp/ui/components/main-layout": [
         "libs/ui/components/main-layout/src/index.ts"
