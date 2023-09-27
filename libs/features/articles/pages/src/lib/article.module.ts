@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UiButtonModule } from '@llp/ui/ui-kit/button';
 import { UiFormFieldModule } from '@llp/ui/ui-kit/form-field';
 import { UiInputModule } from '@llp/ui/ui-kit/input';
-import { ArticleStateModule } from '@llp/features/article/state';
+import { ArticleStateModule } from '@llp/features/articles/state';
 import { UiSelectModule } from '@llp/ui/ui-kit/select';
 import { MatIconModule } from '@angular/material/icon';
 import { NewCategoryComponent } from './components/new-category/new-category.component';

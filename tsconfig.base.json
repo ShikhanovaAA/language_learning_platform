@@ -15,14 +15,14 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@llp/features/article/data-access": [
-        "libs/features/article/data-access/index.ts"
+      "@llp/features/articles/data-access": [
+        "libs/features/articles/data-access/index.ts"
       ],
-      "@llp/features/article/pages": [
-        "libs/features/article/pages/src/index.ts"
+      "@llp/features/articles/pages": [
+        "libs/features/articles/pages/src/index.ts"
       ],
-      "@llp/features/article/state": [
-        "libs/features/article/state/src/index.ts"
+      "@llp/features/articles/state": [
+        "libs/features/articles/state/src/index.ts"
       ],
       "@llp/features/auth/data-access": [
         "libs/features/auth/data-access/index.ts"

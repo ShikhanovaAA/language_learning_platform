@@ -9,7 +9,7 @@ import { clearState } from '@llp/util/meta-reducer';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UiProgressBarModule } from '@llp/ui/ui-kit/progress-bar';
 import { AuthStateModule } from '@llp/features/auth/state';
-import { ArticleStateModule } from '@llp/features/article/state';
+import { ArticleStateModule } from '@llp/features/articles/state';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { BrowserModule } from '@angular/platform-browser';

@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { switchMap, catchError, of, tap,  } from 'rxjs';
-import { ArticleService } from '@llp/features/article/data-access';
+import { ArticleService } from '@llp/features/articles/data-access';
 import * as ArticleActions from './article.actions';
 import { GeneralLoadingService } from '@llp/shared/services';
 import { ToastNotificationService } from '@llp/ui/ui-kit/toast-notification';

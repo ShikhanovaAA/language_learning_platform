@@ -1,6 +1,6 @@
 import { AuthFacade } from '@llp/features/auth/state';
 import { Component } from '@angular/core';
-import { ArticleFacade } from '@llp/features/article/state';
+import { ArticleFacade } from '@llp/features/articles/state';
 import { Article } from '@llp/models';
 import { Observable } from 'rxjs';
 

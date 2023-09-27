@@ -1,6 +1,6 @@
 import { AuthFacade } from '@llp/features/auth/state';
 import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
-import { ArticleFacade } from '@llp/features/article/state';
+import { ArticleFacade } from '@llp/features/articles/state';
 import { Article, StudiedArticle, User } from '@llp/models';
 import { Observable, filter, zip } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
