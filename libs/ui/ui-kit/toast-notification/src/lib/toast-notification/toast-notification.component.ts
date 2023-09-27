@@ -3,7 +3,7 @@ import {
   MAT_SNACK_BAR_DATA,
   MatSnackBarRef,
 } from '@angular/material/snack-bar';
-import { ToastData } from '@llp/model';
+import { ToastData } from '@llp/models';
 
 @Component({
   selector: 'llp-toast-notification',

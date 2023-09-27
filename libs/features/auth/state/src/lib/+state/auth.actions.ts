@@ -1,4 +1,4 @@
-import { LoginPayload, NewUser, User } from '@llp/model';
+import { LoginPayload, NewUser, User } from '@llp/models';
 import { createAction, props } from '@ngrx/store';
 
 export const AuthenticateUser = createAction('[Auth] Authenticate User', props<{ loginPayload: LoginPayload }>());

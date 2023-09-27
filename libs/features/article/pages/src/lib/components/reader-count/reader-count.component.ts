@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Reader } from '@llp/model';
+import { Reader } from '@llp/models';
 
 @Component({
   selector: 'llp-reader-count',

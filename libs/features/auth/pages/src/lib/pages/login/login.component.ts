@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { validatePassword } from '@llp/shared/validators';
-import { LabelPosition, LoginPayload } from '@llp/model';
+import { LabelPosition, LoginPayload } from '@llp/models';
 import { AuthFacade } from '@llp/features/auth/state';
 import { LoginForm } from '../../models/login-form';
 

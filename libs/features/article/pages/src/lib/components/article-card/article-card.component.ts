@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Article } from '@llp/model';
+import { Article } from '@llp/models';
 
 @Component({
   selector: 'llp-article-card',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NewUser } from '@llp/model';
+import { NewUser } from '@llp/models';
 import { validatePassword } from '@llp/shared/validators';
 import { AuthFacade } from '@llp/features/auth/state';
 import { RegisterForm } from '../../models/register-form';

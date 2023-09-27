@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ButtonStyle } from '@llp/model';
+import { ButtonStyle } from '@llp/models';
 
 @Component({
   selector: 'llp-button',

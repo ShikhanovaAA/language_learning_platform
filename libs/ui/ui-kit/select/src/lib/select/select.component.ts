@@ -1,6 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SelectOption } from '@llp/model';
+import { SelectOption } from '@llp/models';
 import { ControlComponent } from '@llp/shared/utils/cva-component';
 
 @Component({

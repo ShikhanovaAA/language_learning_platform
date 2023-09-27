@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { LocalStorageKeysEnum } from '@llp/model';
+import { LocalStorageKeysEnum } from '@llp/models';
 import { LOCAL_STORAGE } from '@ng-web-apis/common';
 import { DecodedToken } from './models/deocoded-token';
 import jwt_decode from 'jwt-decode';

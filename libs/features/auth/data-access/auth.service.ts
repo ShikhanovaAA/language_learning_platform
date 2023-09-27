@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginPayload, TokenInfo, NewUser, User } from '@llp/model';
+import { LoginPayload, TokenInfo, NewUser, User } from '@llp/models';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
 import { userDtoToUser } from './models/user-dto';

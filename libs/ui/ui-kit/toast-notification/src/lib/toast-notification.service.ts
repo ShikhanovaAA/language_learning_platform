@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarHorizontalPosition } from '@angular/material/snack-bar';
 import { ToastNotificationComponent } from './toast-notification/toast-notification.component';
-import { MessageType, ToastData, ToastDuration } from '@llp/model';
+import { MessageType, ToastData, ToastDuration } from '@llp/models';
 
 @Injectable()
 export class ToastNotificationService {

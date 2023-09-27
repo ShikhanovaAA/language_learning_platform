@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Article, StudiedArticle, User } from '@llp/model';
+import { Article, StudiedArticle, User } from '@llp/models';
 
 @Component({
   selector: 'llp-add-article-to-studied',

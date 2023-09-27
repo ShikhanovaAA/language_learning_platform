@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { LoginPayload, NewUser } from '@llp/model';
+import { LoginPayload, NewUser } from '@llp/models';
 import { Store, Action, select } from '@ngrx/store';
 import * as AuthActions from './auth.actions';
 import * as AuthSelectors from './auth.selectors';

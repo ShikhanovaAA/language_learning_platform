@@ -1,6 +1,6 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, Action, on } from '@ngrx/store';
-import { Article, Category } from '@llp/model';
+import { Article, Category } from '@llp/models';
 import * as ArticleActions from './article.actions';
 
 export const ARTICLE_FEATURE_KEY = 'articles';

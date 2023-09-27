@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MAIN_MENU } from '@llp/model';
+import { MAIN_MENU } from '@llp/models';
 
 @Component({
   selector: 'llp-main-layout',

@@ -1,4 +1,4 @@
-import { ButtonStyle } from '@llp/model';
+import { ButtonStyle } from '@llp/models';
 import {
   Meta,
   componentWrapperDecorator,

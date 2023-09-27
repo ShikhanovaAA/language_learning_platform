@@ -1,4 +1,4 @@
-import { Article, Category, NewArticle, NewCategory, StudiedArticle } from '@llp/model';
+import { Article, Category, NewArticle, NewCategory, StudiedArticle } from '@llp/models';
 import { createAction, props } from '@ngrx/store';
 
 export const CreateArticle = createAction('[Article] Create Article', props<{ newArticle: NewArticle }>());

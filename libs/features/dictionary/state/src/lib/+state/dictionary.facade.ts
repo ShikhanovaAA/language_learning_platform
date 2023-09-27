@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { DictionaryWord } from '@llp/model';
+import { DictionaryWord } from '@llp/models';
 import { Store, Action, select } from '@ngrx/store';
 
 import * as DictionaryActions from './dictionary.actions';

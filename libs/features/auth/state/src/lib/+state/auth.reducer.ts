@@ -1,7 +1,7 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, Action, on } from '@ngrx/store';
 import { AuthEntity } from './auth.models';
-import { User } from '@llp/model';
+import { User } from '@llp/models';
 import * as AuthActions from './auth.actions';
 
 export const AUTH_FEATURE_KEY = 'auth';

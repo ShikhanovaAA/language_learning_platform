@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Article, Category, NewArticle, NewCategory, StudiedArticle } from '@llp/model';
+import { Article, Category, NewArticle, NewCategory, StudiedArticle } from '@llp/models';
 import { Store, Action, select } from '@ngrx/store';
 
 import * as ArticleActions from './article.actions';

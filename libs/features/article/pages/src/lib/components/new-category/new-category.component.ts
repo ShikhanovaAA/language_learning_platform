@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewCategoryForm } from '../../models/new-category-form';
-import { NewCategory } from '@llp/model';
+import { NewCategory } from '@llp/models';
 
 @Component({
   selector: 'llp-new-category',

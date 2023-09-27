@@ -1,6 +1,6 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, Action, on } from '@ngrx/store';
-import { DictionaryWord } from '@llp/model';
+import { DictionaryWord } from '@llp/models';
 import * as DictionaryActions from './dictionary.actions';
 
 export const DICTIONARY_FEATURE_KEY = 'dictionary';

@@ -1,7 +1,7 @@
 import { Injectable} from '@angular/core';
 import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { Metadata, defaultMetadata } from '@llp/model';
+import { Metadata, defaultMetadata } from '@llp/models';
 import { EnvironmentService} from '@llp/shared/environments';
 
 @Injectable({

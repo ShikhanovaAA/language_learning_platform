@@ -1,6 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { InputStyle, LabelPosition } from '@llp/model';
+import { InputStyle, LabelPosition } from '@llp/models';
 import {
   componentWrapperDecorator,
   moduleMetadata,

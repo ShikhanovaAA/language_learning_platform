@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Article, User } from '@llp/model';
+import { Article, User } from '@llp/models';
 
 @Pipe({
   name: 'isStudied',

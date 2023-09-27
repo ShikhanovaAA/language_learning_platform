@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewArticleForm } from '../../models/new-article-form';
 import { ArticleFacade } from '@llp/features/article/state';
-import { NewCategory, SelectOption,  } from '@llp/model';
+import { NewCategory, SelectOption,  } from '@llp/models';
 import { Observable } from 'rxjs';
 
 @Component({

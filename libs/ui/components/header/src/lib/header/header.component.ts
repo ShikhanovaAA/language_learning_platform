@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AuthFacade } from '@llp/features/auth/state';
-import { MenuItem } from '@llp/model';
+import { MenuItem } from '@llp/models';
 import { TokenStorageService } from '@llp/util/token-service';
 
 @Component({

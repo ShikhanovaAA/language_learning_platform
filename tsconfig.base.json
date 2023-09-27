@@ -38,7 +38,7 @@
       "@llp/features/dictionary/state": [
         "libs/features/dictionary/state/src/index.ts"
       ],
-      "@llp/model": ["libs/model/index.ts"],
+      "@llp/models": ["libs/models/index.ts"],
       "@llp/shared/directives/form-control-errors": [
         "libs/shared/directives/form-control-errors/src/index.ts"
       ],

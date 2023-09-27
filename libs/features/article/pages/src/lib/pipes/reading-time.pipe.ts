@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Article } from '@llp/model';
+import { Article } from '@llp/models';
 
 const WORD_PER_MENUTE = 150;
 

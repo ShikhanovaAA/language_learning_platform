@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { LabelPosition } from '@llp/model';
+import { LabelPosition } from '@llp/models';
 
 @Component({
   selector: 'llp-form-field',

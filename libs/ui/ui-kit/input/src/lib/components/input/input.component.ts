@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { InputStyle } from '@llp/model';
+import { InputStyle } from '@llp/models';
 import { ControlComponent } from '@llp/shared/utils/cva-component';
 
 @Component({

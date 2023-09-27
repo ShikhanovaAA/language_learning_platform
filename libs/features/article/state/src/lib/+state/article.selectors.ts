@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ARTICLE_FEATURE_KEY, ArticleState } from './article.reducer';
-import { SelectOption } from '@llp/model';
+import { SelectOption } from '@llp/models';
 
 export const selectArticleState = createFeatureSelector<ArticleState>(ARTICLE_FEATURE_KEY);
 

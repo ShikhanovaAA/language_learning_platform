@@ -1,4 +1,4 @@
-import { User, UserRole, isAdmin, isManager } from '@llp/model';
+import { User, UserRole, isAdmin, isManager } from '@llp/models';
 
 export interface UserDto {
   id: number;

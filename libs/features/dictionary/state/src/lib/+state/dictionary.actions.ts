@@ -1,4 +1,4 @@
-import { DictionaryWord } from '@llp/model';
+import { DictionaryWord } from '@llp/models';
 import { createAction, props } from '@ngrx/store';
 
 export const GetDictionaryWords = createAction('[Dictionary] Get Dictionary Words');

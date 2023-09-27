@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ArticleFacade } from '@llp/features/article/state';
-import { Category } from '@llp/model';
+import { Category } from '@llp/models';
 import { Observable } from 'rxjs';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Category } from '@llp/model';
+import { Category } from '@llp/models';
 
 @Component({
   selector: 'llp-category-list',

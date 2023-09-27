@@ -1,5 +1,5 @@
 import { AuthFacade } from '@llp/features/auth/state';
-import { TokenInfo } from '@llp/model';
+import { TokenInfo } from '@llp/models';
 import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
