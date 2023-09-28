@@ -70,6 +70,7 @@
         "libs/ui/components/main-layout/src/index.ts"
       ],
       "@llp/ui/ui-kit/button": ["libs/ui/ui-kit/button/src/index.ts"],
+      "@llp/ui/ui-kit/checkbox": ["libs/ui/ui-kit/checkbox/src/index.ts"],
       "@llp/ui/ui-kit/confirmation-dialog": [
         "libs/ui/ui-kit/confirmation-dialog/src/index.ts"
       ],
