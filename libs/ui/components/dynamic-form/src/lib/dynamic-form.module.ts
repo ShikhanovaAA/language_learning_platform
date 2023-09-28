@@ -8,6 +8,7 @@ import { UiSelectModule } from '@llp/ui/ui-kit/select';
 import { UiFormFieldModule } from '@llp/ui/ui-kit/form-field';
 import { UiRadioModule } from '@llp/ui/ui-kit/radio';
 import { UiButtonModule } from '@llp/ui/ui-kit/button';
+import { UiCheckboxModule } from '@llp/ui/ui-kit/checkbox';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { UiButtonModule } from '@llp/ui/ui-kit/button';
     UiSelectModule,
     UiRadioModule,
     UiButtonModule,
+    UiCheckboxModule,
   ],
   declarations: [
     QuestionComponent,

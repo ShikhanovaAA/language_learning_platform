@@ -1,0 +1,48 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+p {
+  margin-bottom: 10px;
+}
+
+.options {
+  display: grid;
+  gap: 8px;
+
+  .label {
+    cursor: pointer;
+  }
+
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border: 1px solid colors.$second700;
+      border-radius: 4px;
+      display: block;
+      font-size: 20px;
+      font-family: 'Material Icons';
+      color: colors.$body;
+      font-weight: bold;
+    }
+  }
+
+  .checked {
+    input[type="checkbox"] {
+      &::before {
+        background-color: colors.$main800;
+        content: "\e5ca";
+      }
+    }
+
+    .label {
+      font-weight: 500;
+    }
+  }
+}

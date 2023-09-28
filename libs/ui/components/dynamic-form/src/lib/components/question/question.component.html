@@ -16,6 +16,11 @@
           *ngTemplateOutlet="radioControl; context: question"
         ></ng-container>
       </ng-container>
+      <ng-container *ngSwitchCase="'CHECKBOX'">
+        <ng-container
+          *ngTemplateOutlet="checkboxControl; context: question"
+        ></ng-container>
+      </ng-container>
     </div>
   </llp-form-field>
 
@@ -36,6 +41,14 @@
         [formControlName]="question.key"
         [options]="question.answerOptions"
       ></llp-radio>
+    </ng-container>
+  </ng-template>
+  <ng-template #checkboxControl>
+    <ng-container *ngIf="question.answerOptions">
+      <llp-checkbox
+        [formControlName]="question.key"
+        [options]="question.answerOptions"
+      ></llp-checkbox>
     </ng-container>
   </ng-template>
 </div>
