@@ -9,8 +9,8 @@ export const MAIN_MENU: MenuItem[] = [
     route: '/articles',
   },
   {
-    label: 'Tests',
-    route: '/tests',
+    label: 'Quizzes',
+    route: '/quizzes',
   },
   {
     label: 'Dictionary',

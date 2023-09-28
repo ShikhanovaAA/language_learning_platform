@@ -5,3 +5,4 @@ export * from './toast-notification';
 export * from './menu-item';
 export * from './select-option';
 export * from './confirmation-dialog-data';
+export * from './question';

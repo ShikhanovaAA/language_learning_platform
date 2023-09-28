@@ -1,1 +1,11 @@
-<p>dynamic-form works!</p>
+<form [formGroup]="form">
+  <div *ngFor="let question of questions" class="form-row">
+    <llp-question [question]="question" [form]="form"></llp-question>
+  </div>
+
+  <div class="form-row">
+    <button type="submit" [disabled]="!form.valid" (click)="submit()">
+      Save
+    </button>
+  </div>
+</form>

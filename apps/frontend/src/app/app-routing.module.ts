@@ -17,6 +17,10 @@ const routes: Routes = [
         path: 'articles',
         loadChildren: () => import('@llp/features/articles/pages').then((m) => m.ArticleModule),
       },
+      {
+        path: 'quizzes',
+        loadChildren: () => import('@llp/features/quizzes/pages').then((m) => m.QuizzesModule),
+      },
     ]
   },
   {

@@ -1,1 +1,28 @@
-<p>question works!</p>
+<div [formGroup]="form">
+  <llp-form-field [label]="question.label" [labelPosition]="labelPosition">
+    <div [ngSwitch]="question.controlType">
+      <ng-container *ngSwitchCase="'INPUT'">
+        <ng-container
+          *ngTemplateOutlet="inputControl; context: question"
+        ></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'SELECT'">
+        <ng-container
+          *ngTemplateOutlet="selectControl; context: question"
+        ></ng-container>
+      </ng-container>
+    </div>
+  </llp-form-field>
+
+  <ng-template #inputControl>
+    <llp-input [formControlName]="question.key"></llp-input>
+  </ng-template>
+  <ng-template #selectControl>
+    <ng-container *ngIf="question.answerOptions">
+      <llp-select
+        [formControlName]="question.key"
+        [selectOptions]="question.answerOptions"
+      ></llp-select>
+    </ng-container>
+  </ng-template>
+</div>
