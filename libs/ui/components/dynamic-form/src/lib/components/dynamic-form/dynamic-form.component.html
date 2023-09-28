@@ -1,11 +1,11 @@
-<form [formGroup]="form">
-  <div *ngFor="let question of questions" class="form-row">
+<form [formGroup]="form" class="flex-column gap-m">
+  <div *ngFor="let question of questions">
     <llp-question [question]="question" [form]="form"></llp-question>
   </div>
 
-  <div class="form-row">
-    <button type="submit" [disabled]="!form.valid" (click)="submit()">
-      Save
-    </button>
-  </div>
+  <llp-button
+    [disabled]="!form.valid"
+    (click)="submit()"
+    text="Save"
+  ></llp-button>
 </form>

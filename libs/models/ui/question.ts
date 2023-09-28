@@ -1,4 +1,4 @@
-import { SelectOption } from './select-option';
+import { Option } from './option';
 
 export type ControlType = 'RADIO' | 'INPUT' | 'CHECKBOX' | 'SELECT';
 
@@ -9,5 +9,5 @@ export interface Question {
   order: number;
   required?: boolean;
   controlType: ControlType;
-  answerOptions?: SelectOption[];
+  answerOptions?: Option[];
 }

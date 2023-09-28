@@ -1,0 +1,19 @@
+<p *ngIf="label">{{ label }}</p>
+<div class="options">
+  <label
+    *ngFor="let option of options"
+    class="radio-container flex-middle gap-xs"
+    (click)="valueChange(option)"
+  >
+    <input
+      type="radio"
+      [name]="option.value"
+      [class.checked]="
+        selectedOption?.value === option.value ? 'checked' : null
+      "
+    />
+    <span [class.bold]="selectedOption?.value === option.value">
+      {{ option.label }}
+    </span>
+  </label>
+</div>

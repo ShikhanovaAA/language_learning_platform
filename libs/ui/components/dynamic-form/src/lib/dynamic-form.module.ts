@@ -6,6 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UiInputModule } from '@llp/ui/ui-kit/input';
 import { UiSelectModule } from '@llp/ui/ui-kit/select';
 import { UiFormFieldModule } from '@llp/ui/ui-kit/form-field';
+import { UiRadioModule } from '@llp/ui/ui-kit/radio';
+import { UiButtonModule } from '@llp/ui/ui-kit/button';
 
 @NgModule({
   imports: [
@@ -14,6 +16,8 @@ import { UiFormFieldModule } from '@llp/ui/ui-kit/form-field';
     UiFormFieldModule,
     UiInputModule,
     UiSelectModule,
+    UiRadioModule,
+    UiButtonModule,
   ],
   declarations: [
     QuestionComponent,

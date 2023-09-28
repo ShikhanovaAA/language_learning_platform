@@ -1,6 +1,6 @@
 import { Component, Input, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SelectOption } from '@llp/models';
+import { Option } from '@llp/models';
 import { ControlComponent } from '@llp/shared/utils/cva-component';
 
 @Component({
@@ -20,15 +20,15 @@ export class SelectComponent extends ControlComponent<string> {
   label = '';
 
   @Input()
-  selectOptions: SelectOption[] = [];
+  selectOptions: Option[] = [];
 
   @Input()
   placeholder: string = 'Select...';
 
   isOptionsVisible = false;
-  selectedOption!: SelectOption;
+  selectedOption!: Option;
 
-  onSelect(option: SelectOption) {
+  onSelect(option: Option) {
     this.selectedOption = option;
     this.value = option.value;
     this.toggleOptionVisibility();

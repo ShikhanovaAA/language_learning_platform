@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewArticleForm } from '../../models/new-article-form';
 import { ArticleFacade } from '@llp/features/articles/state';
-import { NewCategory, SelectOption,  } from '@llp/models';
+import { NewCategory, Option } from '@llp/models';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -26,7 +26,7 @@ export class NewArticleComponent {
     })
   });
 
-  categoryOptions$: Observable<SelectOption[]> = this.articleFacade.categoryOptions$;
+  categoryOptions$: Observable<Option[]> = this.articleFacade.categoryOptions$;
 
   constructor(private articleFacade: ArticleFacade) {}
 

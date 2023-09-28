@@ -164,8 +164,8 @@
       "executor": "@storybook/angular:start-storybook",
       "options": {
         "port": 4400,
-        "configDir": "apps/llp/.storybook",
-        "browserTarget": "llp:build",
+        "configDir": "apps/frontend/.storybook",
+        "browserTarget": "frontend:build",
         "compodoc": false
       },
       "configurations": {
@@ -178,9 +178,9 @@
       "executor": "@storybook/angular:build-storybook",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "outputDir": "dist/storybook/llp",
-        "configDir": "apps/llp/.storybook",
-        "browserTarget": "llp:build",
+        "outputDir": "dist/storybook/frontend",
+        "configDir": "apps/frontend/.storybook",
+        "browserTarget": "frontend:build",
         "compodoc": false
       },
       "configurations": {
@@ -192,18 +192,18 @@
     "test-storybook": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "test-storybook -c apps/llp/.storybook --url=http://localhost:4400"
+        "command": "test-storybook -c apps/frontend/.storybook --url=http://localhost:4400"
       }
     },
     "static-storybook": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "llp:build-storybook",
-        "staticFilePath": "dist/storybook/llp"
+        "buildTarget": "frontend:build-storybook",
+        "staticFilePath": "dist/storybook/frontend"
       },
       "configurations": {
         "ci": {
-          "buildTarget": "llp:build-storybook:ci"
+          "buildTarget": "frontend:build-storybook:ci"
         }
       }
     }

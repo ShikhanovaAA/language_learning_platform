@@ -1,0 +1,65 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+p {
+  margin-bottom: 10px;
+}
+
+.options {
+  display: grid;
+  gap: 8px;
+
+  .radio-container {
+    position: relative;
+
+    span {
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      -webkit-appearance: none;
+      appearance: none;
+      margin: 0;
+      font: inherit;
+      color: colors.$second700;
+      min-width: 20px;
+      min-height: 20px;
+      border: 1px solid colors.$second700;
+      border-radius: 50%;
+      transform: translateY(-0.075em);
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+        border: 1px solid colors.$main800;
+      }
+
+      &:hover {
+        outline: none;
+        background-color: colors.$second700;
+
+      }
+
+      &::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        background-color: colors.$blockDark;
+      }
+
+      &.checked {
+        &::before {
+          transform: scale(1);
+          display: block;
+          top: 3px;
+          position: absolute;
+          left: 3px;
+          background-color: colors.$main800;
+        }
+      }
+    }
+  }
+}

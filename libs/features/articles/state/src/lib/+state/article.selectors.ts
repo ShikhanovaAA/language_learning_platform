@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ARTICLE_FEATURE_KEY, ArticleState } from './article.reducer';
-import { SelectOption } from '@llp/models';
+import { Option } from '@llp/models';
 
 export const selectArticleState = createFeatureSelector<ArticleState>(ARTICLE_FEATURE_KEY);
 
@@ -9,7 +9,7 @@ export const selectAllArticles = createSelector(selectArticleState, (state: Arti
 export const selectAllCategories = createSelector(selectArticleState, (state: ArticleState) => state.categories);
 
 export const selectAllCategoriesAsOptions = createSelector(selectArticleState, (state: ArticleState) => {
-  const categoryOptions: SelectOption[] = state.categories.map(category => ({ value: category.id, label: category.name }));
+  const categoryOptions: Option[] = state.categories.map(category => ({ value: category.id, label: category.name }));
   return categoryOptions;
 });
 
