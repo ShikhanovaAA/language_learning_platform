@@ -1,0 +1,15 @@
+<div [ngSwitch]="question.controlType">
+  <ng-container *ngSwitchCase="'CHECKBOX'">
+    <ng-container
+      *ngTemplateOutlet="checkboxControl; context: question"
+    ></ng-container>
+  </ng-container>
+</div>
+
+<ng-template #checkboxControl>
+  <llp-checkbox-builder
+    [label]="question.label"
+    [options]="question.answerOptions || []"
+    (checkboxUpdate)="updateQuestion($event)"
+  ></llp-checkbox-builder>
+</ng-template>

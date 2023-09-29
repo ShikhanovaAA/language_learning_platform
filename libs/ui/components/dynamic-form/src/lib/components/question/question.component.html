@@ -31,16 +31,16 @@
     <ng-container *ngIf="question.answerOptions">
       <llp-select
         [formControlName]="question.key"
-        [selectOptions]="question.answerOptions"
+        [options]="question.answerOptions"
       ></llp-select>
     </ng-container>
   </ng-template>
   <ng-template #radioControl>
     <ng-container *ngIf="question.answerOptions">
-      <llp-radio
+      <llp-radio-list
         [formControlName]="question.key"
         [options]="question.answerOptions"
-      ></llp-radio>
+      ></llp-radio-list>
     </ng-container>
   </ng-template>
   <ng-template #checkboxControl>

@@ -1,0 +1,23 @@
+.question {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  background: rgb(22 22 22);
+  border-radius: 4px;
+}
+
+.control-settings {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+button.delete-question {
+  background: transparent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

@@ -4,18 +4,18 @@ import { ControlComponent } from '@llp/shared/utils/cva-component';
 import { Option } from '@llp/models';
 
 @Component({
-  selector: 'llp-radio',
-  templateUrl: './radio.component.html',
-  styleUrls: ['./radio.component.scss'],
+  selector: 'llp-radio-list',
+  templateUrl: './radio-list.component.html',
+  styleUrls: ['./radio-list.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => RadioComponent),
+      useExisting: forwardRef(() => RadioListComponent),
       multi: true,
     },
   ],
 })
-export class RadioComponent extends ControlComponent<string> {
+export class RadioListComponent extends ControlComponent<string> {
   @Input()
   label = '';
 
@@ -26,6 +26,6 @@ export class RadioComponent extends ControlComponent<string> {
 
   valueChange(option: Option) {
     this.selectedOption = option;
-    this.value = option.value;
+    this.value = option.key;
   }
 }

@@ -9,7 +9,7 @@ export const selectAllArticles = createSelector(selectArticleState, (state: Arti
 export const selectAllCategories = createSelector(selectArticleState, (state: ArticleState) => state.categories);
 
 export const selectAllCategoriesAsOptions = createSelector(selectArticleState, (state: ArticleState) => {
-  const categoryOptions: Option[] = state.categories.map(category => ({ value: category.id, label: category.name }));
+  const categoryOptions: Option[] = state.categories.map(category => ({ key: category.id, label: category.name }));
   return categoryOptions;
 });
 

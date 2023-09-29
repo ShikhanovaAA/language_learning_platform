@@ -23,19 +23,27 @@ export class CheckboxComponent extends ControlComponent<string> {
   @Input()
   options: Option[] = [];
 
-  checkedOptions: Option[] = [];
+  checkedOptions: Option[] = this.checkedByValue;
 
   toggleOption(option: Option) {
-    if (this.isChecked(option.value)) {
-      this.checkedOptions = this.checkedOptions.filter(checkedOption => checkedOption.value !== option.value);
+    if (this.isChecked(option.key)) {
+      this.checkedOptions = this.checkedOptions.filter(checkedOption => checkedOption.key !== option.key);
     } else {
       this.checkedOptions.push(option);
     }
 
-    this.value = this.checkedOptions.map(option => option.value).join(',');
+    this.value = this.checkedOptions.map(option => option.key).join(',');
   }
 
-  isChecked(value: Option['value']) {
-    return this.checkedOptions.some(checkedOption => checkedOption.value === value);
+  isChecked(key: Option['key']) {
+    return this.checkedOptions.some(checkedOption => checkedOption.key === key);
+  }
+
+  get checkedByValue(): Option[] {
+    if (!this.value) return [];
+
+    const value = this.value.split(',');
+    const found = this.options.filter(o => value.some(o.key));
+    return found ? found : [];
   }
 }

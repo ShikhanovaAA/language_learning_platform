@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Option } from '@llp/models';
 import { ControlComponent } from '@llp/shared/utils/cva-component';
@@ -14,27 +14,31 @@ import { ControlComponent } from '@llp/shared/utils/cva-component';
       multi: true,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectComponent extends ControlComponent<string> {
   @Input()
   label = '';
 
   @Input()
-  selectOptions: Option[] = [];
+  options: Option[] = [];
 
   @Input()
   placeholder: string = 'Select...';
 
   isOptionsVisible = false;
-  selectedOption!: Option;
 
   onSelect(option: Option) {
-    this.selectedOption = option;
-    this.value = option.value;
+    this.value = option.key;
     this.toggleOptionVisibility();
   }
 
   toggleOptionVisibility() {
     this.isOptionsVisible = !this.isOptionsVisible;
+  }
+
+  get selectedOption(): string {
+    if (!this.options?.length) return this.placeholder;
+    return this.options.find(option => option.key === this.value)?.label || this.placeholder;
   }
 }

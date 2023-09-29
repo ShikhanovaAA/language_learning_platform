@@ -1,0 +1,35 @@
+<input
+  class="label"
+  type="text"
+  name="label"
+  [(ngModel)]="_label"
+  placeholder="Question text"
+  autocomplete="off"
+  (ngModelChange)="updateQuestion()"
+/>
+<div class="options">
+  <label
+    for="{{ option.key }}"
+    *ngFor="let option of _options"
+    [class.checked]="isChecked(option.key)"
+    class="flex-middle gap-xs"
+  >
+    <input type="checkbox" [name]="option.key" (click)="toggleOption(option)" />
+
+    <input
+      class="option"
+      type="text"
+      [name]="option.key"
+      [(ngModel)]="option.label"
+      placeholder="Answer option"
+      autocomplete="off"
+      (ngModelChange)="updateQuestion()"
+    />
+
+    <mat-icon (click)="deleteOption(option.key)">close</mat-icon>
+  </label>
+</div>
+
+<button class="add-option" (click)="addOption()">
+  <mat-icon>add</mat-icon> Add option
+</button>

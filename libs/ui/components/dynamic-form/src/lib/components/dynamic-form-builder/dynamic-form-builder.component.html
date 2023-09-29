@@ -1,0 +1,28 @@
+<div class="flex-column gap-m">
+  <div *ngFor="let question of _questions; let i = index" class="question">
+    <llp-question-builder
+      [question]="question"
+      (questionUpdated)="updateQuestion($event, question.key)"
+    ></llp-question-builder>
+
+    <div class="control-settings">
+      <llp-select
+        [options]="controlOptions"
+        [(ngModel)]="updatedQuestions[i].controlType"
+        (ngModelChange)="changeQuestionControlType($event, question.key)"
+      ></llp-select>
+
+      <div class="flex-middle-between">
+        <llp-checkbox
+          [options]="requiredOptions"
+          [(ngModel)]="updatedQuestions[i].required"
+          (ngModelChange)="updateQuestionRequiredFieldQuestion()"
+        ></llp-checkbox>
+
+        <button class="delete-question" (click)="deleteQuestion(question.key)">
+          <mat-icon>delete_forever</mat-icon> Delete question
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,12 +7,10 @@
   >
     <input
       type="radio"
-      [name]="option.value"
-      [class.checked]="
-        selectedOption?.value === option.value ? 'checked' : null
-      "
+      [name]="option.key"
+      [class.checked]="selectedOption?.key === option.key ? 'checked' : null"
     />
-    <span [class.bold]="selectedOption?.value === option.value">
+    <span [class.bold]="selectedOption?.key === option.key">
       {{ option.label }}
     </span>
   </label>

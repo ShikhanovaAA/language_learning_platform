@@ -7,14 +7,14 @@
   (keydown.enter)="toggleOptionVisibility()"
 >
   <div class="selected flex-middle-between" (click)="toggleOptionVisibility()">
-    {{ selectedOption ? selectedOption.label : placeholder }}
+    {{ selectedOption }}
     <mat-icon>{{ isOptionsVisible ? 'expand_less' : 'expand_more' }}</mat-icon>
   </div>
   <div class="options" [class.visible]="isOptionsVisible">
     <div
       role="option"
       class="option"
-      *ngFor="let option of selectOptions"
+      *ngFor="let option of options"
       (click)="onSelect(option)"
     >
       {{ option.label }}

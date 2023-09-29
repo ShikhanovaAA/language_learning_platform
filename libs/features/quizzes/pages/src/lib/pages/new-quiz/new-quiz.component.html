@@ -1,0 +1,29 @@
+<h1>New Quiz</h1>
+<form [formGroup]="newQuiz" class="flex-column gap-m">
+  <llp-form-field label="Title of the quiz" [labelPosition]="labelPosition.Top">
+    <llp-input formControlName="title" placeholder="Title..."></llp-input>
+  </llp-form-field>
+
+  <llp-form-field
+    label="Description of the quiz"
+    [labelPosition]="labelPosition.Top"
+  >
+    <llp-input
+      formControlName="description"
+      placeholder="Description..."
+    ></llp-input>
+  </llp-form-field>
+
+  <llp-dynamic-form-builder
+    [questions]="questions"
+    (questionUpdated)="updateQuestions($event)"
+    (questionControlTypeUpdated)="updateQuestionControlType($event)"
+    (questionDeleted)="deleteQuestion($event)"
+  ></llp-dynamic-form-builder>
+
+  <button type="button" class="add-question" (click)="addQuestion()">
+    <mat-icon>add</mat-icon> Add question
+  </button>
+
+  <llp-button text="Save" (click)="saveQuiz()"></llp-button>
+</form>

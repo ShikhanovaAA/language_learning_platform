@@ -1,7 +1,7 @@
 {
-  "name": "ui-ui-kit-radio",
+  "name": "ui-ui-kit-radio-list",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/ui/ui-kit/radio/src",
+  "sourceRoot": "libs/ui/ui-kit/radio-list/src",
   "prefix": "llp",
   "tags": [],
   "projectType": "library",
@@ -10,7 +10,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/ui/ui-kit/radio/jest.config.ts",
+        "jestConfig": "libs/ui/ui-kit/radio-list/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -25,8 +25,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/ui/ui-kit/radio/**/*.ts",
-          "libs/ui/ui-kit/radio/**/*.html"
+          "libs/ui/ui-kit/radio-list/**/*.ts",
+          "libs/ui/ui-kit/radio-list/**/*.html"
         ]
       }
     }

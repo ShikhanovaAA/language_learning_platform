@@ -1,0 +1,51 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+
+:host {
+  display: block;
+  background: colors.$blockDark;
+  border-radius: vars.$border-radius-xxs;
+  padding: 1.25em;
+  box-shadow: 0 0 1.42em 0px colors.$translucent-block-dark-900;
+
+  .header {
+    margin-bottom: 1.5em;
+
+    h1 {
+      color: colors.$main800;
+    }
+
+    .button-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: vars.$border-radius-l;
+      color: colors.$white-color;
+      background: colors.$main800;
+      padding: 0.6em 2em;
+      text-decoration: none;
+      font-size: 1.2em;
+      width: max-content;
+
+      mat-icon {
+        margin-left: 0.6em;
+      }
+    }
+  }
+
+  .add-question {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    padding: 0.3em 0.6px;
+    background: transparent;
+    color: colors.$main800;
+    border-bottom: 2px solid colors.$main800;
+    margin: 0 auto;
+    gap: 0.4em;
+    font-weight: 500;
+    font-size: 1.2em;
+  }
+}

@@ -8,17 +8,16 @@
     cursor: pointer;
     border: none;
     display: flex;
-    height: 2.5em;
     border-radius: vars.$border-radius-xxl;
     color: colors.$white-color;
     align-items: center;
     justify-content: center;
-    width: 9.3em;
     font-size: 1em;
     transition: all 0.2s ease;
+    padding: 0.7em 2em;
 
     .icon {
-      margin-right: 0.625em;
+      margin-right: 0.25em;
     }
 
     &.default {

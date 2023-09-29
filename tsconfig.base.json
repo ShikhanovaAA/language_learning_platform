@@ -82,7 +82,7 @@
       "@llp/ui/ui-kit/progress-bar": [
         "libs/ui/ui-kit/progress-bar/src/index.ts"
       ],
-      "@llp/ui/ui-kit/radio": ["libs/ui/ui-kit/radio/src/index.ts"],
+      "@llp/ui/ui-kit/radio-list": ["libs/ui/ui-kit/radio-list/src/index.ts"],
       "@llp/ui/ui-kit/select": ["libs/ui/ui-kit/select/src/index.ts"],
       "@llp/ui/ui-kit/toast-notification": [
         "libs/ui/ui-kit/toast-notification/src/index.ts"
