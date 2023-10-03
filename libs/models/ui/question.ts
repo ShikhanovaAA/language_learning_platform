@@ -21,19 +21,19 @@ export const controlOptions: Option[] = [
   },
 ];
 
-export interface Question {
-  id?: number;
+export interface NewQuestion  {
   key: string;
   label: string;
   order: number;
-  required?: string;
+  required: string;
   controlType: ControlType;
   answerOptions?: Option[];
+  correctAnswer: Option['key'] | Array<Option['key']> | null;
 }
 
-export interface EditableQuestionFields {
-  label: string;
-  answerOptions: Option[];
-}
+export type Question = Omit<NewQuestion, 'correctAnswer'> & { id: number };
 
-export type QuestionControltypeUpdatingInfo = Pick<Question, 'controlType' | 'key'>;
+export type EditableQuestionFields = Pick<NewQuestion, 'label' | 'answerOptions' | 'correctAnswer'>;
+
+
+export type QuestionControltypeUpdatingInfo = Pick<NewQuestion, 'controlType' | 'key'>;

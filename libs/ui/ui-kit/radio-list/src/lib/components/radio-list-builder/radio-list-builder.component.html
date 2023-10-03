@@ -7,25 +7,23 @@
   autocomplete="off"
   (ngModelChange)="updateQuestion()"
 />
+
 <div class="options">
   <label
-    for="{{ option.key }}"
     *ngFor="let option of _options"
-    [class.checked]="isChecked(option.key)"
-    class="flex-middle gap-xs"
+    class="radio-container flex-middle gap-xs"
+    [class.checked]="selectedOption?.key === option.key ? 'checked' : null"
   >
-    <input type="checkbox" [name]="option.key" (click)="toggleOption(option)" />
+    <input type="radio" [name]="option.key" (click)="valueChange(option)" />
 
     <input
       class="option"
       type="text"
-      [name]="option.key"
       [(ngModel)]="option.label"
       placeholder="Answer option"
       autocomplete="off"
       (ngModelChange)="updateQuestion()"
     />
-
     <mat-icon class="close-button" (click)="deleteOption(option.key)"
       >close</mat-icon
     >

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ControlType, Option, Question, QuestionControltypeUpdatingInfo, controlOptions } from '@llp/models';
+import { ControlType, Option, Question, QuestionControltypeUpdatingInfo, controlOptions, NewQuestion } from '@llp/models';
 
 @Component({
   selector: 'llp-dynamic-form-builder',
@@ -7,19 +7,19 @@ import { ControlType, Option, Question, QuestionControltypeUpdatingInfo, control
   styleUrls: ['./dynamic-form-builder.component.scss'],
 })
 export class DynamicFormBuilderComponent {
-  _questions: Question[] = [];
+  _questions: NewQuestion[] = [];
 
   @Input()
-  set questions (questions: Question[]) {
+  set questions (questions: NewQuestion[]) {
     this._questions = questions;
     this.updatedQuestions = questions.concat();
   }
 
-  @Output() questionUpdated = new EventEmitter<Question[]>();
+  @Output() questionUpdated = new EventEmitter<NewQuestion[]>();
   @Output() questionControlTypeUpdated = new EventEmitter<QuestionControltypeUpdatingInfo>();
-  @Output() questionDeleted = new EventEmitter<Question['key']>();
+  @Output() questionDeleted = new EventEmitter<NewQuestion['key']>();
 
-  updatedQuestions: Question[] = [];
+  updatedQuestions: NewQuestion[] = [];
 
   requiredOptions: Option[] =[{
     label: 'Required',
@@ -28,14 +28,14 @@ export class DynamicFormBuilderComponent {
 
   controlOptions = controlOptions;
 
-  changeQuestionControlType(controlType: string, questionKey: Question['key']) {
+  changeQuestionControlType(controlType: string, questionKey: NewQuestion['key']) {
     this.questionControlTypeUpdated.emit({
       key: questionKey,
       controlType: controlType as ControlType
     });
   }
 
-  updateQuestion(updatedFields: Partial<Question>, questionKey: Question['key']) {
+  updateQuestion(updatedFields: Partial<Question>, questionKey: NewQuestion['key']) {
     this.updatedQuestions = this.updatedQuestions.map(question => question.key === questionKey ? ({...question, ...updatedFields}) : question);
     this.questionUpdated.emit(this.updatedQuestions);
   }
@@ -44,7 +44,7 @@ export class DynamicFormBuilderComponent {
     this.questionUpdated.emit(this.updatedQuestions);
   }
 
-  deleteQuestion(questionKey: Question['key']) {
+  deleteQuestion(questionKey: NewQuestion['key']) {
     this.questionDeleted.emit(questionKey);
   }
 }

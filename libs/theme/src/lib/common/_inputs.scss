@@ -1,5 +1,5 @@
-@use 'libs/theme/src/lib/common/vars';
-@use 'libs/theme/src/lib/theme/colors';
+@use './vars';
+@use '../theme/colors';
 
 * {
   color: colors.$third800;

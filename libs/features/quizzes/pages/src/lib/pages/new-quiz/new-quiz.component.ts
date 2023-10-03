@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms';
-import { LabelPosition, Question, QuestionControltypeUpdatingInfo} from '@llp/models';
+import { LabelPosition, NewQuestion, QuestionControltypeUpdatingInfo} from '@llp/models';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -14,8 +14,8 @@ export class NewQuizComponent {
     description: new FormControl(''),
   });
 
-  questions: Question[] = [];
-  updatedQuestions: Question[] = [];
+  questions: NewQuestion[] = [];
+  updatedQuestions: NewQuestion[] = [];
 
   order = 0;
   labelPosition = LabelPosition;
@@ -24,7 +24,7 @@ export class NewQuizComponent {
     console.log(this.updatedQuestions);
   }
 
-  updateQuestions(questions: Question[]) {
+  updateQuestions(questions: NewQuestion[]) {
     this.updatedQuestions = questions.concat();
   }
 
@@ -35,6 +35,7 @@ export class NewQuizComponent {
       order: ++this.order,
       required: '',
       controlType: 'CHECKBOX',
+      correctAnswer: null,
     });
 
     this.updatedQuestions = this.questions.concat();

@@ -1,0 +1,185 @@
+@use './vars';
+@use '../theme/colors';
+
+p {
+  margin-bottom: 10px;
+}
+
+.options {
+  display: grid;
+  gap: 8px;
+
+  .label {
+    cursor: pointer;
+  }
+
+  .close-button {
+    color: colors.$translucent-placeholder-dark;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: colors.$white-color;
+    }
+  }
+
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border: 1px solid colors.$second700;
+      border-radius: 4px;
+      display: block;
+      font-size: 20px;
+      font-family: 'Material Icons';
+      color: colors.$body;
+      font-weight: bold;
+    }
+  }
+
+  .checked {
+    input[type="checkbox"] {
+      &::before {
+        background-color: colors.$main800;
+        content: "\e5ca";
+      }
+    }
+
+    .label {
+      font-weight: 500;
+    }
+  }
+
+  input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    font: inherit;
+    color: colors.$second700;
+    min-width: 20px;
+    min-height: 20px;
+    border: 1px solid colors.$second700;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+    cursor: pointer;
+    box-sizing: content-box;
+
+    &:focus {
+      outline: none;
+      border: 1px solid colors.$main800;
+    }
+
+    &:hover {
+      outline: none;
+      background-color: colors.$second700;
+
+    }
+
+    &::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: colors.$blockDark;
+    }
+  }
+
+  .checked {
+    input[type="radio"] {
+      &::before {
+        transform: scale(1);
+        display: block;
+        top: 4px;
+        position: absolute;
+        left: 4px;
+        background-color: colors.$main800;
+      }
+    }
+  }
+}
+
+.add-option {
+  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid colors.$main800;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  color: colors.$main800;
+  background: transparent;
+  margin-top: 15px;
+  padding: 4px 0;
+}
+
+.save {
+  cursor: pointer;
+  background-color: colors.$main800;
+  align-items: center;
+  border-radius: 4px;
+  width: max-content;
+}
+
+input.label {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid colors.$translucent-block-light;
+  display: flex;
+  width: 100%;
+  padding: 10px 10px 4px;
+  margin-bottom: 20px;
+  color: colors.$white-color;
+
+  &:focus {
+    outline: none;
+    border-color: colors.$main850;
+  }
+
+  &:hover {
+    border-color: colors.$main850;
+  }
+
+  &:focus-visible,
+  &:active {
+    border-color: colors.$main850;
+  }
+}
+
+input.option {
+  background: transparent;
+  border: none;
+  width: 100%;
+  display: flex;
+  color: colors.$white-color;
+  padding: 0 0 2px;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid colors.$translucent-block-light;
+  }
+}
+
+input::-webkit-input-placeholder {
+  color: colors.$translucent-placeholder-dark;
+}
+
+input:-moz-placeholder {
+  color: colors.$translucent-placeholder-dark;
+}
+
+input:-ms-input-placeholder {
+  color: colors.$translucent-placeholder-dark;
+}
+
+input::placeholder {
+
+  color: colors.$translucent-placeholder-dark;
+}

@@ -32,6 +32,8 @@ export class CheckboxBuilderComponent {
     } else {
       this.checkedOptions.push(option);
     }
+
+    this.updateQuestion();
   }
 
   isChecked(key: Option['key']) {
@@ -56,7 +58,8 @@ export class CheckboxBuilderComponent {
   updateQuestion() {
     this.checkboxUpdate.emit({
       label: this._label,
-      answerOptions: this._options
+      answerOptions: this._options,
+      correctAnswer: this.checkedOptions.map(option => option.key)
     });
   }
 }

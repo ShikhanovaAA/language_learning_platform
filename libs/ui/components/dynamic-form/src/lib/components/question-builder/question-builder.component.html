@@ -4,6 +4,11 @@
       *ngTemplateOutlet="checkboxControl; context: question"
     ></ng-container>
   </ng-container>
+  <ng-container *ngSwitchCase="'RADIO'">
+    <ng-container
+      *ngTemplateOutlet="radioControl; context: question"
+    ></ng-container>
+  </ng-container>
 </div>
 
 <ng-template #checkboxControl>
@@ -12,4 +17,12 @@
     [options]="question.answerOptions || []"
     (checkboxUpdate)="updateQuestion($event)"
   ></llp-checkbox-builder>
+</ng-template>
+
+<ng-template #radioControl>
+  <llp-radio-list-builder
+    [label]="question.label"
+    [options]="question.answerOptions || []"
+    (radioUpdate)="updateQuestion($event)"
+  ></llp-radio-list-builder>
 </ng-template>

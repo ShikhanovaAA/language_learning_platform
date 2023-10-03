@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { EditableQuestionFields, Question } from '@llp/models';
+import { EditableQuestionFields, NewQuestion } from '@llp/models';
 
 @Component({
   selector: 'llp-question-builder',
@@ -7,7 +7,7 @@ import { EditableQuestionFields, Question } from '@llp/models';
   styleUrls: ['./question-builder.component.scss'],
 })
 export class QuestionBuilderComponent {
-  @Input() question!: Question;
+  @Input() question!: NewQuestion;
 
   @Output() questionUpdated = new EventEmitter<EditableQuestionFields>();
 
