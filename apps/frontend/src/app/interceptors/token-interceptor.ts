@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class TokenInterceptor implements HttpInterceptor {
   constructor(private tokenStorageService: TokenStorageService) {}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept<T>(request: HttpRequest<T>, next: HttpHandler): Observable<HttpEvent<T>> {
 
     if (this.tokenStorageService.isTokenExpired()) return next.handle(request);
 
@@ -17,7 +17,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(requestWithToken);
   }
 
-  private applyTokenToRequest(request: HttpRequest<any>, accessToken: string) {
+  private applyTokenToRequest<T>(request: HttpRequest<T>, accessToken: string) {
     return request.clone({
       setHeaders: {
         'Content-Type': 'application/json',

@@ -5,6 +5,6 @@ import { FormControlErrorsDirective } from './form-control-errors.directive';
 @NgModule({
   imports: [CommonModule],
   declarations: [FormControlErrorsDirective],
-  exports: [FormControlErrorsDirective,],
+  exports: [FormControlErrorsDirective],
 })
 export class FormControlErrorsDirectiveModule {}

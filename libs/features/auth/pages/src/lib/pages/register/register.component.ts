@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewUser } from '@llp/models';
-import { validatePassword } from '@llp/shared/validators';
+import { passwordValidator } from '@llp/shared/validators';
 import { AuthFacade } from '@llp/features/auth/state';
 import { RegisterForm } from '../../models/register-form';
 
@@ -25,7 +25,7 @@ export class RegisterComponent {
     }),
     password: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.required, validatePassword()]
+      validators: [Validators.required, passwordValidator()],
     }),
   });
 
@@ -38,7 +38,7 @@ export class RegisterComponent {
     const newUser: NewUser = {
       username,
       email,
-      password
+      password,
     };
 
     this.authFacade.registerUser(newUser);

@@ -16,6 +16,5 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   declarations: [HeaderComponent],
   exports: [HeaderComponent],
-  providers: []
 })
 export class HeaderModule {}

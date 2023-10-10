@@ -1,5 +1,8 @@
 <div class="flex-column gap-m">
-  <div *ngFor="let question of _questions; let i = index" class="question">
+  <div
+    *ngFor="let question of _questions; let i = index; trackBy: trackByFn"
+    class="question"
+  >
     <llp-question-builder
       [question]="question"
       (questionUpdated)="updateQuestion($event, question.key)"

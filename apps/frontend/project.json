@@ -95,6 +95,18 @@
         "browserTarget": "frontend:build"
       }
     },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/frontend/**/*.ts",
+          "apps/frontend/**/*.html",
+          "libs/**/*.ts",
+          "libs/**/*.html"
+        ]
+      }
+    },
     "test": {
       "executor": "@angular-devkit/build-angular:karma",
       "options": {

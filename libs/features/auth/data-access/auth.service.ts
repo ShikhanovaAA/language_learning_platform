@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginPayload, TokenInfo, NewUser, User } from '@llp/models';
-import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs/internal/operators/map';
+import { map } from 'rxjs/operators';
 import { userDtoToUser } from './models/user-dto';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

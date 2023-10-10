@@ -16,7 +16,7 @@ export interface DictionaryPartialState {
 export const dictionaryAdapter: EntityAdapter<DictionaryWord> = createEntityAdapter<DictionaryWord>();
 
 export const initialDictionaryState: DictionaryState = dictionaryAdapter.getInitialState({
-  dictionaryWords: []
+  dictionaryWords: [],
 });
 
 const reducer = createReducer(

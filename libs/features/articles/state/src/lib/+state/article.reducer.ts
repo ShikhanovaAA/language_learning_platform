@@ -52,7 +52,7 @@ const reducer = createReducer(
     selectedArticle: state.selectedArticle
     ? {
       ...state.selectedArticle,
-      readers: state.selectedArticle.readers.concat({id: studiedArticle.userId})
+      readers: state.selectedArticle.readers.concat({id: studiedArticle.userId}),
     }
     : null,
   })),

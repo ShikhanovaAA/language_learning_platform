@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { switchMap, catchError, of, tap,  } from 'rxjs';
+import { switchMap, catchError, of, tap } from 'rxjs';
 import { ArticleService } from '@llp/features/articles/data-access';
 import * as ArticleActions from './article.actions';
 import { GeneralLoadingService } from '@llp/shared/services';
@@ -24,11 +24,11 @@ export class ArticleEffects {
       switchMap(() => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.articleService.getAllArticles().pipe(
-          switchMap((articles) => [ArticleActions.GetArticlesSuccess({ articles })]),
-          catchError((error) =>  of(ArticleActions.GetArticlesFail(error)))
+          switchMap(articles => [ArticleActions.GetArticlesSuccess({ articles })]),
+          catchError(error =>  of(ArticleActions.GetArticlesFail(error))),
         );
-      })
-    )
+      }),
+    ),
   );
 
   loadAllCategories$ = createEffect(() =>
@@ -37,11 +37,11 @@ export class ArticleEffects {
       switchMap(() => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.articleService.getAllCategories().pipe(
-          switchMap((categories) => [ArticleActions.GetCategoriesSuccess({ categories })]),
-          catchError((error) => of(ArticleActions.GetCategoriesFail(error)))
+          switchMap(categories => [ArticleActions.GetCategoriesSuccess({ categories })]),
+          catchError(error => of(ArticleActions.GetCategoriesFail(error))),
         );
-      })
-    )
+      }),
+    ),
   );
 
   loadArticlesByCategoryId$ = createEffect(() =>
@@ -50,11 +50,11 @@ export class ArticleEffects {
       switchMap(({ categoryId }) => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.articleService.getArticlesByCategoryId(categoryId).pipe(
-          switchMap((articles) => [ArticleActions.GetArticlesByCategoryIdSuccess({ articles })]),
-          catchError((error) => of(ArticleActions.GetArticlesByCategoryIdFail(error)))
+          switchMap(articles => [ArticleActions.GetArticlesByCategoryIdSuccess({ articles })]),
+          catchError(error => of(ArticleActions.GetArticlesByCategoryIdFail(error))),
         );
-      })
-    )
+      }),
+    ),
   );
 
   loadArticleById$ = createEffect(() =>
@@ -63,11 +63,11 @@ export class ArticleEffects {
       switchMap(({ articleId }) => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.articleService.getArticleById(articleId).pipe(
-          switchMap((article) => [ArticleActions.GetArticleByIdSuccess({ article })]),
-          catchError((error) => of(ArticleActions.GetArticleByIdFail(error)))
+          switchMap(article => [ArticleActions.GetArticleByIdSuccess({ article })]),
+          catchError(error => of(ArticleActions.GetArticleByIdFail(error))),
         );
-      })
-    )
+      }),
+    ),
   );
 
   createArticle$ = createEffect(() =>
@@ -76,11 +76,11 @@ export class ArticleEffects {
       switchMap(({ newArticle }) => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.articleService.createArticle(newArticle).pipe(
-          switchMap((article) => [ArticleActions.CreateArticleSuccess({ article })]),
-          catchError((error) => of(ArticleActions.CreateArticleFail(error)))
+          switchMap(article => [ArticleActions.CreateArticleSuccess({ article })]),
+          catchError(error => of(ArticleActions.CreateArticleFail(error))),
         );
-      })
-    )
+      }),
+    ),
   );
 
   createCategory$ = createEffect(() =>
@@ -89,11 +89,11 @@ export class ArticleEffects {
       switchMap(({ newCategory }) => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.articleService.createCategory(newCategory).pipe(
-          switchMap((category) => [ArticleActions.CreateCategorySuccess({ category })]),
-          catchError((error) => of(ArticleActions.CreateCategoryFail(error)))
+          switchMap(category => [ArticleActions.CreateCategorySuccess({ category })]),
+          catchError(error => of(ArticleActions.CreateCategoryFail(error))),
         );
-      })
-    )
+      }),
+    ),
   );
 
   addArticleToStudied$ = createEffect(() =>
@@ -102,11 +102,11 @@ export class ArticleEffects {
       switchMap(({ studiedArticle }) => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.articleService.addArticleToStudied(studiedArticle).pipe(
-          switchMap((studiedArticle) => [ArticleActions.AddArticleToStudiedSuccess({ studiedArticle })]),
-          catchError((error) => of(ArticleActions.AddArticleToStudiedFail(error)))
+          switchMap(studiedArticle => [ArticleActions.AddArticleToStudiedSuccess({ studiedArticle })]),
+          catchError(error => of(ArticleActions.AddArticleToStudiedFail(error))),
         );
-      })
-    )
+      }),
+    ),
   );
 
   stopLoading$ = createEffect(
@@ -128,9 +128,9 @@ export class ArticleEffects {
           ArticleActions.AddArticleToStudiedSuccess,
           ArticleActions.AddArticleToStudiedFail,
         ),
-        tap(() => this.generalLoadingService.setIsLoadingFalse())
+        tap(() => this.generalLoadingService.setIsLoadingFalse()),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   createSuccessfully$ = createEffect(
@@ -143,17 +143,17 @@ export class ArticleEffects {
         tap(() => this.notificationService.showNotification({
           message: 'Data saved successfully',
           icon: 'save',
-        }))
+        })),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   CreateArticleSuccess$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(ArticleActions.CreateArticleSuccess),
-        tap(() => this.router.navigateByUrl('/'))
+        tap(() => this.router.navigateByUrl('/')),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 }

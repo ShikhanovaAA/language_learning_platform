@@ -10,6 +10,6 @@ import { DictionaryStateModule } from '@llp/features/dictionary/state';
     DictionaryPagesRoutingModule,
     DictionaryStateModule,
   ],
-  declarations: [DictionaryComponent]
+  declarations: [DictionaryComponent],
 })
 export class DictionaryPagesModule {}

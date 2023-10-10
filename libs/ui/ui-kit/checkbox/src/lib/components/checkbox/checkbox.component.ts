@@ -43,7 +43,11 @@ export class CheckboxComponent extends ControlComponent<string> {
     if (!this.value) return [];
 
     const value = this.value.split(',');
-    const found = this.options.filter(o => value.some(o.key));
+    const found = this.options.filter(o => value.some(checkedOption => checkedOption === o.key));
     return found ? found : [];
+  }
+
+  trackByFn(index: number, option: Option) {
+    return option.key;
   }
 }

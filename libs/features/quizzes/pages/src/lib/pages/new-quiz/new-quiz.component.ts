@@ -42,10 +42,11 @@ export class NewQuizComponent {
   }
 
   updateQuestionControlType(questionUpdatingInfo: QuestionControltypeUpdatingInfo) {
-    this.questions = this.updatedQuestions.map(question => question.key === questionUpdatingInfo.key
-      ? ({...question, controlType: questionUpdatingInfo.controlType})
-      : question
-    );
+    this.questions = this.updatedQuestions.map(question => (
+      question.key === questionUpdatingInfo.key
+        ? ({...question, controlType: questionUpdatingInfo.controlType})
+        : question
+    ));
     this.updatedQuestions = this.questions.concat();
   }
 

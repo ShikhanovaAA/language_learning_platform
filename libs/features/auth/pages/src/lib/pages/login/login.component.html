@@ -3,7 +3,7 @@
   <p class="hint">Sign in to be logged in 😏</p>
   <div class="fields flex-column-middle-center">
     <llp-input
-      controlErrors
+      llpControlErrors
       [control]="loginForm.controls['email']"
       formControlName="email"
       matIcon="alternate_email"
@@ -11,7 +11,7 @@
     ></llp-input>
     <llp-password-input
       autocomplete="off"
-      controlErrors
+      llpControlErrors
       [control]="loginForm.controls['password']"
       formControlName="password"
       matIcon="password"

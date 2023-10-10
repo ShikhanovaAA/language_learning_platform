@@ -1,6 +1,6 @@
 <div class="articles">
   <llp-article-card
-    *ngFor="let article of articles"
+    *ngFor="let article of articles; trackBy: trackByFn"
     [article]="article"
   ></llp-article-card>
 </div>

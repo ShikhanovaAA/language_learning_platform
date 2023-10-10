@@ -5,16 +5,17 @@ import { getAddWordToDictionaryDialogData } from './misc/add-word-dialog-data';
 import { DictionaryFacade}  from '@llp/features/dictionary/state';
 import { DictionaryService} from '@llp/features/dictionary/data-access';
 import { capitalizeFirstLetter } from '@llp/util/strings';
+import { mergeMap } from 'rxjs';
 
 @Directive({
-  selector: '[selectionText]'
+  selector: '[llpSelectionText]',
 })
 export class SelectionTextDirective {
   constructor(
     @Inject(WINDOW) private window: Window,
     private confirmationDialogService: ConfirmationDialogService,
     private dictionaryFacade: DictionaryFacade,
-    private dictionaryService: DictionaryService
+    private dictionaryService: DictionaryService,
   ) {}
 
   @HostListener('mouseup', ['$event'])
@@ -22,13 +23,16 @@ export class SelectionTextDirective {
     const selection = this.window.getSelection()?.toString().trim();
     if (!selection) return;
 
-    this.dictionaryService.translateWord(selection).subscribe(result => {
-      const dialogData = getAddWordToDictionaryDialogData(capitalizeFirstLetter(selection), result.translation, event);
+    this.dictionaryService.translateWord(selection).pipe(
+      mergeMap(translationResult => {
+        const word = capitalizeFirstLetter(selection);
+        const dialogData = getAddWordToDictionaryDialogData(word, translationResult.translation, event);
 
-      this.confirmationDialogService.openDialog(dialogData).subscribe(isConfirmed => {
-        if (!isConfirmed) return;
-        this.dictionaryFacade.addWordToDictionary(selection);
-      });
+        return this.confirmationDialogService.openDialog(dialogData);
+      }),
+    ).subscribe(isConfirmed => {
+      if (!isConfirmed) return;
+      this.dictionaryFacade.addWordToDictionary(selection);
     })
   }
 }

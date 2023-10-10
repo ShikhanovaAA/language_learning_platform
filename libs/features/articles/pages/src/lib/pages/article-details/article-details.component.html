@@ -4,7 +4,7 @@
     article: article$ | async
   } as data"
 >
-  <div *ngIf="!!data.article" selectionText>
+  <div *ngIf="!!data.article" llpSelectionText>
     <div class="flex-middle-between info">
       <llp-article-info [article]="data.article"></llp-article-info>
       <div class="flex-middle gap-m">

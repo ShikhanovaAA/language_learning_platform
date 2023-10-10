@@ -1,9 +1,9 @@
 import { inject } from '@angular/core';
-import { Route, UrlSegment } from '@angular/router';
+import { Route } from '@angular/router';
 import { AuthFacade } from '@llp/features/auth/state';
 import { map, take } from 'rxjs';
 
-export const UserRoleGuard = (route: Route, segments: UrlSegment[]) => {
+export const UserRoleGuard = (route: Route) => {
   const authFacade = inject(AuthFacade);
 
   if (route.data && route.data['role']) {
@@ -11,9 +11,7 @@ export const UserRoleGuard = (route: Route, segments: UrlSegment[]) => {
 
     return authFacade.user$.pipe(
       take(1),
-      map((user) => {
-        return user ? user.roles.some(role => role.value === allowedRole) : false
-      })
+      map(user => user ? user.roles.some(role => role.value === allowedRole) : false),
     );
   }
 

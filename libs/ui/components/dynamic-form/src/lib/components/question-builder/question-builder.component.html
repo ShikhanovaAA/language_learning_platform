@@ -9,13 +9,18 @@
       *ngTemplateOutlet="radioControl; context: question"
     ></ng-container>
   </ng-container>
+  <ng-container *ngSwitchCase="'SELECT'">
+    <ng-container
+      *ngTemplateOutlet="selectControl; context: question"
+    ></ng-container>
+  </ng-container>
 </div>
 
 <ng-template #checkboxControl>
   <llp-checkbox-builder
     [label]="question.label"
     [options]="question.answerOptions || []"
-    (checkboxUpdate)="updateQuestion($event)"
+    (checkboxSettingsUpdated)="updateQuestion($event)"
   ></llp-checkbox-builder>
 </ng-template>
 
@@ -23,6 +28,14 @@
   <llp-radio-list-builder
     [label]="question.label"
     [options]="question.answerOptions || []"
-    (radioUpdate)="updateQuestion($event)"
+    (radioSettingsUpdated)="updateQuestion($event)"
   ></llp-radio-list-builder>
+</ng-template>
+
+<ng-template #selectControl>
+  <llp-select-builder
+    [label]="question.label"
+    [options]="question.answerOptions || []"
+    (selectSettingsUpdated)="updateQuestion($event)"
+  ></llp-select-builder>
 </ng-template>

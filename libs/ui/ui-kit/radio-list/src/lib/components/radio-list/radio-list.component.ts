@@ -28,4 +28,8 @@ export class RadioListComponent extends ControlComponent<string> {
     this.selectedOption = option;
     this.value = option.key;
   }
+
+  trackByFn(index: number, option: Option) {
+    return option.key;
+  }
 }

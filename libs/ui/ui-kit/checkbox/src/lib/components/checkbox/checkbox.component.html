@@ -2,7 +2,7 @@
 <div class="options">
   <label
     for="{{ option.key }}"
-    *ngFor="let option of options"
+    *ngFor="let option of options; trackBy: trackByFn"
     (click)="toggleOption(option)"
     [class.checked]="isChecked(option.key)"
     class="flex-middle gap-xs"

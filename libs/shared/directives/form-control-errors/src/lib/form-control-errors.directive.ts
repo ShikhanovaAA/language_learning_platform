@@ -3,7 +3,7 @@ import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { mapValidationErrorToMessage, ValidationErrorKey } from './mapValidationErrorToMessage';
 
 @Directive({
-  selector: '[controlErrors]'
+  selector: '[llpControlErrors]',
 })
 export class FormControlErrorsDirective {
   @Input() control!: AbstractControl;

@@ -7,6 +7,6 @@ import { PasswordInputComponent } from './components/password-input/password-inp
 @NgModule({
   imports: [CommonModule, FormsModule, MatIconModule],
   declarations: [PasswordInputComponent],
-  exports: [PasswordInputComponent]
+  exports: [PasswordInputComponent],
 })
 export class UiPasswordInputModule {}

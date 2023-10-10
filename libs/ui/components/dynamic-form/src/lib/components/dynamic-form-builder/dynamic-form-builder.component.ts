@@ -31,12 +31,15 @@ export class DynamicFormBuilderComponent {
   changeQuestionControlType(controlType: string, questionKey: NewQuestion['key']) {
     this.questionControlTypeUpdated.emit({
       key: questionKey,
-      controlType: controlType as ControlType
+      controlType: controlType as ControlType,
     });
   }
 
   updateQuestion(updatedFields: Partial<Question>, questionKey: NewQuestion['key']) {
-    this.updatedQuestions = this.updatedQuestions.map(question => question.key === questionKey ? ({...question, ...updatedFields}) : question);
+    this.updatedQuestions = this.updatedQuestions.map(question =>
+      // eslint-disable-next-line comma-dangle
+      (question.key === questionKey ? ({...question, ...updatedFields}) : question)
+    );
     this.questionUpdated.emit(this.updatedQuestions);
   }
 
@@ -46,5 +49,9 @@ export class DynamicFormBuilderComponent {
 
   deleteQuestion(questionKey: NewQuestion['key']) {
     this.questionDeleted.emit(questionKey);
+  }
+
+  trackByFn(index: number, question: NewQuestion) {
+    return question.key;
   }
 }

@@ -3,11 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Question } from '@llp/models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FormQuestionService {
   mapQuestionsToFormGroup(questions: Question[]): FormGroup {
-    const group: any = {};
+    const group: Record<Question['key'], FormControl> = {};
     const sortedQuestions = this.sortQuestions(questions);
     sortedQuestions.map(question => group[question.key] = new FormControl('', question.required ? Validators.required : []));
 

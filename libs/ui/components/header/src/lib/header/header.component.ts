@@ -21,4 +21,8 @@ export class HeaderComponent {
   logout() {
     this.authFacade.logout();
   }
+
+  trackByFn(index: number, menuItem: MenuItem) {
+    return menuItem.route;
+  }
 }

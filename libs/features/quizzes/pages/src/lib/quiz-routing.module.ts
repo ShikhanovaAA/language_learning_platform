@@ -10,7 +10,7 @@ const routes: Routes = [
     path: 'new',
     component: NewQuizComponent,
     data: { role: Role.Admin },
-    canMatch: [UserRoleGuard]
+    canMatch: [UserRoleGuard],
   },
   {
     path: '',

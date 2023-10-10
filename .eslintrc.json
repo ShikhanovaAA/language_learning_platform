@@ -1,7 +1,13 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
   "plugins": ["@nx"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "project": ["./tsconfig.base.json"],
+    "sourceType": "module",
+    "extraFileExtensions": [".scss", ".html"]
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -23,8 +29,88 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+      "plugins": [
+        "@nrwl/nx",
+        "@typescript-eslint",
+        "simple-import-sort",
+        "rxjs",
+        "import"
+      ],
+      "extends": [
+        "plugin:@nx/typescript",
+        "plugin:@nx/angular",
+        "plugin:@nx/javascript",
+        "plugin:rxjs/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "rxjs/no-ignored-notifier": "warn",
+        "rxjs/no-nested-subscribe": "warn",
+        "rxjs/no-subject-unsubscribe": "warn",
+        "rxjs/no-implicit-any-catch": "off",
+        "comma-dangle": ["error", "always-multiline"],
+        "no-extra-boolean-cast": "off",
+        "no-return-await": "error",
+        "require-await": "error",
+        "arrow-body-style": ["error", "as-needed"],
+        "arrow-parens": ["error", "as-needed"],
+        "arrow-spacing": "error",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          { "argsIgnorePattern": "^_" }
+        ],
+        "@angular-eslint/directive-class-suffix": [
+          "error",
+          { "suffixes": ["Directive", "Component"] }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          { "type": "attribute", "prefix": "llp", "style": "camelCase" }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          { "type": "element", "prefix": "llp", "style": "kebab-case" }
+        ],
+        "max-len": [
+          "error",
+          {
+            "code": 120,
+            "ignoreUrls": true,
+            "ignorePattern": "^import\\s.+\\sfrom\\s.+;$", // Игнорируем длинну импортов
+            "ignoreTrailingComments": true,
+            "ignoreComments": true,
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": true
+          }
+        ],
+        "operator-linebreak": [
+          "error",
+          "after",
+          {
+            "overrides": {
+              "?": "before",
+              ":": "before"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@nrwl/nx/angular-template"],
+      "parser": "@angular-eslint/template-parser",
+      "rules": {
+        "@angular-eslint/template/use-track-by-function": ["warn"],
+        "max-len": [
+          "error",
+          {
+            "code": 140,
+            "ignorePattern": "^\\s*.*=\".*\""
+          }
+        ]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

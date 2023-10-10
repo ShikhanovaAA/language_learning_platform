@@ -1,8 +1,8 @@
 import { AuthFacade } from '@llp/features/auth/state';
-import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
 import { ArticleFacade } from '@llp/features/articles/state';
 import { Article, StudiedArticle, User } from '@llp/models';
-import { Observable, filter, zip } from 'rxjs';
+import { Observable, filter } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { MetadataService } from '@llp/shared/services';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -13,7 +13,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrls: ['./article-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ArticleDetailsComponent {
+export class ArticleDetailsComponent implements OnInit {
   article$: Observable<Article | null> = this.articleFacade.selectedArticle$;
   user$: Observable<User | null> = this.authFacade.user$;
 
@@ -22,7 +22,7 @@ export class ArticleDetailsComponent {
     private authFacade: AuthFacade,
     private route: ActivatedRoute,
     private metadataService: MetadataService,
-    private destroyRef: DestroyRef
+    private destroyRef: DestroyRef,
   ) {}
 
   ngOnInit(): void {
@@ -39,7 +39,7 @@ export class ArticleDetailsComponent {
   setMetadata() {
     this.article$.pipe(
       takeUntilDestroyed(this.destroyRef),
-      filter((article): article is Article => article !== null)
+      filter((article): article is Article => article !== null),
     ).subscribe((article: Article) => {
       this.metadataService.updateMetadata({
         title: article.title,

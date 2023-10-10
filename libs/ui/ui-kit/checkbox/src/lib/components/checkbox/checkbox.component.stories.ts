@@ -14,7 +14,7 @@ export default {
       imports: [FormsModule],
     }),
     componentWrapperDecorator(
-      (story) => `<div style="width: 300px">${story}</div>`
+      story => `<div style="width: 300px">${story}</div>`,
     ),
   ],
 } as Meta<CheckboxComponent>;
@@ -33,7 +33,7 @@ export const Default = {
       {
         label: 'Option 2',
         value: 'option2',
-      }
-    ]
+      },
+    ],
   },
 };

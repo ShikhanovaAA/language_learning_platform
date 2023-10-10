@@ -13,11 +13,11 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [
     CheckboxComponent,
-    CheckboxBuilderComponent
+    CheckboxBuilderComponent,
   ],
   exports: [
     CheckboxComponent,
-    CheckboxBuilderComponent
+    CheckboxBuilderComponent,
   ],
 })
 export class UiCheckboxModule {}

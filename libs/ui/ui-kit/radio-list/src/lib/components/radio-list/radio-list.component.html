@@ -1,7 +1,7 @@
 <p *ngIf="label">{{ label }}</p>
 <div class="options">
   <label
-    *ngFor="let option of options"
+    *ngFor="let option of options; trackBy: trackByFn"
     class="radio-container flex-middle gap-xs"
     (click)="valueChange(option)"
   >

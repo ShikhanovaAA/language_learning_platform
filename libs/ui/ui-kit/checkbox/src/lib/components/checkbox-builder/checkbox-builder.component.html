@@ -5,12 +5,12 @@
   [(ngModel)]="_label"
   placeholder="Question text"
   autocomplete="off"
-  (ngModelChange)="updateQuestion()"
+  (ngModelChange)="updateQuestionSettings()"
 />
 <div class="options">
   <label
     for="{{ option.key }}"
-    *ngFor="let option of _options"
+    *ngFor="let option of _options; trackBy: trackByFn"
     [class.checked]="isChecked(option.key)"
     class="flex-middle gap-xs"
   >
@@ -23,7 +23,7 @@
       [(ngModel)]="option.label"
       placeholder="Answer option"
       autocomplete="off"
-      (ngModelChange)="updateQuestion()"
+      (ngModelChange)="updateQuestionSettings()"
     />
 
     <mat-icon class="close-button" (click)="deleteOption(option.key)"

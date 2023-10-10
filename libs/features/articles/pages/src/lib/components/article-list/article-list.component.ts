@@ -8,4 +8,8 @@ import { Article } from '@llp/models';
 })
 export class ArticleListComponent {
   @Input() articles!: Article[];
+
+  trackByFn(index: number, article: Article) {
+    return article.id;
+  }
 }

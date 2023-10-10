@@ -9,8 +9,8 @@ export class UniversalRequestApiInterceptor implements HttpInterceptor {
 
   constructor(private environmentService: EnvironmentService) {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
-    let serverReq: HttpRequest<any> = req;
+  intercept<T>(req: HttpRequest<T>, next: HttpHandler) {
+    let serverReq: HttpRequest<T> = req;
 
     const requestUrl = req.url.startsWith('/') ? `${req.url}` : `/${req.url}`;
     const absoluteRequestUrl = `${this.env.dockerApiUrl}${requestUrl}`;

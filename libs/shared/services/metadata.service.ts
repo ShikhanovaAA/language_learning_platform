@@ -14,10 +14,10 @@ export class MetadataService {
     private metaTagService: Meta,
     private titleService: Title,
     private environmentService: EnvironmentService,
-    private router: Router
+    private router: Router,
   ) {}
 
-  public updateMetadata(metadata: Partial<Metadata>, index: boolean = true): void {
+  public updateMetadata(metadata: Partial<Metadata>, index = true): void {
     const pageMetadata: Metadata = {...defaultMetadata, ...metadata};
     const metatags: MetaDefinition[] = this.generateMetaDefinitions(pageMetadata);
 
@@ -44,7 +44,7 @@ export class MetadataService {
 
       { property: 'og:type', content: metadata.type },
 
-      { property: 'og:image', content: `${this.env.APP_URL}${metadata.image}`}
+      { property: 'og:image', content: `${this.env.APP_URL}${metadata.image}`},
     ];
   }
 }

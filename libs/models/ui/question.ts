@@ -5,19 +5,19 @@ export type ControlType = 'RADIO' | 'INPUT' | 'CHECKBOX' | 'SELECT';
 export const controlOptions: Option[] = [
   {
     key: 'RADIO',
-    label: 'Radio'
+    label: 'Radio',
   },
   {
     key: 'CHECKBOX',
-    label: 'Checkbox'
+    label: 'Checkbox',
   },
   {
     key: 'SELECT',
-    label: 'Select'
+    label: 'Select',
   },
   {
     key: 'INPUT',
-    label: 'Input'
+    label: 'Input',
   },
 ];
 
@@ -28,12 +28,15 @@ export interface NewQuestion  {
   required: string;
   controlType: ControlType;
   answerOptions?: Option[];
-  correctAnswer: Option['key'] | Array<Option['key']> | null;
+  correctAnswer: CorrectAnswer;
 }
+
+export type Answer = Record<string, CorrectAnswer>;
+
+export type CorrectAnswer = Option['key'] | Array<Option['key']> | null | undefined;
 
 export type Question = Omit<NewQuestion, 'correctAnswer'> & { id: number };
 
 export type EditableQuestionFields = Pick<NewQuestion, 'label' | 'answerOptions' | 'correctAnswer'>;
-
 
 export type QuestionControltypeUpdatingInfo = Pick<NewQuestion, 'controlType' | 'key'>;

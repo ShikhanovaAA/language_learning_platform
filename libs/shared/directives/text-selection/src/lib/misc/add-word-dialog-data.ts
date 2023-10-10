@@ -1,17 +1,21 @@
 import { DialogPosition, MatDialogConfig } from '@angular/material/dialog';
 
-
-export const getAddWordToDictionaryDialogData = (word: string, translation: string, event: MouseEvent): MatDialogConfig => {
+export const getAddWordToDictionaryDialogData = (
+    word: string,
+    translation:
+    string,
+    event: MouseEvent,
+  ): MatDialogConfig => {
   let data = {
     title: `${word} - ${translation}`,
     message: `Do you want to add "${word}" to your dictionary?`,
     confirmButtonText: 'Add',
-    cancelButtonText: 'Cancel'
+    cancelButtonText: 'Cancel',
   }
 
   const position: DialogPosition = {
     top: `${event.clientY + 15}px`,
-    left: `${event.clientX - 20}px`
+    left: `${event.clientX - 20}px`,
   };
 
   const wordCount = word.split(' ').length;
@@ -20,7 +24,7 @@ export const getAddWordToDictionaryDialogData = (word: string, translation: stri
     return {
       data,
       position,
-      panelClass: 'add-word-to-dictionary'
+      panelClass: 'add-word-to-dictionary',
     };
   }
 
@@ -33,6 +37,6 @@ export const getAddWordToDictionaryDialogData = (word: string, translation: stri
   return {
     data,
     position,
-    panelClass: 'add-word-to-dictionary'
+    panelClass: 'add-word-to-dictionary',
   };
 }

@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { LabelPosition, Question } from '@llp/models';
+import { Answer, LabelPosition, Question } from '@llp/models';
 import { FormQuestionService } from '../../services/form-question.service';
 
 @Component({
@@ -8,11 +8,11 @@ import { FormQuestionService } from '../../services/form-question.service';
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss'],
 })
-export class DynamicFormComponent {
+export class DynamicFormComponent implements OnInit {
   @Input() questions: Question[] = [];
   @Input() labelPosition!: LabelPosition;
 
-  @Output() submitForm = new EventEmitter();
+  @Output() submitForm = new EventEmitter<Answer[]>();
   form!: FormGroup;
 
   constructor(private formQuestionService: FormQuestionService) {}
@@ -23,5 +23,9 @@ export class DynamicFormComponent {
 
   submit() {
     this.submitForm.emit(this.form.value);
+  }
+
+  trackByFn(index: number, question: Question) {
+    return question.key;
   }
 }

@@ -8,4 +8,8 @@ import { Category } from '@llp/models';
 })
 export class CategoryListComponent {
   @Input() categories!: Category[];
+
+  trackByFn(index: number, category: Category) {
+    return category.id;
+  }
 }

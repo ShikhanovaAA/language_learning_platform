@@ -18,12 +18,12 @@ export class NewArticleComponent {
     }),
     text: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.maxLength(2000), Validators.required]
+      validators: [Validators.maxLength(2000), Validators.required],
     }),
     categoryId: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.required]
-    })
+      validators: [Validators.required],
+    }),
   });
 
   categoryOptions$: Observable<Option[]> = this.articleFacade.categoryOptions$;
@@ -39,7 +39,7 @@ export class NewArticleComponent {
     this.articleFacade.createArticle({
       title,
       text,
-      categoryId: +categoryId
+      categoryId: +categoryId,
     });
   }
 

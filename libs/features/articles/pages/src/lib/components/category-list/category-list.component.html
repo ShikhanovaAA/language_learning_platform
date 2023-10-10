@@ -1,6 +1,6 @@
 <h2>Categories</h2>
 <ul class="categories">
-  <li *ngFor="let category of categories">
+  <li *ngFor="let category of categories; trackBy: trackByFn">
     <a [routerLink]="['/articles/category', category.id]">
       {{ category.name }}
     </a>

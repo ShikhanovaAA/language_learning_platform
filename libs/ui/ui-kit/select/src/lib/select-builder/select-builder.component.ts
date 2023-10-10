@@ -3,12 +3,12 @@ import { EditableQuestionFields, Option } from '@llp/models';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
-  selector: 'llp-checkbox-builder',
-  templateUrl: './checkbox-builder.component.html',
-  styleUrls: ['./checkbox-builder.component.scss'],
+  selector: 'llp-select-builder',
+  templateUrl: './select-builder.component.html',
+  styleUrls: ['./select-builder.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxBuilderComponent {
+export class SelectBuilderComponent {
   _options: Option[] = [];
   _label = '';
 
@@ -22,22 +22,13 @@ export class CheckboxBuilderComponent {
     this._options = options;
   }
 
-  @Output() checkboxSettingsUpdated = new EventEmitter<EditableQuestionFields>();
+  @Output() selectSettingsUpdated = new EventEmitter<EditableQuestionFields>();
 
-  checkedOptions: Option[] = [];
+  selectedOption?: Option;
 
-  toggleOption(option: Option) {
-    if (this.isChecked(option.key)) {
-      this.checkedOptions = this.checkedOptions.filter(checkedOption => checkedOption.key !== option.key);
-    } else {
-      this.checkedOptions.push(option);
-    }
-
+  valueChange(option: Option) {
+    this.selectedOption = option;
     this.updateQuestionSettings();
-  }
-
-  isChecked(key: Option['key']) {
-    return this.checkedOptions.some(checkedOption => checkedOption.key === key);
   }
 
   addOption() {
@@ -56,14 +47,14 @@ export class CheckboxBuilderComponent {
   }
 
   updateQuestionSettings() {
-    this.checkboxSettingsUpdated.emit({
+    this.selectSettingsUpdated.emit({
       label: this._label,
       answerOptions: this._options,
-      correctAnswer: this.checkedOptions.map(option => option.key),
+      correctAnswer: this.selectedOption?.key,
     });
   }
 
-  trackByFn(index: number, option: Option) {
-    return option.key;
+  trackByFn(index: number, item: Option) {
+    return item.key;
   }
 }

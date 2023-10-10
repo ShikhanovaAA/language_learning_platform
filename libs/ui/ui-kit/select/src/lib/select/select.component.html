@@ -14,8 +14,8 @@
     <div
       role="option"
       class="option"
-      *ngFor="let option of options"
-      (click)="onSelect(option)"
+      *ngFor="let option of options; trackBy: trackByFn"
+      (click)="selectOption(option)"
     >
       {{ option.label }}
     </div>

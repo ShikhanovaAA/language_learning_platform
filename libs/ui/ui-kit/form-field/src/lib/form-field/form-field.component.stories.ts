@@ -16,13 +16,13 @@ export default {
       imports: [UiInputModule],
     }),
     componentWrapperDecorator(
-      (story) => `<div style="width: 300px">${story}</div>`
+      story => `<div style="width: 300px">${story}</div>`,
     ),
   ],
 } as Meta<FormFieldComponent>;
 
 const LabelTopPositionTemplate: StoryFn<FormFieldComponent> = (
-  args: FormFieldComponent
+  args: FormFieldComponent,
 ) => ({
   props: args,
   template: `
@@ -35,7 +35,7 @@ const LabelTopPositionTemplate: StoryFn<FormFieldComponent> = (
 export const LabelTopPosition = LabelTopPositionTemplate.bind({});
 
 const LabelBottomPositionTemplate: StoryFn<FormFieldComponent> = (
-  args: FormFieldComponent
+  args: FormFieldComponent,
 ) => ({
   props: args,
   template: `
@@ -48,7 +48,7 @@ const LabelBottomPositionTemplate: StoryFn<FormFieldComponent> = (
 export const LabelBottomPosition = LabelBottomPositionTemplate.bind({});
 
 const LabelLeftPositionTemplate: StoryFn<FormFieldComponent> = (
-  args: FormFieldComponent
+  args: FormFieldComponent,
 ) => ({
   props: args,
   template: `

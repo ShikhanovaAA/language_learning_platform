@@ -10,12 +10,13 @@
 
 <div class="options">
   <label
-    *ngFor="let option of _options; trackBy: trackByFn"
+    *ngFor="let option of _options; let i = index; trackBy: trackByFn"
     class="radio-container flex-middle gap-xs"
     [class.checked]="selectedOption?.key === option.key ? 'checked' : null"
   >
     <input type="radio" [name]="option.key" (click)="valueChange(option)" />
 
+    {{ i + 1 }}.
     <input
       class="option"
       type="text"

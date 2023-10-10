@@ -14,7 +14,7 @@ import { ControlComponent } from '@llp/shared/utils/cva-component';
       multi: true,
     },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent extends ControlComponent<string> {
   @Input()
@@ -24,11 +24,11 @@ export class SelectComponent extends ControlComponent<string> {
   options: Option[] = [];
 
   @Input()
-  placeholder: string = 'Select...';
+  placeholder = 'Select...';
 
   isOptionsVisible = false;
 
-  onSelect(option: Option) {
+  selectOption(option: Option) {
     this.value = option.key;
     this.toggleOptionVisibility();
   }
@@ -40,5 +40,9 @@ export class SelectComponent extends ControlComponent<string> {
   get selectedOption(): string {
     if (!this.options?.length) return this.placeholder;
     return this.options.find(option => option.key === this.value)?.label || this.placeholder;
+  }
+
+  trackByFn(index: number, item: Option) {
+    return item.key;
   }
 }

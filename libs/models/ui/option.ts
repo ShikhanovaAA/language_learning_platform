@@ -1,5 +1,5 @@
 export interface Option {
   label: string;
-  key: any;
+  key: string;
   imgUrl?: string;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArticleFacade } from '@llp/features/articles/state';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './category-articles.component.html',
   styleUrls: ['./category-articles.component.scss'],
 })
-export class CategoryArticlesComponent {
+export class CategoryArticlesComponent implements OnInit {
   articlesOfSelectedCategory$ = this.articleFacade.articlesOfSelectedCategory$;
   selectedCategory$ = this.articleFacade.selectedCategory$;
 

@@ -15,5 +15,5 @@ export const userDtoToUser = (user: UserDto): User => ({
   password: user.password,
   roles: user.roles,
   isAdmin: user.roles.some(role => isAdmin(role)),
-  isManager: user.roles.some(role => isManager(role))
+  isManager: user.roles.some(role => isManager(role)),
 });

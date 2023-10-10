@@ -21,13 +21,13 @@ export class RadioListBilderComponent {
     this._options = options;
   }
 
-  @Output() radioUpdate = new EventEmitter<EditableQuestionFields>();
+  @Output() radioSettingsUpdated = new EventEmitter<EditableQuestionFields>();
 
   selectedOption?: Option;
 
   valueChange(option: Option) {
     this.selectedOption = option;
-    this.updateQuestion();
+    this.updateQuestionSettings();
   }
 
   addOption() {
@@ -36,20 +36,24 @@ export class RadioListBilderComponent {
       key: uuidv4(),
     });
 
-    this.updateQuestion();
+    this.updateQuestionSettings();
   }
 
   deleteOption(key: Option['key']) {
     this._options = this._options.filter(option => option.key !== key);
 
-    this.updateQuestion();
+    this.updateQuestionSettings();
   }
 
-  updateQuestion() {
-    this.radioUpdate.emit({
+  updateQuestionSettings() {
+    this.radioSettingsUpdated.emit({
       label: this._label,
       answerOptions: this._options,
-      correctAnswer: this.selectedOption?.key
+      correctAnswer: this.selectedOption?.key,
     });
+  }
+
+  trackByFn(index: number, option: Option) {
+    return option.key;
   }
 }

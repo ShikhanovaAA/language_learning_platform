@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'textWithoutHtmlTags',
-  pure: true
+  pure: true,
 })
 export class TextWithoutHtmlTagsPipe implements PipeTransform {
   transform(text: string): string {

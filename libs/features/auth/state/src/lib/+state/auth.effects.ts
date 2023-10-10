@@ -1,4 +1,4 @@
-import { AuthFacade } from '@llp/features/auth/state';
+import { AuthFacade } from './auth.facade';
 import { TokenInfo } from '@llp/models';
 import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
@@ -22,7 +22,7 @@ export class AuthEffects {
     private router: Router,
     private generalLoadingService: GeneralLoadingService,
     private notificationService: ToastNotificationService,
-    private authFacade: AuthFacade
+    private authFacade: AuthFacade,
   ) {}
 
   authenticateUser$ = createEffect(() =>
@@ -32,13 +32,13 @@ export class AuthEffects {
         this.generalLoadingService.setIsLoadingTrue();
         return this.authService.login(loginPayload).pipe(
           tap((tokenInfo: TokenInfo) =>
-            this.tokenStorageService.setApiToken(tokenInfo.token)
+            this.tokenStorageService.setApiToken(tokenInfo.token),
           ),
           switchMap(() => [AuthActions.AuthenticateUserSuccess()]),
-          catchError(() => of(AuthActions.AuthenticateUserFail()))
+          catchError(() => of(AuthActions.AuthenticateUserFail())),
         );
-      })
-    )
+      }),
+    ),
   );
 
   authenticateUserSuccess$ = createEffect(
@@ -46,7 +46,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(
           AuthActions.AuthenticateUserSuccess,
-          AuthActions.RegisterUserSuccess
+          AuthActions.RegisterUserSuccess,
           ),
         tap(() => {
           this.authFacade.getUserByToken();
@@ -55,9 +55,9 @@ export class AuthEffects {
             message: 'Hi there!',
             icon: 'waving_hand',
           });
-        })
+        }),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   registerUser$ = createEffect(() =>
@@ -67,13 +67,13 @@ export class AuthEffects {
         this.generalLoadingService.setIsLoadingTrue();
         return this.authService.register(user).pipe(
           tap((tokenInfo: TokenInfo) =>
-            this.tokenStorageService.setApiToken(tokenInfo.token)
+            this.tokenStorageService.setApiToken(tokenInfo.token),
           ),
           switchMap(() => [AuthActions.RegisterUserSuccess()]),
-          catchError(() => of(AuthActions.RegisterUserFail()))
+          catchError(() => of(AuthActions.RegisterUserFail())),
         );
-      })
-    )
+      }),
+    ),
   );
 
   getUserByToken$ = createEffect(() =>
@@ -82,11 +82,11 @@ export class AuthEffects {
       switchMap(() => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.authService.getUserByToken().pipe(
-          switchMap((user) => [AuthActions.GetUserByTokenSuccess({ user })]),
-          catchError(() => of(AuthActions.GetUserByTokenFail()))
+          switchMap(user => [AuthActions.GetUserByTokenSuccess({ user })]),
+          catchError(() => of(AuthActions.GetUserByTokenFail())),
         );
-      })
-    )
+      }),
+    ),
   );
 
   logout$ = createEffect(() =>
@@ -97,8 +97,8 @@ export class AuthEffects {
         this.router.navigateByUrl('/auth/login');
       }),
       switchMap(() => [AuthActions.LogoutSuccess()]),
-      catchError(() => of(AuthActions.LogoutFail()))
-    )
+      catchError(() => of(AuthActions.LogoutFail())),
+    ),
   );
 
   setIsLoadingFalse$ = createEffect(
@@ -110,10 +110,10 @@ export class AuthEffects {
           AuthActions.RegisterUserFail,
           AuthActions.AuthenticateUserSuccess,
           AuthActions.GetUserByTokenFail,
-          AuthActions.GetUserByTokenSuccess
+          AuthActions.GetUserByTokenSuccess,
         ),
-        tap(() => this.generalLoadingService.setIsLoadingFalse())
+        tap(() => this.generalLoadingService.setIsLoadingFalse()),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 }

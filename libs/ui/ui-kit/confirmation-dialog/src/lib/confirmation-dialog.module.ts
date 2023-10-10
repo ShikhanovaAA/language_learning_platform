@@ -15,6 +15,6 @@ import { DictionaryStateModule } from '@llp/features/dictionary/state';
   ],
   declarations: [ConfirmationDialogComponent],
   exports: [ConfirmationDialogComponent],
-  providers: [ConfirmationDialogService]
+  providers: [ConfirmationDialogService],
 })
 export class ConfirmationDialogModule {}

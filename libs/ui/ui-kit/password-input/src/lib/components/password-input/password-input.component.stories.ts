@@ -1,6 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { InputStyle, LabelPosition } from '@llp/models';
+import { InputStyle } from '@llp/models';
 import {
   componentWrapperDecorator,
   moduleMetadata,
@@ -16,7 +16,7 @@ export default {
       imports: [FormsModule, MatIconModule],
     }),
     componentWrapperDecorator(
-      (story) => `<div style="width: 300px">${story}</div>`
+      story => `<div style="width: 300px">${story}</div>`,
     ),
   ],
 } as Meta<PasswordInputComponent>;

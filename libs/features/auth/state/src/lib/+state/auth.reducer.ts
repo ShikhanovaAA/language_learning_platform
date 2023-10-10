@@ -17,7 +17,7 @@ export interface AuthPartialState {
 export const authAdapter: EntityAdapter<AuthEntity> = createEntityAdapter<AuthEntity>();
 
 export const initialAuthState: AuthState = authAdapter.getInitialState({
-  user: null
+  user: null,
 });
 
 const reducer = createReducer(
@@ -25,7 +25,7 @@ const reducer = createReducer(
   on(AuthActions.GetUserByTokenSuccess, (state, { user }) => ({
     ...state,
     user,
-  }))
+  })),
 );
 
 export function authReducer(state: AuthState | undefined, action: Action) {

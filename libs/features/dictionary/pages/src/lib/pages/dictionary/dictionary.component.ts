@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DictionaryWord } from '@llp/models';
+import { Component, OnInit } from '@angular/core';
 import { DictionaryFacade } from '@llp/features/dictionary/state';
 
 @Component({
@@ -6,12 +7,16 @@ import { DictionaryFacade } from '@llp/features/dictionary/state';
   templateUrl: './dictionary.component.html',
   styleUrls: ['./dictionary.component.scss'],
 })
-export class DictionaryComponent {
+export class DictionaryComponent implements OnInit {
   words$ = this.dictionaryFacade.dictionaryWords$;
 
   constructor(private dictionaryFacade: DictionaryFacade) {}
 
   ngOnInit(): void {
     this.dictionaryFacade.getDictionaryWords();
+  }
+
+  trackByFn(index: number, word: DictionaryWord) {
+    return word.id;
   }
 }

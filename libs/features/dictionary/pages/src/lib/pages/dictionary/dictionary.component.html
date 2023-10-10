@@ -1,7 +1,7 @@
 <h1>Dictionary</h1>
 <div class="flex-column gap-xs">
   <ng-container *ngIf="words$ | async as words">
-    <div *ngFor="let item of words" class="word">
+    <div *ngFor="let item of words; trackBy: trackByFn" class="word">
       <p>
         <span>{{ item.word }}</span> - {{ item.translation }}
       </p>

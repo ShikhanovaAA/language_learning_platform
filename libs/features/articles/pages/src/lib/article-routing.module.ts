@@ -18,7 +18,7 @@ const routes: Routes = [
     path: 'new',
     component: NewArticleComponent,
     data: { role: Role.Admin },
-    canMatch: [UserRoleGuard]
+    canMatch: [UserRoleGuard],
   },
   {
     path: '',
@@ -36,7 +36,7 @@ const routes: Routes = [
         path: 'category/:id',
         component: CategoryArticlesComponent,
       },
-    ]
+    ],
   },
 ];
 

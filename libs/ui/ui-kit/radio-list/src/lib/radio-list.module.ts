@@ -18,6 +18,6 @@ import { FormsModule } from '@angular/forms';
   exports: [
     RadioListComponent,
     RadioListBilderComponent,
-  ]
+  ],
 })
 export class UiRadioListModule {}

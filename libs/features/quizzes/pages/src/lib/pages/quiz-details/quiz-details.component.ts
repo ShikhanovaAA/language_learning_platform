@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Question } from '@llp/models';
+import { Answer, Question } from '@llp/models';
 
 @Component({
   selector: 'llp-quiz-details',
@@ -9,5 +9,7 @@ import { Question } from '@llp/models';
 export class QuizDetailsComponent {
   questions: Question[] = [];
 
-  saveForm(form: any) {}
+  saveForm(form: Answer[]) {
+    console.log(form);
+  }
 }

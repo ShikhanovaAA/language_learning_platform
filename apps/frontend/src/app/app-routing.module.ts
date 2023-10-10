@@ -15,30 +15,30 @@ const routes: Routes = [
     children: [
       {
         path: 'articles',
-        loadChildren: () => import('@llp/features/articles/pages').then((m) => m.ArticleModule),
+        loadChildren: () => import('@llp/features/articles/pages').then(m => m.ArticleModule),
       },
       {
         path: 'quizzes',
-        loadChildren: () => import('@llp/features/quizzes/pages').then((m) => m.QuizzesModule),
+        loadChildren: () => import('@llp/features/quizzes/pages').then(m => m.QuizzesModule),
       },
-    ]
+    ],
   },
   {
     path: 'auth',
-    loadChildren: () => import('@llp/features/auth/pages').then((m) => m.AuthPagesModule),
+    loadChildren: () => import('@llp/features/auth/pages').then(m => m.AuthPagesModule),
   },
   {
     path: 'dictionary',
-    loadChildren: () => import('@llp/features/dictionary/pages').then((m) => m.DictionaryPagesModule),
+    loadChildren: () => import('@llp/features/dictionary/pages').then(m => m.DictionaryPagesModule),
   },
   {
     path: '**',
-    component: NotFoundPageComponent
-  }
+    component: NotFoundPageComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

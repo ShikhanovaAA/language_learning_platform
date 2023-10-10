@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Component } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
@@ -7,6 +9,18 @@ import { ControlValueAccessor } from '@angular/forms';
 export abstract class ControlComponent<T> implements ControlValueAccessor {
   private _value!: T;
   private _isDisabled = false;
+
+  get value() {
+    return this._value;
+  }
+
+  set value(value: T) {
+    if (this.isValueDifferent(value) && !this._isDisabled) {
+      this._value = value;
+      this.onSetValue(value);
+      this.onChangeFn?.(value);
+    }
+  }
 
   onChangeFn: (value: T) => void = () => {};
   onTouchedFn!: () => void;
@@ -18,11 +32,11 @@ export abstract class ControlComponent<T> implements ControlValueAccessor {
     this._value = value;
   }
 
-  registerOnChange(onChangeFn: any): void {
+  registerOnChange(onChangeFn: (value: T) => void): void {
     this.onChangeFn = onChangeFn;
   }
 
-  registerOnTouched(onTouchedFn: any): void {
+  registerOnTouched(onTouchedFn: () => void): void {
     this.onTouchedFn = onTouchedFn;
   }
 
@@ -31,20 +45,8 @@ export abstract class ControlComponent<T> implements ControlValueAccessor {
     this.onDisabledChange(isDisabled);
   }
 
-  get value() {
-    return this._value;
-  }
-
   get isDisabled() {
     return this._isDisabled;
-  }
-
-  set value(value: T) {
-    if (this.isValueDifferent(value) && !this._isDisabled) {
-      this._value = value;
-      this.onSetValue(value);
-      this.onChangeFn?.(value);
-    }
   }
 
   isValueDifferent(nextValue: T) {

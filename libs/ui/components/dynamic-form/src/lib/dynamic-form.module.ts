@@ -37,6 +37,6 @@ import { MatIconModule } from '@angular/material/icon';
     DynamicFormComponent,
     DynamicFormBuilderComponent,
     QuestionBuilderComponent,
-  ]
+  ],
 })
 export class DynamicFormModule {}

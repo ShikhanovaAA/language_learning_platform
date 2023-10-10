@@ -17,6 +17,6 @@ import { ConfirmationDialogModule } from '@llp/ui/ui-kit/confirmation-dialog';
   declarations: [
     SelectionTextDirective,
   ],
-  exports: [SelectionTextDirective]
+  exports: [SelectionTextDirective],
 })
 export class TextSelectionDirectiveModule {}

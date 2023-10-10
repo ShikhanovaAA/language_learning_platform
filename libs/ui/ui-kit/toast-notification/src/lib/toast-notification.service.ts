@@ -10,7 +10,7 @@ export class ToastNotificationService {
   showNotification(
     data: ToastData = { message: '', type: MessageType.Info },
     duration: ToastDuration = ToastDuration.Long,
-    horizontalPosition: MatSnackBarHorizontalPosition = 'end'
+    horizontalPosition: MatSnackBarHorizontalPosition = 'end',
   ) {
     return this.snackBar.openFromComponent(ToastNotificationComponent, {
       duration,

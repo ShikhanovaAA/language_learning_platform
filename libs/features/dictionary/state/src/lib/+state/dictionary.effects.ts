@@ -22,11 +22,11 @@ export class DictionaryEffects {
       switchMap(() => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.dictionaryService.getDictionaryWords().pipe(
-          switchMap((words) => [DictionaryActions.GetDictionaryWordsSuccess({ words })]),
-          catchError(() => of(DictionaryActions.GetDictionaryWordsFail()))
+          switchMap(words => [DictionaryActions.GetDictionaryWordsSuccess({ words })]),
+          catchError(() => of(DictionaryActions.GetDictionaryWordsFail())),
         );
-      })
-    )
+      }),
+    ),
   );
 
   addWordToDictionary$ = createEffect(() =>
@@ -35,11 +35,11 @@ export class DictionaryEffects {
       switchMap(({ word }) => {
         this.generalLoadingService.setIsLoadingTrue();
         return this.dictionaryService.addWordToDictionary(word).pipe(
-          switchMap((word) => [DictionaryActions.AddWordToDictionarySuccess({ word })]),
-          catchError(() => of(DictionaryActions.AddWordToDictionaryFail()))
+          switchMap(word => [DictionaryActions.AddWordToDictionarySuccess({ word })]),
+          catchError(() => of(DictionaryActions.AddWordToDictionaryFail())),
         );
-      })
-    )
+      }),
+    ),
   );
 
   stopLoading$ = createEffect(
@@ -51,9 +51,9 @@ export class DictionaryEffects {
           DictionaryActions.GetDictionaryWordsSuccess,
           DictionaryActions.GetDictionaryWordsFail,
         ),
-        tap(() => this.generalLoadingService.setIsLoadingFalse())
+        tap(() => this.generalLoadingService.setIsLoadingFalse()),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 
   addWordSuccessfully$ = createEffect(
@@ -65,8 +65,8 @@ export class DictionaryEffects {
         tap(() => this.notificationService.showNotification({
           message: 'Word saved successfully',
           icon: 'save',
-        }))
+        })),
       ),
-    { dispatch: false }
+    { dispatch: false },
   );
 }

@@ -13,6 +13,6 @@ import { ToastData } from '@llp/models';
 export class ToastNotificationComponent {
   constructor(
     public snackBarRef: MatSnackBarRef<ToastNotificationComponent>,
-    @Inject(MAT_SNACK_BAR_DATA) public data: ToastData
+    @Inject(MAT_SNACK_BAR_DATA) public data: ToastData,
   ) {}
 }

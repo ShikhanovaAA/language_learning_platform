@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
           strictActionImmutability: true,
           strictStateImmutability: true,
         },
-      }
+      },
     ),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
@@ -55,6 +55,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

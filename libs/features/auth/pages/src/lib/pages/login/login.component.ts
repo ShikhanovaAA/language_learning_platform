@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { validatePassword } from '@llp/shared/validators';
+import { passwordValidator } from '@llp/shared/validators';
 import { LabelPosition, LoginPayload } from '@llp/models';
 import { AuthFacade } from '@llp/features/auth/state';
 import { LoginForm } from '../../models/login-form';
@@ -23,7 +23,7 @@ export class LoginComponent {
     }),
     password: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.required, validatePassword()]
+      validators: [Validators.required, passwordValidator()],
     }),
   });
 
@@ -35,7 +35,7 @@ export class LoginComponent {
 
     const user: LoginPayload = {
       email,
-      password
+      password,
     };
 
     this.authFacade.authenticateUser(user);

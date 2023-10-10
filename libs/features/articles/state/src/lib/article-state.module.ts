@@ -12,6 +12,6 @@ import { ArticleFacade } from './+state/article.facade';
     StoreModule.forFeature(fromArticle.ARTICLE_FEATURE_KEY, fromArticle.articleReducer),
     EffectsModule.forFeature([ArticleEffects]),
   ],
-  providers: [ArticleFacade]
+  providers: [ArticleFacade],
 })
 export class ArticleStateModule {}

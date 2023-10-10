@@ -18,7 +18,7 @@ export class NewCategoryComponent {
     }),
     description: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.required]
+      validators: [Validators.required],
     }),
   });
 

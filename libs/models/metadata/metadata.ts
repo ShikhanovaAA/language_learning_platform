@@ -11,5 +11,5 @@ export const defaultMetadata: Metadata = {
   description: 'Platform for learning English',
   keywords: ['English grammar', 'tests','dictionary'],
   type: 'website',
-  image: 'assets/images/like-logo.png'
+  image: 'assets/images/like-logo.png',
 }

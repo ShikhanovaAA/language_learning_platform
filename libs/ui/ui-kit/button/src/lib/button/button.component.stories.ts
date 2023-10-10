@@ -1,4 +1,3 @@
-import { ButtonStyle } from '@llp/models';
 import {
   Meta,
   componentWrapperDecorator,
@@ -15,7 +14,7 @@ export default {
       imports: [MatIconModule],
     }),
     componentWrapperDecorator(
-      (story) => `<div style="width: 300px">${story}</div>`
+      story => `<div style="width: 300px">${story}</div>`,
     ),
   ],
   argTypes: {

@@ -3,7 +3,10 @@
     <div class="flex-middle">
       <div class="logo">🎓</div>
       <nav>
-        <a *ngFor="let menuItem of menuItems" [routerLink]="menuItem.route">
+        <a
+          *ngFor="let menuItem of menuItems; trackBy: trackByFn"
+          [routerLink]="menuItem.route"
+        >
           {{ menuItem.label }}
         </a>
       </nav>
