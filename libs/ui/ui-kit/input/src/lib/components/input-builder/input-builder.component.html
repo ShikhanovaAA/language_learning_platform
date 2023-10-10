@@ -1,0 +1,20 @@
+<form [formGroup]="inputQuestionForm" class="flex-column gap-m">
+  <llp-input
+    formControlName="label"
+    placeholder="Question text"
+    autocomplete="off"
+    [inputStyle]="InputStyle.Transparent"
+    llpShowControlErrors
+    [control]="inputQuestionForm.controls['label']"
+  />
+
+  <llp-input
+    formControlName="correctAnswer"
+    placeholder="Write the correct answer to this question"
+    autocomplete="off"
+    [inputStyle]="InputStyle.Outline"
+    padding="20px 10px"
+    llpShowControlErrors
+    [control]="inputQuestionForm.controls['correctAnswer']"
+  />
+</form>

@@ -4,6 +4,10 @@ export type ControlType = 'RADIO' | 'INPUT' | 'CHECKBOX' | 'SELECT';
 
 export const controlOptions: Option[] = [
   {
+    key: 'INPUT',
+    label: 'Input',
+  },
+  {
     key: 'RADIO',
     label: 'Radio',
   },
@@ -14,10 +18,6 @@ export const controlOptions: Option[] = [
   {
     key: 'SELECT',
     label: 'Select',
-  },
-  {
-    key: 'INPUT',
-    label: 'Input',
   },
 ];
 

@@ -20,7 +20,7 @@
 
 .outline-input {
   border-radius: vars.$border-radius-xxs;
-  border: 0.125em solid colors.$third400;
+  border: 1px solid colors.$translucent-border-dark;
 
   &:hover {
     border-color: colors.$main850;
@@ -35,6 +35,21 @@
 .filled-input {
   background: colors.$third400;
   border-bottom: 0.125em solid transparent;
+
+  &:hover {
+    border-color: colors.$main850;
+  }
+
+  &:focus-visible,
+  &:active {
+    border-color: colors.$main850;
+  }
+}
+
+.transparent-input {
+  background: transparent;
+  border-bottom: 0.125em solid colors.$translucent-block-light;
+  box-shadow: none;
 
   &:hover {
     border-color: colors.$main850;

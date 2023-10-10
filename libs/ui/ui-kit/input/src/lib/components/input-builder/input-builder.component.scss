@@ -1,0 +1,10 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+@use 'libs/theme/src/lib/common/builder-inputs';
+@import 'libs/theme/src/lib/common/inputs';
+
+:host {
+  display: block;
+  width: 100%;
+  position: relative;
+}

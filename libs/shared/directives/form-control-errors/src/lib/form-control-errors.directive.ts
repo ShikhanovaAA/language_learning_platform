@@ -1,9 +1,9 @@
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { mapValidationErrorToMessage, ValidationErrorKey } from './mapValidationErrorToMessage';
+import { getErrorMessage, ValidationErrorKey } from './mapValidationErrorToMessage';
 
 @Directive({
-  selector: '[llpControlErrors]',
+  selector: '[llpShowControlErrors]',
 })
 export class FormControlErrorsDirective {
   @Input() control!: AbstractControl;
@@ -39,7 +39,7 @@ export class FormControlErrorsDirective {
   }
 
   addErrorHint(errors: ValidationErrors) {
-    const messages = Object.keys(errors).map(key => mapValidationErrorToMessage[key as ValidationErrorKey]);
+    const messages = Object.entries(errors).map(([key, value]) => getErrorMessage(<ValidationErrorKey>key, value));
     const errorMessages = this.renderer.createText(messages.join(', '));
 
     const newTooltip = this.renderer.createElement('div');

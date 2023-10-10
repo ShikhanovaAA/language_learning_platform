@@ -3,14 +3,14 @@
   <p class="hint">Register to login 😏</p>
   <div class="fields flex-column-middle-center">
     <llp-input
-      llpControlErrors
+      llpShowControlErrors
       [control]="registerForm.controls['username']"
       formControlName="username"
       matIcon="person"
       placeholder="Username"
     ></llp-input>
     <llp-input
-      llpControlErrors
+      llpShowControlErrors
       [control]="registerForm.controls['email']"
       formControlName="email"
       matIcon="alternate_email"
@@ -18,7 +18,7 @@
     ></llp-input>
     <llp-password-input
       autocomplete="off"
-      llpControlErrors
+      llpShowControlErrors
       [control]="registerForm.controls['password']"
       formControlName="password"
       matIcon="password"

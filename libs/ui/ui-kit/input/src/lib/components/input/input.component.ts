@@ -20,6 +20,9 @@ export class InputComponent extends ControlComponent<string> {
   width?: string;
 
   @Input()
+  padding?: string;
+
+  @Input()
   placeholder = '';
 
   @Input()
@@ -27,4 +30,7 @@ export class InputComponent extends ControlComponent<string> {
 
   @Input()
   matIcon?: string;
+
+  @Input()
+  autocomplete?: string;
 }

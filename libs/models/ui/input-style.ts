@@ -1,5 +1,6 @@
 export enum InputStyle {
   Default = 'default',
   Outline = 'outline',
-  Filled = 'filled'
+  Filled = 'filled',
+  Transparent = 'transparent'
 }

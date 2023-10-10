@@ -1,4 +1,9 @@
 <div [ngSwitch]="question.controlType">
+  <ng-container *ngSwitchCase="'INPUT'">
+    <ng-container
+      *ngTemplateOutlet="inputControl; context: question"
+    ></ng-container>
+  </ng-container>
   <ng-container *ngSwitchCase="'CHECKBOX'">
     <ng-container
       *ngTemplateOutlet="checkboxControl; context: question"
@@ -15,6 +20,13 @@
     ></ng-container>
   </ng-container>
 </div>
+
+<ng-template #inputControl>
+  <llp-input-builder
+    [label]="question.label"
+    (inputSettingsUpdated)="updateQuestion($event)"
+  ></llp-input-builder>
+</ng-template>
 
 <ng-template #checkboxControl>
   <llp-checkbox-builder

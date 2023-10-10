@@ -33,6 +33,10 @@
       &.filled {
         @extend .filled-input;
       }
+
+      &.transparent {
+        @extend .transparent-input;
+      }
     }
 
     &.with-icon {
