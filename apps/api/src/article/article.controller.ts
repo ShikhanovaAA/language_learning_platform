@@ -18,7 +18,7 @@ export class ArticleController {
   @Roles('ADMIN')
   @UseGuards(RolesGuard)
   @Post()
-  createArticle(@Body() dto: CreateArticleDto, @Request() request) {
+  createArticle(@Body() dto: CreateArticleDto, @Request() request: any) {
     const userId = request.user.id;
 
     return this.articleService.createArticle(dto, userId);

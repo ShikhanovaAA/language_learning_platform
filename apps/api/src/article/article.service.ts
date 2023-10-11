@@ -2,9 +2,9 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Article } from './article.model';
 import { CreateArticleDto } from './dto/create-article.dto';
-import { AddArticleToStudiedDto } from './dto/add-artice-to-studied';
 import { User } from '../user/user.model';
 import { StudiedArticles } from './studied-articles.model';
+import { CreateStudiedArticle } from './interfaces/create-studied-article';
 
 @Injectable()
 export class ArticleService {
@@ -31,7 +31,7 @@ export class ArticleService {
     return articles;
   }
 
-  async addArticleToStudied(dto: AddArticleToStudiedDto) {
+  async addArticleToStudied(dto: CreateStudiedArticle) {
     const user = await this.userRepository.findByPk(dto.userId);
     const article = await this.articleRepository.findByPk(dto.articleId);
 
@@ -46,7 +46,7 @@ export class ArticleService {
   async getArticlesByCategoryId(id: number) {
     const articles = await this.articleRepository.findAll({
       where: { categoryId: id },
-      include: { all: true }
+      include: { all: true },
     });
 
     return articles;
@@ -54,7 +54,7 @@ export class ArticleService {
 
   async getArticleById(id: number) {
     const article = await this.articleRepository.findByPk(id, {
-      include: { all: true }
+      include: { all: true },
     });
 
     return article;

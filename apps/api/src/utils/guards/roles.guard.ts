@@ -3,13 +3,14 @@ import {
     ExecutionContext,
     HttpException,
     HttpStatus,
-    Injectable
+    Injectable,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { JwtService } from '@nestjs/jwt';
 import { Reflector } from '@nestjs/core';
 import { ROLES_KEY } from './roles-auth.decorator';
 import { validateAuthToken } from '../auth';
+import { Role } from '../../role/role.model';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
@@ -33,7 +34,7 @@ export class RolesGuard implements CanActivate {
       const user = this.jwtService.verify(token);
       request.user = user;
 
-      return user.roles.some((role) => requiredRoles.includes(role.value));
+      return user.roles.some((role: Role) => requiredRoles.includes(role.value));
     } catch (e) {
       throw new HttpException( 'No access', HttpStatus.FORBIDDEN)
     }

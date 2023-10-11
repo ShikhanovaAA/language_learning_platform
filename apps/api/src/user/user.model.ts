@@ -14,37 +14,37 @@ export class User extends Model<User, CreateUser> {
     type: DataType.INTEGER,
     unique: true,
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   })
-  id: number;
+  id!: number;
 
   @ApiProperty({example: 'test@test.com', description: 'Email address of the user'})
   @Column({
     type: DataType.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
   })
-  email: string;
+  email!: string;
 
   @ApiProperty({example: 'aA123456', description: 'Password of the user'})
   @Column({
     type: DataType.STRING,
   })
-  password: string;
+  password!: string;
 
   @ApiProperty({example: 'John', description: 'Username of the user'})
   @Column({
     type: DataType.STRING,
-    allowNull: false
+    allowNull: false,
   })
-  username: string;
+  username!: string;
 
   @BelongsToMany(() => Role, () => UserRoles)
-  roles: Role[];
+  roles!: Role[];
 
   @HasMany(() => Article)
-  articles: Article[];
+  articles!: Article[];
 
   @BelongsToMany(() => Article, () => StudiedArticles)
-  studiedArticles: Article[];
+  studiedArticles!: Article[];
 }

@@ -6,13 +6,13 @@ import { User } from '../user/user.model';
 export class UserRoles extends Model<UserRoles> {
 
   @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
-  id: number;
+  id!: number;
 
   @ForeignKey(() => Role)
   @Column({type: DataType.INTEGER})
-  roleId: number;
+  roleId!: number;
 
   @ForeignKey(() => User)
   @Column({type: DataType.INTEGER})
-  userId: number;
+  userId!: number;
 }

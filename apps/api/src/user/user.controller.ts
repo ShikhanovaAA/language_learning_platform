@@ -25,7 +25,7 @@ export class UserController {
   @ApiResponse({status: 200, type: User})
   @UseGuards(JwtAuthGuard)
   @Get('/user-by-token')
-  getUserByToken(@Request() request) {
+  getUserByToken(@Request() request: any) {
     return this.userService.getUserByToken(request);
   }
 

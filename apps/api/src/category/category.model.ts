@@ -11,26 +11,26 @@ export class Category extends Model<Category, CreateCategory> {
     type: DataType.INTEGER,
     unique: true,
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   })
-  id: number;
+  id!: number;
 
   @ApiProperty({example: 'Present Simple', description: 'Name of category'})
   @Column({
     type: DataType.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
   })
-  name: string;
+  name!: string;
 
   @ApiProperty({example: 'The Present Simple is probably called Simple for a reason', description: 'Description'})
   @Column({
     type: DataType.STRING,
-    allowNull: false
+    allowNull: false,
   })
-  description: string;
+  description!: string;
 
   @ApiProperty({example: [{id: 1, title: 'Present Simple', text: 'The Present Simple is probably called Simple for a reason...'}], description: 'Array of article objects'})
   @HasMany(() => Article)
-  articles: Article[];
+  articles!: Article[];
 }

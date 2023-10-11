@@ -12,7 +12,7 @@ export class UserService {
   constructor(
     @InjectModel(User) private userRepository: typeof User,
     private roleService: RoleService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
   ) {}
 
   async createUser(dto: CreateUserDto): Promise<User> {
@@ -33,13 +33,14 @@ export class UserService {
   async getUserByEmail(email: string): Promise<User> {
     const user = await this.userRepository.findOne({
       where: { email },
-      include: { all: true }
+      include: { all: true },
     });
 
+    if (!user) throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     return user;
   }
 
-  async getUserByToken(request): Promise<User> {
+  async getUserByToken(request: any): Promise<User> {
     const authHeader = request.headers.authorization;
     if (!authHeader) throw new HttpException('The user must be logged in', HttpStatus.UNAUTHORIZED);
 
@@ -47,12 +48,15 @@ export class UserService {
     if (!this.jwtService.verify(token)) throw new HttpException('The user must be logged in', HttpStatus.UNAUTHORIZED);
     const deocoded = this.jwtService.decode(token) as DeocodedToken;
 
-    return await this.userRepository.findByPk(deocoded.id,
+    const user = await this.userRepository.findByPk(deocoded.id,
       {
         include: { all: true },
         attributes: { exclude: ['password'] },
-      }
+      },
     );
+
+    if (!user) throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+    return user;
   }
 
   async assignRoleToUser(dto: AssignRoleToUserDto) {

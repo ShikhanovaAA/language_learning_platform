@@ -5,6 +5,7 @@ import { NewWord } from './dto/add-word.dto';
 import { HttpService } from '@nestjs/axios';
 import { getGoogleTranslateUrl, getWordExample } from '../utils/translate';
 import { Translation } from './interfaces/translation.interface';
+import { CreateWordWithTranslation } from './interfaces/dictionary-word.interface';
 
 @Injectable()
 export class DictionaryService {
@@ -21,12 +22,14 @@ export class DictionaryService {
     example = typeof example === 'string' ? example : '';
     translation = typeof translation === 'string' ? translation : '';
 
-    const newWord = await this.dictionaryRepository.create({
+    const dictionaryWord: CreateWordWithTranslation = {
       word,
       userId,
       translation,
-      example
-    });
+      example,
+    }
+
+    const newWord = await this.dictionaryRepository.create(dictionaryWord);
 
     return newWord;
   }
@@ -34,18 +37,18 @@ export class DictionaryService {
   async getUserDictionaryWords(userId: number): Promise<DictionaryWord[]> {
     const words = await this.dictionaryRepository.findAll({
       where: {
-        userId
-      }
+        userId,
+      },
     });
 
     return words;
   }
 
   async deleteWord(wordId: number): Promise<DictionaryWord['id']> {
-    const rows = await this.dictionaryRepository.destroy({
+    await this.dictionaryRepository.destroy({
       where: {
-        id: wordId
-      }
+        id: wordId,
+      },
     });
 
     return wordId;
@@ -57,7 +60,7 @@ export class DictionaryService {
       const translation = res.data[0][0][0];
 
       return {translation};
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }
@@ -69,7 +72,7 @@ export class DictionaryService {
       if (!response.data.examples) return '';
 
       return response.data.examples[0];
-    } catch (error) {
+    } catch (error: any) {
       return error;
     }
   }

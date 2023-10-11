@@ -14,6 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "strict": true,
     "paths": {
       "@llp/features/articles/data-access": [
         "libs/features/articles/data-access/index.ts"

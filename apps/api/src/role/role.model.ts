@@ -12,25 +12,25 @@ export class Role extends Model<Role, CreateRole> {
     type: DataType.INTEGER,
     unique: true,
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   })
-  id: number;
+  id!: number;
 
   @ApiProperty({example: 'ADMIN', description: 'User role value'})
   @Column({
     type: DataType.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
   })
-  value: string;
+  value!: string;
 
   @ApiProperty({example: 'Administrator', description: 'Role Description'})
   @Column({
     type: DataType.STRING,
-    allowNull: false
+    allowNull: false,
   })
-  description: string;
+  description!: string;
 
   @BelongsToMany(() => User, () => UserRoles)
-  users: User[];
+  users!: User[];
 }

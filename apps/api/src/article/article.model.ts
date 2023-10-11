@@ -13,24 +13,24 @@ export class Article extends Model<Article, CreateArticle> {
     type: DataType.INTEGER,
     unique: true,
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   })
-  id: number;
+  id!: number;
 
   @ApiProperty({example: 'How to Reach C1 Level in English in One Month', description: 'Title of the article'})
   @Column({
     type: DataType.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
   })
-  title: string;
+  title!: string;
 
   @ApiProperty({example: 'Learning a new language can be a challenging yet rewarding experience...', description: 'Body of the article'})
   @Column({
     type: DataType.STRING(3000),
-    allowNull: false
+    allowNull: false,
   })
-  text: string;
+  text!: string;
 
 
   @ApiProperty({example: 1, description: 'Unique identifier for the author'})
@@ -39,15 +39,15 @@ export class Article extends Model<Article, CreateArticle> {
     type: DataType.INTEGER,
     allowNull: false,
   })
-  authorId: number;
+  authorId!: number;
 
   @ApiProperty({example: {id: 1, name: 'John', email: 'johndoe@example'}, description: 'User object'})
   @BelongsTo(() => User)
-  author: User;
+  author!: User;
 
   @ApiProperty({example: [{id: 1, name: 'John', email: 'johndoe@example'}], description: 'User objects'})
   @BelongsToMany(() => User, () => StudiedArticles)
-  readers: User[];
+  readers!: User[];
 
   @ApiProperty({example: 1, description: 'Unique identifier for the category'})
   @ForeignKey(() => Category)
@@ -55,9 +55,9 @@ export class Article extends Model<Article, CreateArticle> {
     type: DataType.INTEGER,
     allowNull: false,
   })
-  categoryId: number;
+  categoryId!: number;
 
   @ApiProperty({example: {id: 1, name: 'Present Simple'}, description: 'Category object'})
   @BelongsTo(() => Category)
-  category: Category;
+  category!: Category;
 }

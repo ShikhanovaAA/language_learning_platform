@@ -14,7 +14,7 @@ export class DictionaryController {
   @ApiResponse({status: 200, type: DictionaryWord})
   @UseGuards(JwtAuthGuard)
   @Post()
-  addWordToDictionary(@Body() word: NewWord, @Request() request) {
+  addWordToDictionary(@Body() word: NewWord, @Request() request: any) {
     const userId = request.user.id;
 
     return this.dictionaryService.addWordToDictionary(word, userId);
@@ -24,14 +24,14 @@ export class DictionaryController {
   @ApiResponse({status: 200, type: [DictionaryWord]})
   @UseGuards(JwtAuthGuard)
   @Get()
-  getAll(@Request() request) {
+  getAll(@Request() request: any) {
     const userId = request.user.id;
 
     return this.dictionaryService.getUserDictionaryWords(userId);
   }
 
   @ApiOperation({summary: 'Delete word from user dictionary'})
-  @ApiResponse({status: 200, type: DictionaryWord['id']})
+  @ApiResponse({status: 200})
   @UseGuards(JwtAuthGuard)
   @Delete()
   deleteWord(wordId: number) {
