@@ -13,6 +13,7 @@
     "api-start-dev": "nx run api:serve -c=development",
     "api-docker-dev": "npx nx run api:serve",
     "storybook": "nx run frontend:storybook",
+    "build-storybook": "nx run frontend:build-storybook",
     "lint": "nx lint frontend",
     "lint:fix": "npm run lint --fix"
   },
