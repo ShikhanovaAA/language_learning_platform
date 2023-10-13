@@ -12,6 +12,8 @@ import { UiCheckboxModule } from '@llp/ui/ui-kit/checkbox';
 import { DynamicFormBuilderComponent } from './components/dynamic-form-builder/dynamic-form-builder.component';
 import { QuestionBuilderComponent } from './components/question-builder/question-builder.component';
 import { MatIconModule } from '@angular/material/icon';
+import { FormGroupPipeModule } from '@llp/shared/pipes/form-group';
+import { FormControlErrorsDirectiveModule } from '@llp/shared/directives/form-control-errors';
 
 @NgModule({
   imports: [
@@ -25,6 +27,8 @@ import { MatIconModule } from '@angular/material/icon';
     UiRadioListModule,
     UiButtonModule,
     UiCheckboxModule,
+    FormGroupPipeModule,
+    FormControlErrorsDirectiveModule,
   ],
   declarations: [
     QuestionComponent,

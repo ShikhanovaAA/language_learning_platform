@@ -1,1 +1,17 @@
 @use 'libs/theme/src/lib/common/builder-inputs';
+@use 'libs/theme/src/lib/theme/colors';
+
+.label {
+  margin-bottom: 20px;
+}
+
+label {
+  &:hover {
+    input[type="checkbox"] {
+
+      &::before {
+        background-color: colors.$second700;
+      }
+    }
+  }
+}

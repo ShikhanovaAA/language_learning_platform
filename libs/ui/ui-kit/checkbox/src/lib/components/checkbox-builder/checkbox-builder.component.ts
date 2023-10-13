@@ -1,69 +1,56 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { EditableQuestionFields, Option } from '@llp/models';
+import { Component, Input } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroupInfo, InputStyle } from '@llp/models';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'llp-checkbox-builder',
   templateUrl: './checkbox-builder.component.html',
   styleUrls: ['./checkbox-builder.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxBuilderComponent {
-  _options: Option[] = [];
-  _label = '';
+  @Input({ required: true }) form!: FormGroup;
+  @Input({ required: true }) showErrors!: boolean;
 
-  @Input()
-  set label(label: string) {
-    this._label = label;
+  checkedOptions: string[] = [];
+
+  InputStyle = InputStyle;
+
+  addOption(): void {
+    (this.form.controls['answerOptions'] as FormGroup).addControl(
+      uuidv4(),
+      new FormControl('', [Validators.required]),
+    );
   }
 
-  @Input()
-  set options(options: Option[]) {
-    this._options = options;
+  deleteOption(formControlName: FormGroupInfo['formControlName']): void {
+    this.checkedOptions = this.checkedOptions.filter(checkedOption => checkedOption !== formControlName);
+    (this.form.controls['answerOptions'] as FormGroup).removeControl(formControlName);
   }
 
-  @Output() checkboxSettingsUpdated = new EventEmitter<EditableQuestionFields>();
+  trackByFn(index: number, formGroup: FormGroupInfo): string {
+    return formGroup.formControlName;
+  }
 
-  checkedOptions: Option[] = [];
+  get answerOptions(): FormGroup {
+    return this.form.controls['answerOptions'] as FormGroup;
+  }
 
-  toggleOption(option: Option) {
-    if (this.isChecked(option.key)) {
-      this.checkedOptions = this.checkedOptions.filter(checkedOption => checkedOption.key !== option.key);
+  showAnswerOptions(): boolean {
+    return !!Object.keys((this.form.controls['answerOptions'] as FormGroup).controls).length;
+  }
+
+  toggleOption(formControlName: string): void {
+    if (this.isChecked(formControlName)) {
+      this.checkedOptions = this.checkedOptions.filter(checkedOption => checkedOption !== formControlName);
     } else {
-      this.checkedOptions.push(option);
+      this.checkedOptions.push(formControlName);
     }
 
-    this.updateQuestionSettings();
+    this.form.controls['correctAnswer'].setValue(this.checkedOptions);
   }
 
-  isChecked(key: Option['key']) {
-    return this.checkedOptions.some(checkedOption => checkedOption.key === key);
-  }
-
-  addOption() {
-    this._options = this._options.concat({
-      label: '',
-      key: uuidv4(),
-    });
-
-    this.updateQuestionSettings();
-  }
-
-  deleteOption(key: Option['key']) {
-    this._options = this._options.filter(option => option.key !== key);
-
-    this.updateQuestionSettings();
-  }
-
-  updateQuestionSettings() {
-    this.checkboxSettingsUpdated.emit({
-      label: this._label,
-      answerOptions: this._options,
-      correctAnswer: this.checkedOptions.map(option => option.key),
-    });
-  }
-
-  trackByFn(index: number, option: Option) {
-    return option.key;
+  isChecked(formControlName: string): boolean {
+    return this.checkedOptions.some(checkedOption => checkedOption === formControlName);
   }
 }

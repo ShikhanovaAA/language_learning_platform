@@ -1,11 +1,11 @@
-<form [formGroup]="inputQuestionForm" class="flex-column gap-m">
+<form [formGroup]="form" class="flex-column gap-m">
   <llp-input
     formControlName="label"
     placeholder="Question text"
     autocomplete="off"
     [inputStyle]="InputStyle.Transparent"
     llpShowControlErrors
-    [control]="inputQuestionForm.controls['label']"
+    [control]="form.controls['label']"
   />
 
   <llp-input
@@ -15,6 +15,6 @@
     [inputStyle]="InputStyle.Outline"
     padding="20px 10px"
     llpShowControlErrors
-    [control]="inputQuestionForm.controls['correctAnswer']"
+    [control]="form.controls['correctAnswer']"
   />
 </form>

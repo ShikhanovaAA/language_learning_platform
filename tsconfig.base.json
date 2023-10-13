@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "paths": {
       "@llp/features/articles/data-access": [
         "libs/features/articles/data-access/index.ts"
@@ -57,6 +58,9 @@
       ],
       "@llp/shared/environments": ["libs/shared/environment/index.ts"],
       "@llp/shared/interceptors": ["libs/shared/interceptors/index.ts"],
+      "@llp/shared/pipes/form-group": [
+        "libs/shared/pipes/form-group/src/index.ts"
+      ],
       "@llp/shared/services": ["libs/shared/services/index.ts"],
       "@llp/shared/utils/cva-component": [
         "libs/shared/utils/cva-component/src/index.ts"
@@ -65,6 +69,9 @@
       "@llp/theme": ["libs/theme/src/index.ts"],
       "@llp/ui/components/dynamic-form": [
         "libs/ui/components/dynamic-form/src/index.ts"
+      ],
+      "@llp/ui/components/form-validation-errors": [
+        "libs/ui/components/form-validation-errors/src/index.ts"
       ],
       "@llp/ui/components/header": ["libs/ui/components/header/src/index.ts"],
       "@llp/ui/components/main-layout": [

@@ -1,60 +1,45 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { EditableQuestionFields, Option } from '@llp/models';
+import { Component, Input} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroupInfo, InputStyle } from '@llp/models';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'llp-select-builder',
   templateUrl: './select-builder.component.html',
   styleUrls: ['./select-builder.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectBuilderComponent {
-  _options: Option[] = [];
-  _label = '';
+  @Input({ required: true }) form!: FormGroup;
+  @Input({ required: true }) showErrors!: boolean;
 
-  @Input()
-  set label(label: string) {
-    this._label = label;
-  }
-
-  @Input()
-  set options(options: Option[]) {
-    this._options = options;
-  }
-
-  @Output() selectSettingsUpdated = new EventEmitter<EditableQuestionFields>();
-
-  selectedOption?: Option;
-
-  valueChange(option: Option) {
-    this.selectedOption = option;
-    this.updateQuestionSettings();
-  }
+  InputStyle = InputStyle;
 
   addOption() {
-    this._options = this._options.concat({
-      label: '',
-      key: uuidv4(),
-    });
-
-    this.updateQuestionSettings();
+    (this.form.controls['answerOptions'] as FormGroup).addControl(uuidv4(),
+      new FormControl('', [Validators.required]),
+    );
   }
 
-  deleteOption(key: Option['key']) {
-    this._options = this._options.filter(option => option.key !== key);
+  deleteOption(formControlName: FormGroupInfo['formControlName']) {
+    (this.form.controls['answerOptions'] as FormGroup).removeControl(formControlName);
 
-    this.updateQuestionSettings();
+    if (this.form.controls['correctAnswer'].value !== formControlName) return;
+    this.form.controls['correctAnswer'].setValue('');
   }
 
-  updateQuestionSettings() {
-    this.selectSettingsUpdated.emit({
-      label: this._label,
-      answerOptions: this._options,
-      correctAnswer: this.selectedOption?.key,
-    });
+  setCorrectAnswer(formControlName: FormGroupInfo['formControlName']) {
+    this.form.controls['correctAnswer'].setValue(formControlName);
   }
 
-  trackByFn(index: number, item: Option) {
-    return item.key;
+  get answerOptions() {
+    return this.form.controls['answerOptions'] as FormGroup;
+  }
+
+  get correctAnswer() {
+    return this.form.controls['correctAnswer'].value;
+  }
+
+  trackByFn(index: number, formGroup: FormGroupInfo) {
+    return formGroup.formControlName;
   }
 }

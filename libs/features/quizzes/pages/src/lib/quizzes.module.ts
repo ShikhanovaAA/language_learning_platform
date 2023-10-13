@@ -9,6 +9,7 @@ import { UiInputModule } from '@llp/ui/ui-kit/input';
 import { UiFormFieldModule } from '@llp/ui/ui-kit/form-field';
 import { UiButtonModule } from '@llp/ui/ui-kit/button';
 import { MatIconModule } from '@angular/material/icon';
+import { FormControlErrorsDirectiveModule } from '@llp/shared/directives/form-control-errors';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
     UiInputModule,
     UiButtonModule,
     MatIconModule,
+    FormControlErrorsDirectiveModule,
   ],
   declarations: [
     QuizDetailsComponent,

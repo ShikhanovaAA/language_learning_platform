@@ -10,3 +10,13 @@
   line-height: 1.07em;
   color: colors.$warning600 !important;
 }
+
+.error-text {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 0.85em;
+  line-height: 1.07em;
+  color: colors.$warning600 !important;
+}

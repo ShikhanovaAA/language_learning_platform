@@ -26,7 +26,7 @@ export class PasswordInputComponent extends ControlComponent<string> {
   inputStyle: InputStyle = InputStyle.Default;
 
   @Input()
-  matIcon?: string;
+  matIcon = 'password';
 
   @Input()
   autocomplete?: string;

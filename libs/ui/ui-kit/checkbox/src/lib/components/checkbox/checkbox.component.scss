@@ -9,10 +9,6 @@ p {
   display: grid;
   gap: 8px;
 
-  .label {
-    cursor: pointer;
-  }
-
   input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -31,6 +27,10 @@ p {
       color: colors.$body;
       font-weight: bold;
     }
+  }
+
+  .label {
+    cursor: pointer;
   }
 
   .checked {

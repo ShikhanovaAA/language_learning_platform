@@ -21,21 +21,21 @@
     }
 
     &.default {
-      background: colors.$main900;
+      background: colors.$main850;
 
       &:hover {
         background: colors.$main800;
       }
 
       &:active {
-        background: colors.$main1000;
+        background: colors.$main850;
       }
     }
 
     &.outline {
       background: transparent;
-      color: colors.$main900;
-      border: 0.125em solid colors.$main900;
+      color: colors.$main850;
+      border: 0.125em solid colors.$main850;
 
       &:hover {
         color: colors.$main700;
@@ -43,8 +43,8 @@
       }
 
       &:active {
-        color: colors.$main1000;
-        border-color: colors.$main1000;
+        color: colors.$main850;
+        border-color: colors.$main850;
       }
     }
 
@@ -55,27 +55,27 @@
 
       &.default {
         &:hover {
-          background: colors.$main900;
+          background: colors.$main850;
         }
 
         &:active {
-          background: colors.$main900;
+          background: colors.$main850;
         }
       }
 
       &.outline {
         background: colors.$white-color;
-        color: colors.$main900;
-        border: 0.125em solid colors.$main900;
+        color: colors.$main850;
+        border: 0.125em solid colors.$main850;
 
         &:hover {
-          border-color: colors.$main900;
-          color: colors.$main900;
+          border-color: colors.$main850;
+          color: colors.$main850;
         }
 
         &:active {
-          border-color: colors.$main900;
-          color: colors.$main900;
+          border-color: colors.$main850;
+          color: colors.$main850;
         }
       }
     }

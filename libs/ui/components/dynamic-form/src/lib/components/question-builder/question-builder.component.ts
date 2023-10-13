@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { EditableQuestionFields, NewQuestion } from '@llp/models';
+import { Component, Input} from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'llp-question-builder',
@@ -7,11 +7,10 @@ import { EditableQuestionFields, NewQuestion } from '@llp/models';
   styleUrls: ['./question-builder.component.scss'],
 })
 export class QuestionBuilderComponent {
-  @Input() question!: NewQuestion;
+  @Input({ required: true }) form!: FormGroup;
+  @Input({ required: true }) showErrors!: boolean;
 
-  @Output() questionUpdated = new EventEmitter<EditableQuestionFields>();
-
-  updateQuestion(fields: EditableQuestionFields) {
-    this.questionUpdated.emit(fields);
+  get controlType() {
+    return this.form.get('controlType')?.value;
   }
 }

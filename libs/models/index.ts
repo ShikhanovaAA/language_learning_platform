@@ -5,3 +5,4 @@ export * from './shared';
 export * from './article';
 export * from './metadata';
 export * from './dictionary';
+export * from './pipes';

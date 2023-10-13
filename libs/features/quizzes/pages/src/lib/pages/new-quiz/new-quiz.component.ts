@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup} from '@angular/forms';
-import { LabelPosition, NewQuestion, QuestionControltypeUpdatingInfo} from '@llp/models';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { LabelPosition } from '@llp/models';
+import { answerOptionsValidator, correctAnswerValidator } from '@llp/shared/validators';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -10,49 +11,33 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class NewQuizComponent {
   newQuiz = new FormGroup({
-    title: new FormControl(''),
+    title: new FormControl('', [Validators.required, Validators.minLength(5)]),
     description: new FormControl(''),
+    questions: new FormGroup({}),
   });
 
-  questions: NewQuestion[] = [];
-  updatedQuestions: NewQuestion[] = [];
-
   order = 0;
+  formFinished = false;
+
   labelPosition = LabelPosition;
 
-  saveQuiz() {
-    console.log(this.updatedQuestions);
-  }
-
-  updateQuestions(questions: NewQuestion[]) {
-    this.updatedQuestions = questions.concat();
-  }
-
-  addQuestion() {
-    this.questions = this.updatedQuestions.concat({
-      key: uuidv4(),
-      label: '',
-      order: ++this.order,
-      required: '',
-      controlType: 'CHECKBOX',
-      correctAnswer: null,
-    });
-
-    this.updatedQuestions = this.questions.concat();
-  }
-
-  updateQuestionControlType(questionUpdatingInfo: QuestionControltypeUpdatingInfo) {
-    this.questions = this.updatedQuestions.map(question => (
-      question.key === questionUpdatingInfo.key
-        ? ({...question, controlType: questionUpdatingInfo.controlType})
-        : question
-    ));
-    this.updatedQuestions = this.questions.concat();
+  addQuestionToForm() {
+    this.newQuiz.controls.questions.addControl(uuidv4(), new FormGroup({
+      label: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      order: new FormControl(this.order++),
+      required: new FormControl(''),
+      controlType: new FormControl('INPUT'),
+      correctAnswer: new FormControl('', [correctAnswerValidator()]),
+      answerOptions: new FormGroup({}),
+    },{ validators: [answerOptionsValidator(2, 'Please add at least 2 option')] }));
   }
 
   deleteQuestion(questionKey: string) {
-    this.questions = this.updatedQuestions.filter(question => question.key !== questionKey);
+    this.newQuiz.controls.questions.removeControl(questionKey);
+  }
 
-    this.updatedQuestions = this.questions.concat();
+  saveQuiz() {
+    this.newQuiz.markAllAsTouched();
+    this.formFinished = true;
   }
 }

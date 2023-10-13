@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NewArticleForm } from '../../models/new-article-form';
 import { ArticleFacade } from '@llp/features/articles/state';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   templateUrl: './new-article.component.html',
   styleUrls: ['./new-article.component.scss'],
 })
-export class NewArticleComponent {
+export class NewArticleComponent implements OnInit {
   newArticleForm = new FormGroup<NewArticleForm>({
     title: new FormControl('', {
       nonNullable: true,
@@ -29,6 +29,10 @@ export class NewArticleComponent {
   categoryOptions$: Observable<Option[]> = this.articleFacade.categoryOptions$;
 
   constructor(private articleFacade: ArticleFacade) {}
+
+  ngOnInit(): void {
+    this.articleFacade.getAllCategories();
+  }
 
   saveArticle() {
     if (!this.newArticleForm.valid) return;

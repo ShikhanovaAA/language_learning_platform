@@ -1,0 +1,5 @@
+<div *ngIf="show && control?.invalid" class="validation-error">
+  <div *ngFor="let error of errorKeys; trackBy: trackByFn" class="flex-middle">
+    <mat-icon>report</mat-icon> {{ error ? error[1].message : '' }}
+  </div>
+</div>

@@ -1,37 +1,58 @@
-<input
-  class="label"
-  type="text"
-  name="label"
-  [(ngModel)]="_label"
-  placeholder="Question text"
-  autocomplete="off"
-  (ngModelChange)="updateQuestionSettings()"
-/>
-<div class="options">
-  <label
-    for="{{ option.key }}"
-    *ngFor="let option of _options; trackBy: trackByFn"
-    [class.checked]="isChecked(option.key)"
-    class="flex-middle gap-xs"
-  >
-    <input type="checkbox" [name]="option.key" (click)="toggleOption(option)" />
+<form [formGroup]="form" class="flex-column gap-xs">
+  <llp-input
+    class="label"
+    formControlName="label"
+    placeholder="Question text"
+    autocomplete="off"
+    llpShowControlErrors
+    [control]="form.controls['label']"
+    [inputStyle]="InputStyle.Transparent"
+  />
 
-    <input
-      class="option"
-      type="text"
-      [name]="option.key"
-      [(ngModel)]="option.label"
-      placeholder="Answer option"
-      autocomplete="off"
-      (ngModelChange)="updateQuestionSettings()"
-    />
-
-    <mat-icon class="close-button" (click)="deleteOption(option.key)"
-      >close</mat-icon
+  <div *ngIf="showAnswerOptions()" class="options" [formGroup]="answerOptions">
+    <label
+      for="{{ option.formControlName }}"
+      *ngFor="let option of answerOptions | formGroup; trackBy: trackByFn"
+      [class.checked]="isChecked(option.formControlName)"
+      class="flex-middle gap-xs"
     >
-  </label>
-</div>
+      <input
+        type="checkbox"
+        [name]="option.formControlName"
+        (click)="toggleOption(option.formControlName)"
+      />
 
-<button class="add-option" (click)="addOption()">
-  <mat-icon>add</mat-icon> Add option
-</button>
+      <llp-input
+        class="option"
+        [formControlName]="option.formControlName"
+        placeholder="Answer option"
+        autocomplete="off"
+        [inputStyle]="InputStyle.Small"
+        llpShowControlErrors
+        [control]="option.formControl"
+      />
+
+      <mat-icon
+        class="close-button"
+        (click)="deleteOption(option.formControlName)"
+        >close</mat-icon
+      >
+    </label>
+  </div>
+
+  <button type="button" class="add-option" (click)="addOption()">
+    <mat-icon>add</mat-icon> Add option
+  </button>
+</form>
+<div class="errors">
+  <llp-form-validation-errors
+    [show]="showErrors"
+    [control]="form.controls['correctAnswer']"
+    [errors]="form.controls['correctAnswer'].errors"
+  ></llp-form-validation-errors>
+  <llp-form-validation-errors
+    [show]="showErrors"
+    [control]="form"
+    [errors]="form.errors"
+  ></llp-form-validation-errors>
+</div>

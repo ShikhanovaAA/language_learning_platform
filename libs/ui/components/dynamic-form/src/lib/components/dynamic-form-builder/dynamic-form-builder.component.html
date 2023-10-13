@@ -1,31 +1,33 @@
 <div class="flex-column gap-m">
-  <div
-    *ngFor="let question of _questions; let i = index; trackBy: trackByFn"
-    class="question"
+  <ng-container
+    *ngFor="let control of form | formGroup; let i = index; trackBy: trackByFn"
   >
-    <llp-question-builder
-      [question]="question"
-      (questionUpdated)="updateQuestion($event, question.key)"
-    ></llp-question-builder>
+    <form [formGroup]="control.formControl" class="question">
+      <llp-question-builder
+        [form]="control.formControl"
+        [showErrors]="showErrors"
+      ></llp-question-builder>
+      <div class="control-settings">
+        <llp-select
+          [options]="controlOptions"
+          formControlName="controlType"
+        ></llp-select>
 
-    <div class="control-settings">
-      <llp-select
-        [options]="controlOptions"
-        [(ngModel)]="updatedQuestions[i].controlType"
-        (ngModelChange)="changeQuestionControlType($event, question.key)"
-      ></llp-select>
+        <div class="flex-middle-between">
+          <llp-checkbox
+            [options]="requiredOptions"
+            formControlName="required"
+          ></llp-checkbox>
 
-      <div class="flex-middle-between">
-        <llp-checkbox
-          [options]="requiredOptions"
-          [(ngModel)]="updatedQuestions[i].required"
-          (ngModelChange)="updateQuestionRequiredFieldQuestion()"
-        ></llp-checkbox>
-
-        <button class="delete-question" (click)="deleteQuestion(question.key)">
-          <mat-icon>delete_forever</mat-icon> Delete question
-        </button>
+          <button
+            type="button"
+            class="delete-question"
+            (click)="deleteQuestion(control.formControlName)"
+          >
+            <mat-icon>delete_forever</mat-icon> Delete question
+          </button>
+        </div>
       </div>
-    </div>
-  </div>
+    </form>
+  </ng-container>
 </div>

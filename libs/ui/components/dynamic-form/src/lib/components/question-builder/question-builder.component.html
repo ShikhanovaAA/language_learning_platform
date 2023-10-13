@@ -1,53 +1,44 @@
-<div [ngSwitch]="question.controlType">
-  <ng-container *ngSwitchCase="'INPUT'">
-    <ng-container
-      *ngTemplateOutlet="inputControl; context: question"
-    ></ng-container>
-  </ng-container>
-  <ng-container *ngSwitchCase="'CHECKBOX'">
-    <ng-container
-      *ngTemplateOutlet="checkboxControl; context: question"
-    ></ng-container>
-  </ng-container>
-  <ng-container *ngSwitchCase="'RADIO'">
-    <ng-container
-      *ngTemplateOutlet="radioControl; context: question"
-    ></ng-container>
-  </ng-container>
-  <ng-container *ngSwitchCase="'SELECT'">
-    <ng-container
-      *ngTemplateOutlet="selectControl; context: question"
-    ></ng-container>
-  </ng-container>
-</div>
+<form [formGroup]="form">
+  <div [ngSwitch]="controlType">
+    <ng-container *ngSwitchCase="'INPUT'">
+      <ng-container *ngTemplateOutlet="inputControl"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'CHECKBOX'">
+      <ng-container *ngTemplateOutlet="checkboxControl"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'RADIO'">
+      <ng-container *ngTemplateOutlet="radioControl"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'SELECT'">
+      <ng-container *ngTemplateOutlet="selectControl"></ng-container>
+    </ng-container>
+  </div>
 
-<ng-template #inputControl>
-  <llp-input-builder
-    [label]="question.label"
-    (inputSettingsUpdated)="updateQuestion($event)"
-  ></llp-input-builder>
-</ng-template>
+  <ng-template #inputControl>
+    <llp-input-builder
+      [form]="form"
+      [showErrors]="showErrors"
+    ></llp-input-builder>
+  </ng-template>
 
-<ng-template #checkboxControl>
-  <llp-checkbox-builder
-    [label]="question.label"
-    [options]="question.answerOptions || []"
-    (checkboxSettingsUpdated)="updateQuestion($event)"
-  ></llp-checkbox-builder>
-</ng-template>
+  <ng-template #checkboxControl>
+    <llp-checkbox-builder
+      [form]="form"
+      [showErrors]="showErrors"
+    ></llp-checkbox-builder>
+  </ng-template>
 
-<ng-template #radioControl>
-  <llp-radio-list-builder
-    [label]="question.label"
-    [options]="question.answerOptions || []"
-    (radioSettingsUpdated)="updateQuestion($event)"
-  ></llp-radio-list-builder>
-</ng-template>
+  <ng-template #selectControl>
+    <llp-select-builder
+      [form]="form"
+      [showErrors]="showErrors"
+    ></llp-select-builder>
+  </ng-template>
 
-<ng-template #selectControl>
-  <llp-select-builder
-    [label]="question.label"
-    [options]="question.answerOptions || []"
-    (selectSettingsUpdated)="updateQuestion($event)"
-  ></llp-select-builder>
-</ng-template>
+  <ng-template #radioControl>
+    <llp-radio-list-builder
+      [form]="form"
+      [showErrors]="showErrors"
+    ></llp-radio-list-builder>
+  </ng-template>
+</form>

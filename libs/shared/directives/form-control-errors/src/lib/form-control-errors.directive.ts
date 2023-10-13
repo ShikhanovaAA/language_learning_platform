@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } from '@angular/core';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { getErrorMessage, ValidationErrorKey } from './mapValidationErrorToMessage';
 
@@ -23,6 +23,16 @@ export class FormControlErrorsDirective {
   @HostListener('window:keyup') onMouseEnter() {
     if (!this.lostFocus) return;
     this.showErrors();
+  }
+
+  @HostBinding('class.has-errors') get hasError() {
+    if (this.control && this.control.invalid && this.control.touched) {
+      this.showErrors();
+    } else {
+      this.removeErrorHint();
+    }
+
+    return this.control.invalid;
   }
 
   showErrors() {
@@ -50,9 +60,12 @@ export class FormControlErrorsDirective {
   }
 
   removeErrorHint() {
-    const tooltip = this.elementRef.nativeElement.querySelector('.error-tooltip');
-    if (!tooltip) return;
+    const tooltips: NodeList = this.elementRef.nativeElement.querySelectorAll('.error-tooltip');
 
-    this.renderer.removeChild(this.elementRef.nativeElement, tooltip);
+    if (!tooltips) return;
+
+    tooltips.forEach(tooltip => {
+      this.renderer.removeChild(this.elementRef.nativeElement, tooltip);
+    });
   }
 }

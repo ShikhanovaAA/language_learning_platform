@@ -1,7 +1,12 @@
 <h1>New Quiz</h1>
 <form [formGroup]="newQuiz" class="flex-column gap-m">
   <llp-form-field label="Title of the quiz" [labelPosition]="labelPosition.Top">
-    <llp-input formControlName="title" placeholder="Title..."></llp-input>
+    <llp-input
+      formControlName="title"
+      placeholder="Title..."
+      llpShowControlErrors
+      [control]="newQuiz.controls['title']"
+    ></llp-input>
   </llp-form-field>
 
   <llp-form-field
@@ -15,13 +20,12 @@
   </llp-form-field>
 
   <llp-dynamic-form-builder
-    [questions]="questions"
-    (questionUpdated)="updateQuestions($event)"
-    (questionControlTypeUpdated)="updateQuestionControlType($event)"
-    (questionDeleted)="deleteQuestion($event)"
+    [form]="newQuiz.controls.questions"
+    [showErrors]="formFinished"
+    (deleteFormControl)="deleteQuestion($event)"
   ></llp-dynamic-form-builder>
 
-  <button type="button" class="add-question" (click)="addQuestion()">
+  <button type="button" class="add-question" (click)="addQuestionToForm()">
     <mat-icon>add</mat-icon> Add question
   </button>
 

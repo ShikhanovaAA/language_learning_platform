@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ControlType, Option, Question, QuestionControltypeUpdatingInfo, controlOptions, NewQuestion } from '@llp/models';
+import { FormGroup } from '@angular/forms';
+import { requiredOptions, controlOptions, FormGroupInfo } from '@llp/models';
 
 @Component({
   selector: 'llp-dynamic-form-builder',
@@ -7,51 +8,19 @@ import { ControlType, Option, Question, QuestionControltypeUpdatingInfo, control
   styleUrls: ['./dynamic-form-builder.component.scss'],
 })
 export class DynamicFormBuilderComponent {
-  _questions: NewQuestion[] = [];
+  @Input({ required: true }) form!: FormGroup;
+  @Input({ required: true }) showErrors!: boolean;
 
-  @Input()
-  set questions (questions: NewQuestion[]) {
-    this._questions = questions;
-    this.updatedQuestions = questions.concat();
-  }
+  @Output() deleteFormControl = new EventEmitter<string>();
 
-  @Output() questionUpdated = new EventEmitter<NewQuestion[]>();
-  @Output() questionControlTypeUpdated = new EventEmitter<QuestionControltypeUpdatingInfo>();
-  @Output() questionDeleted = new EventEmitter<NewQuestion['key']>();
-
-  updatedQuestions: NewQuestion[] = [];
-
-  requiredOptions: Option[] =[{
-    label: 'Required',
-    key: 'required',
-  }];
-
+  requiredOptions = requiredOptions;
   controlOptions = controlOptions;
 
-  changeQuestionControlType(controlType: string, questionKey: NewQuestion['key']) {
-    this.questionControlTypeUpdated.emit({
-      key: questionKey,
-      controlType: controlType as ControlType,
-    });
+  trackByFn(index: number, question: FormGroupInfo) {
+    return question.formControlName;
   }
 
-  updateQuestion(updatedFields: Partial<Question>, questionKey: NewQuestion['key']) {
-    this.updatedQuestions = this.updatedQuestions.map(question =>
-      // eslint-disable-next-line comma-dangle
-      (question.key === questionKey ? ({...question, ...updatedFields}) : question)
-    );
-    this.questionUpdated.emit(this.updatedQuestions);
-  }
-
-  updateQuestionRequiredFieldQuestion() {
-    this.questionUpdated.emit(this.updatedQuestions);
-  }
-
-  deleteQuestion(questionKey: NewQuestion['key']) {
-    this.questionDeleted.emit(questionKey);
-  }
-
-  trackByFn(index: number, question: NewQuestion) {
-    return question.key;
+  deleteQuestion(formControlName: string) {
+    this.deleteFormControl.emit(formControlName);
   }
 }

@@ -61,6 +61,22 @@
   }
 }
 
+.small-input {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  padding: 0 0 3px;
+
+  &:hover {
+    border-color: colors.$main850;
+  }
+
+  &:focus-visible,
+  &:active {
+    border-color: colors.$main850;
+  }
+}
+
 input,
 textarea,
 select {
@@ -79,6 +95,18 @@ select {
       -webkit-box-shadow: 1px 1px 0px 1000px colors.$input inset !important;
       transition: background-color 5000s ease-in-out 0s;
       background-color: red !important;
+    }
+  }
+}
+
+::ng-deep {
+  llp-input.ng-touched.has-errors {
+
+    .default,
+    .transparent,
+    .outline,
+    .small {
+      border-color: colors.$warning600 !important;
     }
   }
 }
