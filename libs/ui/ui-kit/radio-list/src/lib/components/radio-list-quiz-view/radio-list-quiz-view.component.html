@@ -1,0 +1,15 @@
+<p *ngIf="label">{{ label }}</p>
+<div class="options">
+  <label
+    for="{{ option.key }}"
+    *ngFor="let option of options; trackBy: trackByFn"
+    class="radio-container flex-middle-between"
+    (click)="valueChange(option)"
+    [class.checked]="selectedOption?.key === option.key"
+  >
+    <span [class.bold]="selectedOption?.key === option.key">
+      {{ option.label }}
+    </span>
+    <input type="radio" [name]="option.key" />
+  </label>
+</div>

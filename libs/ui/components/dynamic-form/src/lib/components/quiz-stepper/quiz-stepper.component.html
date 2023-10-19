@@ -1,0 +1,32 @@
+<section class="container">
+  <div class="step-navigation">
+    <button
+      class="step"
+      *ngFor="let step of steps; let i = index; trackBy: trackByFn"
+      [ngClass]="{ active: selectedIndex === i }"
+      (click)="setIndex(i)"
+    >
+      {{ i + 1 }}
+    </button>
+  </div>
+
+  <div class="stepper">
+    <button [disabled]="!selectedIndex" class="nav-button" cdkStepperPrevious>
+      <mat-icon *ngIf="selectedIndex"> arrow_back_ios </mat-icon>
+    </button>
+    <ng-container *ngIf="selected">
+      <div [style.display]="selected ? 'block' : 'none'">
+        <ng-container [ngTemplateOutlet]="selected.content"></ng-container>
+      </div>
+    </ng-container>
+    <button
+      [disabled]="selectedIndex === steps.length - 1"
+      class="nav-button"
+      cdkStepperNext
+    >
+      <mat-icon *ngIf="selectedIndex !== steps.length - 1">
+        arrow_forward_ios
+      </mat-icon>
+    </button>
+  </div>
+</section>

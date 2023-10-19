@@ -1,0 +1,13 @@
+<label class="title">
+  <mat-icon *ngIf="userAnsweredCorrectly; else error" class="correct">
+    done
+  </mat-icon>
+  <ng-template #error><mat-icon class="wrong">close</mat-icon></ng-template>
+  {{ label }}
+</label>
+<div class="input-wrapper" [class.correct-answer]="userAnsweredCorrectly">
+  {{ value }}
+</div>
+<ng-container *ngIf="value !== correctAnswer">
+  <div class="answer">Correct answer: "{{ correctAnswer }}"</div>
+</ng-container>

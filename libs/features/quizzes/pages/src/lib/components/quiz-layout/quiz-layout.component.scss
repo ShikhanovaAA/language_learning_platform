@@ -1,0 +1,12 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+.wrapper {
+  .content {
+    background: colors.$blockDark;
+    border-radius: vars.$border-radius-xxs;
+    padding: 1.25em;
+    box-shadow: 0 0 1.42em 0px colors.$translucent-block-dark-900;
+    min-height: calc(100vh - 108px);
+  }
+}

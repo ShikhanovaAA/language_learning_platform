@@ -1,0 +1,11 @@
+<form [formGroup]="form" class="flex-column gap-m">
+  <div *ngFor="let question of questions; trackBy: trackByFn">
+    <llp-question [question]="question" [form]="form"></llp-question>
+  </div>
+
+  <llp-button
+    [disabled]="!form.valid"
+    (click)="submit()"
+    [text]="submitButtonText"
+  ></llp-button>
+</form>

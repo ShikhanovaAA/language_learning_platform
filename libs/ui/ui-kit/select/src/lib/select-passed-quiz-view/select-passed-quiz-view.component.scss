@@ -1,0 +1,87 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+:host {
+  display: block;
+  width: 100%;
+  position: relative;
+
+  .answer {
+    color: colors.$white-color;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    display: block;
+    position: relative;
+
+    mat-icon {
+      position: absolute;
+      left: -35px;
+
+      &.correct {
+        color: colors.$main900;
+      }
+
+      &.wrong {
+        color: colors.$negative900;
+      }
+    }
+  }
+
+  .select {
+    position: relative;
+    width: 100%;
+    color: colors.$main800;
+    border-radius: vars.$border-radius-xxs;
+    background: colors.$white-color;
+    box-shadow: 0px 0.4em 0.5em colors.$translucent-block-dark-900;
+
+    &:focus-visible {
+      border: 1px solid;
+    }
+
+    .selected {
+      color: colors.$main800;
+      padding: 0.7em 1em;
+      font-size: 16px;
+
+      mat-icon {
+        color: colors.$main800;
+      }
+    }
+
+    .options {
+      height: 0px;
+      overflow: hidden;
+      position: absolute;
+      border-radius: vars.$border-radius-xxs;
+      background: colors.$white-color;
+      color: colors.$input;
+      transition: all 0.3s ease;
+      top: 55px;
+      left: 0px;
+      width: 100%;
+      z-index: 9;
+
+      &.visible {
+        height: auto;
+      }
+
+      .option {
+        padding: 1em 1.5em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: colors.$main900;
+        }
+      }
+    }
+  }
+}

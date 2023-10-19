@@ -1,0 +1,59 @@
+<div [formGroup]="form">
+  <div [ngSwitch]="question.controlType">
+    <ng-container *ngSwitchCase="'INPUT'">
+      <ng-container
+        *ngTemplateOutlet="inputControl; context: question"
+      ></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'SELECT'">
+      <ng-container
+        *ngTemplateOutlet="selectControl; context: question"
+      ></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'RADIO'">
+      <ng-container
+        *ngTemplateOutlet="radioControl; context: question"
+      ></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchCase="'CHECKBOX'">
+      <ng-container
+        *ngTemplateOutlet="checkboxControl; context: question"
+      ></ng-container>
+    </ng-container>
+  </div>
+
+  <ng-template #inputControl>
+    <llp-input-quiz-view
+      [label]="question.label"
+      [formControlName]="question.key"
+    ></llp-input-quiz-view>
+  </ng-template>
+  <ng-template #selectControl>
+    <ng-container *ngIf="question.answerOptions">
+      <llp-select-quiz-view
+        [label]="question.label"
+        [formControlName]="question.key"
+        [options]="question.answerOptions"
+      ></llp-select-quiz-view>
+    </ng-container>
+  </ng-template>
+  <ng-template #radioControl>
+    <ng-container *ngIf="question.answerOptions">
+      <llp-radio-list-quiz-view
+        [label]="question.label"
+        [formControlName]="question.key"
+        [options]="question.answerOptions"
+      ></llp-radio-list-quiz-view>
+    </ng-container>
+  </ng-template>
+  <ng-template #checkboxControl>
+    <ng-container *ngIf="question.answerOptions">
+      <llp-checkbox-quiz-view
+        [label]="question.label"
+        [formControlName]="question.key"
+        [options]="question.answerOptions"
+      >
+      </llp-checkbox-quiz-view>
+    </ng-container>
+  </ng-template>
+</div>

@@ -1,0 +1,8 @@
+<ng-container *ngIf="passedQuiz$ | async as quiz">
+  <h1>{{ quiz.title }}</h1>
+  <p>{{ quiz.description }}</p>
+
+  <llp-dynamic-form-passed-quiz-view
+    [questions]="quiz.questions"
+  ></llp-dynamic-form-passed-quiz-view>
+</ng-container>

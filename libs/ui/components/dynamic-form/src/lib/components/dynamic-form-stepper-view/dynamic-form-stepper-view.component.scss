@@ -1,0 +1,23 @@
+@use 'libs/theme/src/lib/theme/colors';
+
+.quiz-question {
+  max-width: 600px;
+  margin: 20px auto 0;
+}
+
+.quiz-question {
+  background: colors.$translucent-block-dark;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 36px colors.$translucent-block-dark-950;
+}
+
+llp-button {
+  margin: 20px auto;
+  width: max-content;
+}
+
+.tooltip {
+  margin-top: 10px;
+  text-align: center;
+}

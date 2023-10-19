@@ -1,0 +1,53 @@
+mat-stepper {
+  margin-top: 60px;
+}
+
+.quiz-question,
+.buttons {
+  max-width: 600px;
+  margin: 20px auto 0;
+}
+
+.buttons {
+  margin-top: 40px;
+}
+
+.quiz-question {
+
+  background: #4e7dff29;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 36px rgba(0, 0, 0, 0.4);
+
+}
+
+llp-button {
+  margin: 20px auto;
+  width: max-content;
+}
+
+.tooltip {
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+button.right {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  align-items: center;
+}
+
+::ng-deep {
+
+  .mdc-button__label,
+  mat-icon {
+    color: #fff;
+    margin-right: 0px !important;
+  }
+
+  .mat-mdc-outlined-button:not(:disabled) {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+  }
+}

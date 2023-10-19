@@ -15,7 +15,7 @@ export class FormQuestionService {
   }
 
   sortQuestions(questions: Question[]): Question[] {
-    return questions.sort((a, b) => a.order - b.order);
+    return questions.concat().sort((a, b) => a.order - b.order);
   }
 }
 

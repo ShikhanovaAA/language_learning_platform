@@ -5,7 +5,7 @@
   "scripts": {
     "nx": "npx nx",
     "frontend-serve-dev": "nx run frontend:serve",
-    "frontend-docker-dev": "npx nx run frontend:serve -c=development --host 0.0.0.0 --disable-host-check --poll 1000",
+    "frontend-docker-dev": "npx nx run frontend:serve -c=development --host 0.0.0.0 --disable-host-check --poll 500",
     "frontend-ssr-start": "nx run frontend:serve-ssr",
     "frontend-ssr-build": "nx run frontend:build && nx run frontend:server",
     "frontend-ssr-serve": "node dist/frontend/server/main.js",

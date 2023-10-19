@@ -1,0 +1,62 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+.stepper {
+  display: grid;
+  grid-template-columns: auto max-content auto;
+  align-items: stretch;
+
+  .nav-button {
+    background: transparent;
+    color: colors.$white-color;
+    border: none;
+    font-size: 20px;
+
+    &:hover {
+      mat-icon {
+        color: colors.$main800;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+
+      &:hover {
+        mat-icon {
+          color: colors.$white-color;
+        }
+      }
+    }
+  }
+}
+
+.step-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 7px;
+
+  button {
+    color: colors.$main800;
+    border: 2px solid transparent;
+    background: colors.$white-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 12px;
+
+    &:hover {
+      border-color: colors.$main800;
+    }
+
+    &.active {
+      color: colors.$white-color;
+      background-color: colors.$main800;
+    }
+  }
+}

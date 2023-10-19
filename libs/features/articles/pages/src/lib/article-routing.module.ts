@@ -14,7 +14,7 @@ const routes: Routes = [
     redirectTo: 'list',
     pathMatch: 'full',
   },
-    {
+  {
     path: 'new',
     component: NewArticleComponent,
     data: { role: Role.Admin },

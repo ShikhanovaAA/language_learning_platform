@@ -1,0 +1,43 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+.correct {
+  color: colors.$main900;
+}
+
+.item {
+  border-radius: 10px;
+  overflow: hidden;
+
+  h2 {
+    background: colors.$main800;
+    padding: 25px 15px;
+    margin-bottom: 0px;
+  }
+
+  .content {
+    background: colors.$translucent-block-dark-900;
+    padding: 25px 15px 20px;
+
+    p {
+      opacity: 0.9;
+      min-height: 65px;
+    }
+  }
+
+  .result {
+    border-top: 1px solid colors.$translucent-border-dark;
+    padding-top: 15px;
+    font-size: 15px;
+
+    a {
+      mat-icon {
+        color: colors.$main900;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

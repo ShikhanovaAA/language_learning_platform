@@ -11,6 +11,7 @@
 
   <div *ngIf="showAnswerOptions()" class="options" [formGroup]="answerOptions">
     <label
+      [formGroup]="option.formControl"
       for="{{ option.formControlName }}"
       *ngFor="let option of answerOptions | formGroup; trackBy: trackByFn"
       [class.checked]="isChecked(option.formControlName)"
@@ -24,12 +25,12 @@
 
       <llp-input
         class="option"
-        [formControlName]="option.formControlName"
+        formControlName="label"
         placeholder="Answer option"
         autocomplete="off"
         [inputStyle]="InputStyle.Small"
         llpShowControlErrors
-        [control]="option.formControl"
+        [control]="option.formControl.controls['label']"
       />
 
       <mat-icon
@@ -47,8 +48,8 @@
 <div class="errors">
   <llp-form-validation-errors
     [show]="showErrors"
-    [control]="form.controls['correctAnswer']"
-    [errors]="form.controls['correctAnswer'].errors"
+    [control]="answerOptions"
+    [errors]="answerOptions.errors"
   ></llp-form-validation-errors>
   <llp-form-validation-errors
     [show]="showErrors"

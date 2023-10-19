@@ -1,6 +1,11 @@
-<h1>Dynamic Form</h1>
-<a [routerLink]="['/quizzes/new']"> New quiz </a>
-<llp-dynamic-form
-  [questions]="questions"
-  (submitForm)="saveForm($event)"
-></llp-dynamic-form>
+<ng-container *ngIf="selectedQuiz$ | async as quiz">
+  <div class="quiz-info">
+    <h1>{{ quiz.title }}</h1>
+    <p>{{ quiz.description }}</p>
+  </div>
+
+  <llp-dynamic-form
+    [questions]="quiz.questions"
+    (submitForm)="saveForm($event)"
+  ></llp-dynamic-form>
+</ng-container>

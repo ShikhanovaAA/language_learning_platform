@@ -8,6 +8,8 @@ import { FormGroupPipeModule } from '@llp/shared/pipes/form-group';
 import { FormControlErrorsDirectiveModule } from '@llp/shared/directives/form-control-errors';
 import { UiInputModule } from '@llp/ui/ui-kit/input';
 import { FormValidationErrorsModule } from '@llp/ui/components/form-validation-errors';
+import { SelectQuizViewComponent } from './select-quiz-view/select-quiz-view.component';
+import { SelectPassedQuizViewComponent } from './select-passed-quiz-view/select-passed-quiz-view.component';
 
 @NgModule({
   imports: [
@@ -23,10 +25,14 @@ import { FormValidationErrorsModule } from '@llp/ui/components/form-validation-e
   declarations: [
     SelectComponent,
     SelectBuilderComponent,
+    SelectQuizViewComponent,
+    SelectPassedQuizViewComponent,
   ],
   exports: [
     SelectComponent,
     SelectBuilderComponent,
+    SelectQuizViewComponent,
+    SelectPassedQuizViewComponent,
   ],
 })
 export class UiSelectModule {}

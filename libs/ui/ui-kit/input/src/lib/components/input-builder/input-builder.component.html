@@ -8,13 +8,18 @@
     [control]="form.controls['label']"
   />
 
-  <llp-input
-    formControlName="correctAnswer"
-    placeholder="Write the correct answer to this question"
-    autocomplete="off"
-    [inputStyle]="InputStyle.Outline"
-    padding="20px 10px"
-    llpShowControlErrors
-    [control]="form.controls['correctAnswer']"
-  />
+  <ng-container
+    [formGroup]="option.formControl"
+    *ngFor="let option of answerOptions | formGroup; trackBy: trackByFn"
+  >
+    <llp-input
+      formControlName="label"
+      placeholder="Write the correct answer to this question"
+      autocomplete="off"
+      [inputStyle]="InputStyle.Outline"
+      padding="20px 10px"
+      llpShowControlErrors
+      [control]="option.formControl.controls['label']"
+    />
+  </ng-container>
 </form>

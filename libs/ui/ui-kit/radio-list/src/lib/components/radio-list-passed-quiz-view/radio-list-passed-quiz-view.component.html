@@ -1,0 +1,25 @@
+<p *ngIf="label">
+  <mat-icon *ngIf="userAnsweredCorrectly; else error" class="correct">
+    done
+  </mat-icon>
+  <ng-template #error><mat-icon class="wrong">close</mat-icon></ng-template>
+  {{ label }}
+</p>
+<div class="options">
+  <label
+    for="{{ option.key }}"
+    *ngFor="let option of options; trackBy: trackByFn"
+    class="radio-container flex-middle gap-xs"
+    [class.checked]="option.isUserAnswer"
+    [class.correct-answer]="option.isCorrectAnswer"
+    [class.wrong-answer]="!option.isCorrectAnswer && option.isUserAnswer"
+  >
+    <input type="radio" [name]="option.key" />
+    <span [class.bold]="option.isUserAnswer">
+      {{ option.label }}
+    </span>
+    <mat-icon class="user-answer" *ngIf="option.isUserAnswer">
+      keyboard_return
+    </mat-icon>
+  </label>
+</div>

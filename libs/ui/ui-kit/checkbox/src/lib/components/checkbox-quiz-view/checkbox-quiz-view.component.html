@@ -1,0 +1,13 @@
+<p class="title" *ngIf="label">{{ label }}</p>
+<div class="options">
+  <label
+    for="{{ option.key }}"
+    *ngFor="let option of options; trackBy: trackByFn"
+    (click)="toggleOption(option)"
+    [class.checked]="isChecked(option.key)"
+    class="flex-middle-between gap-xs"
+  >
+    <span class="label">{{ option.label }}</span>
+    <input type="checkbox" [name]="option.key" />
+  </label>
+</div>

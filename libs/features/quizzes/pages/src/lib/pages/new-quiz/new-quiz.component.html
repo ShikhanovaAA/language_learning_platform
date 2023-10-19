@@ -16,6 +16,8 @@
     <llp-input
       formControlName="description"
       placeholder="Description..."
+      llpShowControlErrors
+      [control]="newQuiz.controls['description']"
     ></llp-input>
   </llp-form-field>
 

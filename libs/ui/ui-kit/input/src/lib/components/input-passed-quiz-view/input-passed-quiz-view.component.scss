@@ -1,0 +1,101 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+@import 'libs/theme/src/lib/common/inputs';
+
+:host {
+  display: block;
+  width: 100%;
+  position: relative;
+
+  .answer {
+    color: colors.$white-color;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+
+  .title {
+    color: colors.$white-color;
+    font-size: 26px;
+    margin-bottom: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    display: block;
+    position: relative;
+
+    mat-icon {
+      position: absolute;
+      left: -35px;
+
+      &.correct {
+        color: colors.$main900;
+      }
+
+      &.wrong {
+        color: colors.$negative900;
+      }
+    }
+  }
+
+  .input-wrapper {
+    border-bottom: 2px solid colors.$negative900;
+    color: colors.$negative900;
+    font-size: 16px;
+    padding-bottom: 3px;
+
+    &.correct-answer {
+      border-color: colors.$main900;
+      color: colors.$main900;
+    }
+
+    input {
+      padding: 0.7em 1em;
+      color: colors.$main900;
+      border: none;
+      border-radius: vars.$border-radius-s;
+      transition: all 0.2s ease;
+      width: 100%;
+      background: colors.$white-color;
+      box-shadow: 0px 0.4em 0.5em colors.$translucent-block-dark-900;
+      font-size: 18px;
+
+      &:focus-visible {
+        outline: none;
+      }
+
+      &.default {
+        @extend .default-input;
+      }
+
+      &.outline {
+        @extend .outline-input;
+      }
+
+      &.filled {
+        @extend .filled-input;
+      }
+
+      &.transparent {
+        @extend .transparent-input;
+      }
+
+      &.small {
+        @extend .small-input;
+      }
+    }
+
+    &.with-icon {
+      position: relative;
+
+      .icon {
+        position: absolute;
+        top: 0.3em;
+        left: 0.25em;
+        color: colors.$main850;
+      }
+
+      input {
+        padding: 0.825em 2.825em;
+      }
+    }
+  }
+}

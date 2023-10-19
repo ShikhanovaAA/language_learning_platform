@@ -14,6 +14,11 @@ import { CategoryModule } from './category/category.module';
 import { Category } from './category/category.model';
 import { DictionaryModule } from './dictionary/dictionary.module';
 import { DictionaryWord } from './dictionary/dictionary.model';
+import { QuizModule } from './quiz/quiz.module';
+import { Quiz } from './quiz/quiz.model';
+import { Question } from './quiz/question.model';
+import { AnswerOption } from './quiz/answer-option.model';
+import { Answer } from './quiz/answer.model';
 
 @Module({
   imports: [
@@ -23,6 +28,7 @@ import { DictionaryWord } from './dictionary/dictionary.model';
     ArticleModule,
     CategoryModule,
     DictionaryModule,
+    QuizModule,
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`,
     }),
@@ -33,8 +39,20 @@ import { DictionaryWord } from './dictionary/dictionary.model';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, Role, UserRoles, Article, StudiedArticles, Category, DictionaryWord],
-      autoLoadModels: true
+      models: [
+        User,
+        Role,
+        UserRoles,
+        Article,
+        StudiedArticles,
+        Category,
+        DictionaryWord,
+        Quiz,
+        Question,
+        AnswerOption,
+        Answer,
+      ],
+      autoLoadModels: true,
     }),
   ],
 })

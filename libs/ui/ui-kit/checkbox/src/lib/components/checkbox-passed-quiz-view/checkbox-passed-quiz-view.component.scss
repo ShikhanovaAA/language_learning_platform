@@ -1,0 +1,116 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  position: relative;
+
+  mat-icon {
+    position: absolute;
+    left: -35px;
+
+    &.correct {
+      color: colors.$main900;
+    }
+
+    &.wrong {
+      color: colors.$negative900;
+    }
+  }
+}
+
+.options {
+  display: grid;
+  gap: 8px;
+
+  .user-answer {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    opacity: 0.6;
+  }
+
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: all 0.2s ease-in-out;
+
+    &::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border: 1px solid colors.$white-color;
+      border-radius: 4px;
+      display: block;
+      font-size: 20px;
+      font-family: 'Material Icons';
+      color: colors.$white-color;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  label {
+    padding: 0em;
+    margin-bottom: 5px;
+
+    &.checked {
+      color: colors.$main800;
+    }
+
+    &.correct-answer {
+      span {
+        color: colors.$main900;
+      }
+    }
+
+    &.wrong-answer {
+      span {
+        color: colors.$negative900;
+      }
+    }
+  }
+
+  .label {
+    font-size: 16px;
+  }
+
+  .checked {
+    input[type="checkbox"] {
+      &::before {
+        background-color: colors.$main800;
+        content: "\e5ca";
+        border-color: transparent !important;
+      }
+    }
+
+    .label {
+      font-weight: 500;
+    }
+  }
+
+  label {
+
+    &.correct-answer {
+      input[type="checkbox"] {
+        &::before {
+          background-color: colors.$main900;
+          content: "\e5ca";
+          border-color: transparent !important;
+        }
+      }
+    }
+
+    &.wrong-answer {
+      input[type="checkbox"] {
+        &::before {
+          background-color: colors.$negative900;
+        }
+      }
+    }
+  }
+}

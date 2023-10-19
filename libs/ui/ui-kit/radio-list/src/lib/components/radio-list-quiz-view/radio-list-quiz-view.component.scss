@@ -1,0 +1,102 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+p {
+  font-size: 22px;
+  margin-bottom: 40px;
+  line-height: 28px;
+  font-weight: 500;
+}
+
+.options {
+  display: grid;
+  gap: 8px;
+
+  .radio-container {
+    position: relative;
+    padding: 1em;
+    border: 1px solid colors.$white-color;
+    border-radius: 10px;
+    margin-bottom: 9px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &.checked {
+      background: colors.$main800;
+      border-color: transparent !important;
+
+      input[type="radio"] {
+        background-color: colors.$white-color;
+
+        &::before {
+          transform: scale(1);
+          display: block;
+          top: 4px;
+          position: absolute;
+          left: 4px;
+          background-color: colors.$main800;
+        }
+      }
+
+      &:hover {
+        input[type="radio"] {
+          &::before {
+            background-color: colors.$main800;
+          }
+        }
+      }
+    }
+
+    span {
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    input[type="radio"] {
+      -webkit-appearance: none;
+      appearance: none;
+      margin: 0;
+      font: inherit;
+      color: colors.$second700;
+      min-width: 20px;
+      min-height: 20px;
+      border: 1px solid colors.$white-color;
+      border-radius: 50%;
+      transform: translateY(-0.075em);
+      cursor: pointer;
+      box-sizing: content-box;
+      transition: all 0.2s ease-in-out;
+
+      &:focus {
+        outline: none;
+        border: 1px solid colors.$main800;
+      }
+
+      &:hover {
+        outline: none;
+        background-color: colors.$white-color;
+      }
+
+      &::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        background-color: colors.$blockDark;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+
+    &:hover {
+      input[type="radio"] {
+        background-color: colors.$white-color;
+      }
+    }
+  }
+
+  .bold {
+    font-weight: 500;
+  }
+}

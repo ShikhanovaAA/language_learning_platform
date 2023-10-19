@@ -20,6 +20,15 @@
   border-radius: $border-radius-s !important;
 }
 
+.mat-stepper-vertical,
+.mat-stepper-horizontal {
+  background: transparent !important;
+}
+
+.mat-horizontal-content-container {
+  overflow: visible !important;
+}
+
 ::ng-deep {
   mat-icon {
     font-variation-settings:
@@ -29,7 +38,8 @@
       'opsz' 24
   }
 
-  .mat-tooltip {
-    background-color: colors.$blockDark !important;
-  }
+}
+
+.mdc-tooltip__surface.mdc-tooltip__surface-animation {
+  background: colors.$body !important;
 }

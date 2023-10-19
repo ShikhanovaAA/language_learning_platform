@@ -17,9 +17,11 @@ export class CheckboxBuilderComponent {
   InputStyle = InputStyle;
 
   addOption(): void {
-    (this.form.controls['answerOptions'] as FormGroup).addControl(
-      uuidv4(),
-      new FormControl('', [Validators.required]),
+    (this.form.controls['answerOptions'] as FormGroup).addControl(uuidv4(),
+      new FormGroup({
+        label: new FormControl('', [Validators.required]),
+        isCorrectAnswer: new FormControl(false),
+      }),
     );
   }
 
@@ -41,13 +43,17 @@ export class CheckboxBuilderComponent {
   }
 
   toggleOption(formControlName: string): void {
-    if (this.isChecked(formControlName)) {
+    const isChecked = this.isChecked(formControlName);
+
+    if (isChecked) {
       this.checkedOptions = this.checkedOptions.filter(checkedOption => checkedOption !== formControlName);
     } else {
       this.checkedOptions.push(formControlName);
     }
 
-    this.form.controls['correctAnswer'].setValue(this.checkedOptions);
+    this.answerOptions.controls[formControlName].patchValue({
+      isCorrectAnswer: !isChecked,
+    });
   }
 
   isChecked(formControlName: string): boolean {

@@ -21,3 +21,15 @@ quill-editor {
 quill-view-html .ql-editor {
   padding: 0px;
 }
+
+.ql-snow .ql-editor blockquote {
+  border-left: 4px solid colors.$main800;
+  margin-bottom: 10px;
+  padding-left: 6px;
+}
+
+blockquote span {
+  background: colors.$main800 !important;
+  color: colors.$white-color !important;
+  padding: 2px;
+}

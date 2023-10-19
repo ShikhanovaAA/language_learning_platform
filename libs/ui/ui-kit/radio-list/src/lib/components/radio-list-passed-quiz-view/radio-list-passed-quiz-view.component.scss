@@ -1,0 +1,124 @@
+@use 'libs/theme/src/lib/theme/colors';
+@use 'libs/theme/src/lib/common/vars';
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  position: relative;
+
+  mat-icon {
+    position: absolute;
+    left: -35px;
+
+    &.correct {
+      color: colors.$main900;
+    }
+
+    &.wrong {
+      color: colors.$negative900;
+    }
+  }
+}
+
+.options {
+  display: grid;
+  gap: 8px;
+
+  .user-answer {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    opacity: 0.6;
+  }
+
+  .radio-container {
+    position: relative;
+    padding: 0em;
+    margin-bottom: 5px;
+    transition: all 0.2s ease-in-out;
+
+    &.checked {
+      input[type="radio"] {
+        background-color: transparent;
+
+        &::before {
+          transform: scale(1);
+          display: block;
+          top: 4px;
+          position: absolute;
+          left: 4px;
+          background-color: colors.$main800;
+        }
+      }
+    }
+
+    span {
+      font-size: 16px;
+    }
+
+    &.correct-answer {
+      span {
+        color: colors.$main900;
+      }
+
+      input[type="radio"] {
+        background-color: transparent;
+
+        &::before {
+          transform: scale(1);
+          display: block;
+          top: 4px;
+          position: absolute;
+          left: 4px;
+          background-color: colors.$main900;
+        }
+      }
+    }
+
+    &.wrong-answer {
+      span {
+        color: colors.$negative900;
+      }
+
+      input[type="radio"] {
+
+
+        &::before {
+          background-color: colors.$negative900;
+        }
+      }
+    }
+
+    input[type="radio"] {
+      -webkit-appearance: none;
+      appearance: none;
+      margin: 0;
+      font: inherit;
+      color: colors.$second700;
+      min-width: 20px;
+      min-height: 20px;
+      border: 1px solid colors.$white-color;
+      border-radius: 50%;
+      transform: translateY(-0.075em);
+      box-sizing: content-box;
+      transition: all 0.2s ease-in-out;
+
+      &::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        background-color: colors.$blockDark;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+
+  .bold {
+    font-weight: 500;
+  }
+}

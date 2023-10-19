@@ -1,11 +1,18 @@
-<form [formGroup]="form" class="flex-column gap-m">
-  <div *ngFor="let question of questions; trackBy: trackByFn">
-    <llp-question [question]="question" [form]="form"></llp-question>
-  </div>
+<ng-container *ngIf="formView === FormView.Stepper; else list">
+  <llp-dynamic-form-stepper-view
+    [form]="form"
+    [questions]="questions"
+    [submitButtonText]="submitButtonText"
+    [stepperOrientation]="stepperOrientation"
+    [controlView]="controlView"
+    (submitForm)="submit()"
+  />
+</ng-container>
 
-  <llp-button
-    [disabled]="!form.valid"
-    (click)="submit()"
-    text="Save"
-  ></llp-button>
-</form>
+<ng-template #list>
+  <llp-dynamic-form-list-view
+    [form]="form"
+    [questions]="questions"
+    (submitForm)="submit()"
+  />
+</ng-template>

@@ -1,0 +1,12 @@
+<label class="title">{{ label }}</label>
+<div class="input-wrapper">
+  <input
+    type="text"
+    [(ngModel)]="value"
+    [disabled]="isDisabled"
+    autocomplete="off"
+    [placeholder]="placeholder"
+    [ngClass]="inputStyle"
+    (blur)="onTouchedFn()"
+  />
+</div>

@@ -1,0 +1,31 @@
+<form [formGroup]="form">
+  <llp-quiz-stepper>
+    <cdk-step
+      *ngFor="let question of questions; trackBy: trackByFn; let i = index"
+    >
+      <div
+        class="quiz-question"
+        *ngIf="controlView === ControlView.Quiz; else default"
+      >
+        <llp-question-quiz-view
+          [question]="question"
+          [form]="form"
+        ></llp-question-quiz-view>
+      </div>
+
+      <ng-template #default>
+        <llp-question [question]="question" [form]="form"></llp-question>
+      </ng-template>
+
+      <llp-button
+        *ngIf="i === questions.length - 1"
+        [disabled]="!form.valid"
+        (click)="submit()"
+        [text]="submitButtonText"
+      ></llp-button>
+      <div class="tooltip" *ngIf="i === questions.length - 1 && !form.valid">
+        You must answer all questions
+      </div>
+    </cdk-step>
+  </llp-quiz-stepper>
+</form>

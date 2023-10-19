@@ -11,6 +11,16 @@
 
   form {
     gap: 1.5em;
+
+    .editor {
+      display: grid;
+
+      .sign-counter {
+        font-size: 12px;
+        text-align: right;
+        margin-bottom: 0px;
+      }
+    }
   }
 
   .form-in-select {

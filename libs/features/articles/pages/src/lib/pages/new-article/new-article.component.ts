@@ -5,6 +5,8 @@ import { ArticleFacade } from '@llp/features/articles/state';
 import { NewCategory, Option } from '@llp/models';
 import { Observable } from 'rxjs';
 
+const MAX_ARTICLE_TEXT_LENGTH = 30000;
+
 @Component({
   selector: 'llp-new-article',
   templateUrl: './new-article.component.html',
@@ -18,7 +20,7 @@ export class NewArticleComponent implements OnInit {
     }),
     text: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.maxLength(2000), Validators.required],
+      validators: [Validators.maxLength(MAX_ARTICLE_TEXT_LENGTH), Validators.required],
     }),
     categoryId: new FormControl('', {
       nonNullable: true,
@@ -27,6 +29,8 @@ export class NewArticleComponent implements OnInit {
   });
 
   categoryOptions$: Observable<Option[]> = this.articleFacade.categoryOptions$;
+
+  MAX_ARTICLE_TEXT_LENGTH = MAX_ARTICLE_TEXT_LENGTH;
 
   constructor(private articleFacade: ArticleFacade) {}
 
@@ -45,6 +49,10 @@ export class NewArticleComponent implements OnInit {
       text,
       categoryId: +categoryId,
     });
+  }
+
+  get textLength(): number {
+    return this.newArticleForm.value.text?.length || 0;
   }
 
   createCategory(newCategory: NewCategory) {

@@ -27,7 +27,7 @@ export class Article extends Model<Article, CreateArticle> {
 
   @ApiProperty({example: 'Learning a new language can be a challenging yet rewarding experience...', description: 'Body of the article'})
   @Column({
-    type: DataType.STRING(3000),
+    type: DataType.STRING(30000),
     allowNull: false,
   })
   text!: string;

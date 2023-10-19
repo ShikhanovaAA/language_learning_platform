@@ -1,0 +1,16 @@
+<label class="title" *ngIf="label" for="select">
+  <mat-icon *ngIf="userAnsweredCorrectly; else error" class="correct">
+    done
+  </mat-icon>
+  <ng-template #error><mat-icon class="wrong">close</mat-icon></ng-template>
+  {{ label }}
+</label>
+<div id="select" class="select">
+  <div class="selected flex-middle-between">
+    {{ userAnswer }}
+    <mat-icon>expand_more</mat-icon>
+  </div>
+</div>
+<ng-container *ngIf="!userAnsweredCorrectly">
+  <div class="answer">Correct answer: "{{ correctAnswer }}"</div>
+</ng-container>

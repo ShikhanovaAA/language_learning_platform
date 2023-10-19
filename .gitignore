@@ -36,3 +36,5 @@ Thumbs.db
 
 .angular
 sessions
+.development.env
+.production.env

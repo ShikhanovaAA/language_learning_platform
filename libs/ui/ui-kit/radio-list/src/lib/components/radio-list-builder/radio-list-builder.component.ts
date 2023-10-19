@@ -14,29 +14,38 @@ export class RadioListBilderComponent {
 
   InputStyle = InputStyle;
 
+  checkedControl!: string;
+
   addOption() {
     (this.form.controls['answerOptions'] as FormGroup).addControl(uuidv4(),
-      new FormControl('', [Validators.required]),
+      new FormGroup({
+        label: new FormControl('', [Validators.required]),
+        isCorrectAnswer: new FormControl(false),
+      }),
     );
   }
 
   deleteOption(formControlName: FormGroupInfo['formControlName']) {
     (this.form.controls['answerOptions'] as FormGroup).removeControl(formControlName);
-
-    if (this.form.controls['correctAnswer'].value !== formControlName) return;
-    this.form.controls['correctAnswer'].setValue('');
+    if (this.checkedControl === formControlName) this.checkedControl = '';
   }
 
   setCorrectAnswer(formControlName: FormGroupInfo['formControlName']) {
-    this.form.controls['correctAnswer'].setValue(formControlName);
+    if (this.checkedControl) {
+      this.answerOptions.controls[this.checkedControl].patchValue({
+        isCorrectAnswer: false,
+      });
+    }
+
+    this.answerOptions.controls[formControlName].patchValue({
+      isCorrectAnswer: true,
+    });
+
+    this.checkedControl = formControlName;
   }
 
   get answerOptions() {
     return this.form.controls['answerOptions'] as FormGroup;
-  }
-
-  get correctAnswer() {
-    return this.form.controls['correctAnswer'].value;
   }
 
   trackByFn(index: number, formGroup: FormGroupInfo) {

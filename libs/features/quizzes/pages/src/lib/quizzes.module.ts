@@ -10,6 +10,11 @@ import { UiFormFieldModule } from '@llp/ui/ui-kit/form-field';
 import { UiButtonModule } from '@llp/ui/ui-kit/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControlErrorsDirectiveModule } from '@llp/shared/directives/form-control-errors';
+import { QuizzesStateModule } from '@llp/features/quizzes/state';
+import { QuizListComponent } from './pages/quiz-list/quiz-list.component';
+import { PassedQuizDetailsComponent } from './pages/passed-quiz-details/passed-quiz-details.component';
+import { QuizLayoutComponent } from './components/quiz-layout/quiz-layout.component';
+import { QuizItemComponent } from './components/quiz-item/quiz-item.component';
 
 @NgModule({
   imports: [
@@ -22,10 +27,15 @@ import { FormControlErrorsDirectiveModule } from '@llp/shared/directives/form-co
     UiButtonModule,
     MatIconModule,
     FormControlErrorsDirectiveModule,
+    QuizzesStateModule,
   ],
   declarations: [
     QuizDetailsComponent,
     NewQuizComponent,
+    QuizListComponent,
+    PassedQuizDetailsComponent,
+    QuizLayoutComponent,
+    QuizItemComponent,
   ],
 })
 export class QuizzesModule {}

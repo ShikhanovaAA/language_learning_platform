@@ -11,6 +11,7 @@
 
   <div class="options" [formGroup]="answerOptions">
     <label
+      [formGroup]="option.formControl"
       *ngFor="
         let option of answerOptions | formGroup;
         let i = index;
@@ -18,7 +19,7 @@
       "
       class="radio-container flex-middle gap-xs"
       [class.checked]="
-        correctAnswer === option.formControlName ? 'checked' : null
+        option.formControl.controls['isCorrectAnswer'].value ? 'checked' : null
       "
     >
       <input
@@ -31,11 +32,11 @@
       <llp-input
         class="option"
         type="text"
-        [formControlName]="option.formControlName"
+        formControlName="label"
         placeholder="Answer option"
         autocomplete="off"
         llpShowControlErrors
-        [control]="option.formControl"
+        [control]="option.formControl.controls['label']"
         [inputStyle]="InputStyle.Small"
       />
       <mat-icon
@@ -53,8 +54,8 @@
 <div class="errors">
   <llp-form-validation-errors
     [show]="showErrors"
-    [control]="form.controls['correctAnswer']"
-    [errors]="form.controls['correctAnswer'].errors"
+    [control]="answerOptions"
+    [errors]="answerOptions.errors"
   ></llp-form-validation-errors>
   <llp-form-validation-errors
     [show]="showErrors"

@@ -21,10 +21,15 @@
           </div>
         </llp-select>
       </div>
-      <quill-editor
-        formControlName="text"
-        [styles]="{ height: '250px' }"
-      ></quill-editor>
+      <div class="editor">
+        <p class="sign-counter">
+          {{ textLength }} / {{ MAX_ARTICLE_TEXT_LENGTH }}
+        </p>
+        <quill-editor
+          formControlName="text"
+          [styles]="{ height: '250px' }"
+        ></quill-editor>
+      </div>
     </ng-container>
   </ng-container>
   <ng-template #noCategories>
@@ -32,5 +37,9 @@
       (createCategory)="createCategory($event)"
     ></llp-new-category>
   </ng-template>
-  <llp-button text="Save Article" (click)="saveArticle()"></llp-button>
+  <llp-button
+    [disabled]="!newArticleForm.valid"
+    text="Save Article"
+    (click)="saveArticle()"
+  ></llp-button>
 </form>

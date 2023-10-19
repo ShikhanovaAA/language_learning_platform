@@ -8,6 +8,8 @@ import { FormGroupPipeModule } from '@llp/shared/pipes/form-group';
 import { FormControlErrorsDirectiveModule } from '@llp/shared/directives/form-control-errors';
 import { UiInputModule } from '@llp/ui/ui-kit/input';
 import { FormValidationErrorsModule } from '@llp/ui/components/form-validation-errors';
+import { CheckboxQuizViewComponent } from './components/checkbox-quiz-view/checkbox-quiz-view.component';
+import {CheckboxPassedQuizViewComponent} from './components/checkbox-passed-quiz-view/checkbox-passed-quiz-view.component';
 
 @NgModule({
   imports: [
@@ -23,10 +25,14 @@ import { FormValidationErrorsModule } from '@llp/ui/components/form-validation-e
   declarations: [
     CheckboxComponent,
     CheckboxBuilderComponent,
+    CheckboxQuizViewComponent,
+    CheckboxPassedQuizViewComponent,
   ],
   exports: [
     CheckboxComponent,
     CheckboxBuilderComponent,
+    CheckboxQuizViewComponent,
+    CheckboxPassedQuizViewComponent,
   ],
 })
 export class UiCheckboxModule {}

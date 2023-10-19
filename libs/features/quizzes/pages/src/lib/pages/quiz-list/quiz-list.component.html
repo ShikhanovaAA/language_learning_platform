@@ -1,0 +1,13 @@
+<div class="flex-middle-between">
+  <h1>Quizzes</h1>
+  <a [routerLink]="['/quizzes/new']" class="button-link">
+    New quiz <mat-icon>add</mat-icon>
+  </a>
+</div>
+
+<div class="quizzes">
+  <llp-quiz-item
+    *ngFor="let quiz of quizzes$ | async; trackBy: trackByFn"
+    [quiz]="quiz"
+  ></llp-quiz-item>
+</div>
