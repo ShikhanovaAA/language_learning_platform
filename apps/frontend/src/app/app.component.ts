@@ -24,6 +24,6 @@ export class AppComponent implements OnInit {
       this.authFacade.getUserByToken();
     }
 
-    this.cdr.detectChanges();
+    this.cdr.markForCheck();
   }
 }

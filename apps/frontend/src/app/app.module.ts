@@ -30,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     AuthStateModule,
     ArticleStateModule,
+    UiProgressBarModule,
     StoreModule.forRoot(
       {},
       {
@@ -46,7 +47,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       maxAge: 25,
       logOnly: environment.production,
     }),
-    UiProgressBarModule,
   ],
   providers: [
     {
