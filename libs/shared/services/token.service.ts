@@ -4,7 +4,6 @@ import { LOCAL_STORAGE } from '@ng-web-apis/common';
 import { DecodedToken } from './models/deocoded-token';
 import jwt_decode from 'jwt-decode';
 
-
 @Injectable({
   providedIn: 'root',
 })

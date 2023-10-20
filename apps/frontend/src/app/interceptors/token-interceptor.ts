@@ -1,6 +1,6 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TokenStorageService } from '@llp/util/token-service';
+import { TokenStorageService } from '@llp/shared/services';
 import { Observable } from 'rxjs';
 
 @Injectable()

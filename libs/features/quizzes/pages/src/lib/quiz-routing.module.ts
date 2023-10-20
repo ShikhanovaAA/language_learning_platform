@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NewQuizComponent } from './pages/new-quiz/new-quiz.component';
 import { Role } from '@llp/models';
-import { UserRoleGuard } from '@llp/util/guards';
+import { UserRoleGuard } from '@llp/shared/guards';
 import { QuizListComponent } from './pages/quiz-list/quiz-list.component';
 import { QuizDetailsComponent } from './pages/quiz-details/quiz-details.component';
 import { PassedQuizDetailsComponent } from './pages/passed-quiz-details/passed-quiz-details.component';
@@ -18,6 +18,8 @@ const routes: Routes = [
   {
     path: ':id',
     component: QuizDetailsComponent,
+    data: { role: Role.User },
+    canMatch: [UserRoleGuard],
   },
   {
     path: '',
@@ -30,6 +32,8 @@ const routes: Routes = [
       {
         path: 'passed/:id',
         component: PassedQuizDetailsComponent,
+        data: { role: Role.User },
+        canMatch: [UserRoleGuard],
       },
     ],
   },

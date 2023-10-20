@@ -49,6 +49,13 @@ const reducer = createReducer(
   })),
   on(ArticleActions.AddArticleToStudiedSuccess, (state, { studiedArticle }) => ({
     ...state,
+    articles: state.articles.map(article => article.id !== studiedArticle.articleId
+      ? article
+      : {
+        ...article,
+        readers: article.readers.concat({id: studiedArticle.userId}),
+      },
+    ),
     selectedArticle: state.selectedArticle
     ? {
       ...state.selectedArticle,

@@ -1,11 +1,22 @@
-<div class="item">
+<div
+  class="item"
+  [matTooltip]="!user ? 'To take the test, log in to your account' : ''"
+>
   <h2>
-    <a routerLink="/quizzes/{{ quiz.id }}">{{ quiz.title }}</a>
+    <a
+      [class.disabled]="!user ? true : null"
+      routerLink="/quizzes/{{ quiz.id }}"
+      >{{ quiz.title }}</a
+    >
   </h2>
   <div class="content">
     <p>{{ quiz.description }}</p>
     <div class="result">
-      <a class="flex-middle gap-xs" routerLink="/quizzes/passed/{{ quiz.id }}">
+      <a
+        class="flex-middle gap-xs"
+        [class.disabled]="!user ? true : null"
+        routerLink="/quizzes/passed/{{ quiz.id }}"
+      >
         <mat-icon>manage_search</mat-icon>
         <div>Result</div>
       </a>

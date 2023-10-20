@@ -9,7 +9,7 @@ export const MAIN_MENU: MenuItem[] = [
     route: '/articles',
   },
   {
-    label: 'Quizzes',
+    label: 'Tests',
     route: '/quizzes',
   },
   {

@@ -5,7 +5,7 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
 import { switchMap, catchError, of, tap } from 'rxjs';
 import { AuthService } from '@llp/features/auth/data-access';
-import { TokenStorageService } from '@llp/util/token-service';
+import { TokenStorageService } from '@llp/shared/services';
 import * as AuthActions from './auth.actions';
 import { GeneralLoadingService } from '@llp/shared/services';
 import { ToastNotificationService } from '@llp/ui/ui-kit/toast-notification';

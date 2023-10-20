@@ -7,6 +7,8 @@ export enum Role {
   Manager = 'MANAGER',
 }
 
+export const isUser = (userRole: UserRole) => userRole.value === Role.User;
+
 export const isAdmin = (userRole: UserRole) => userRole.value === Role.Admin;
 
 export const isManager = (userRole: UserRole) => userRole.value === Role.Manager || userRole.value === Role.Admin;

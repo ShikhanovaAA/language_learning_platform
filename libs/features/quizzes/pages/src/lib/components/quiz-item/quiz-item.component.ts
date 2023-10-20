@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Quiz } from '@llp/models';
+import { Quiz, User } from '@llp/models';
 
 @Component({
   selector: 'llp-quiz-item',
@@ -8,4 +8,5 @@ import { Quiz } from '@llp/models';
 })
 export class QuizItemComponent {
   @Input() quiz!: Quiz;
+  @Input() user!: User | null;
 }

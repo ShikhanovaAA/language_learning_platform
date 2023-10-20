@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AuthFacade } from '@llp/features/auth/state';
 import { GeneralLoadingService } from '@llp/shared/services';
-import { TokenStorageService } from '@llp/util/token-service';
+import { TokenStorageService } from '@llp/shared/services';
 import { Observable } from 'rxjs';
 
 @Component({

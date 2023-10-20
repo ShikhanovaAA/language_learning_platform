@@ -15,6 +15,7 @@ import { QuizListComponent } from './pages/quiz-list/quiz-list.component';
 import { PassedQuizDetailsComponent } from './pages/passed-quiz-details/passed-quiz-details.component';
 import { QuizLayoutComponent } from './components/quiz-layout/quiz-layout.component';
 import { QuizItemComponent } from './components/quiz-item/quiz-item.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { QuizItemComponent } from './components/quiz-item/quiz-item.component';
     MatIconModule,
     FormControlErrorsDirectiveModule,
     QuizzesStateModule,
+    MatTooltipModule,
   ],
   declarations: [
     QuizDetailsComponent,

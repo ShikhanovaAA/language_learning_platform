@@ -57,6 +57,7 @@
         "libs/shared/directives/text-selection/src/index.ts"
       ],
       "@llp/shared/environments": ["libs/shared/environment/index.ts"],
+      "@llp/shared/guards": ["libs/shared/guards/index.ts"],
       "@llp/shared/interceptors": ["libs/shared/interceptors/index.ts"],
       "@llp/shared/pipes/form-group": [
         "libs/shared/pipes/form-group/src/index.ts"
@@ -95,11 +96,9 @@
       "@llp/ui/ui-kit/toast-notification": [
         "libs/ui/ui-kit/toast-notification/src/index.ts"
       ],
-      "@llp/util/guards": ["libs/util/guards/index.ts"],
-      "@llp/util/meta-reducer": ["libs/util/meta-reducer/index.ts"],
-      "@llp/util/strings": ["libs/util/shared/strings/index.ts"],
       "@llp/util/arrays": ["libs/util/shared/arrays/index.ts"],
-      "@llp/util/token-service": ["libs/util/token-service/src/index.ts"]
+      "@llp/util/meta-reducer": ["libs/util/meta-reducer/index.ts"],
+      "@llp/util/strings": ["libs/util/shared/strings/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

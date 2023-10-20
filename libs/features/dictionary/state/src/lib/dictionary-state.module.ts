@@ -5,13 +5,11 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromDictionary from './+state/dictionary.reducer';
 import { DictionaryEffects } from './+state/dictionary.effects';
 import { DictionaryFacade } from './+state/dictionary.facade';
-import { UtilTokenServiceModule } from '@llp/util/token-service';
 import { UiToastNotificationModule } from '@llp/ui/ui-kit/toast-notification';
 
 @NgModule({
   imports: [
     CommonModule,
-    UtilTokenServiceModule,
     UiToastNotificationModule,
     StoreModule.forFeature(fromDictionary.DICTIONARY_FEATURE_KEY, fromDictionary.dictionaryReducer),
     EffectsModule.forFeature([DictionaryEffects]),
