@@ -13,7 +13,7 @@
 <br />
 This project is a platform for learning English, which includes articles, tests, and a dictionary.
 
-https://github.com/ShikhanovaAA/language_learning_platform/assets/141730705/6597d889-1f71-4172-8791-c100f1b84641
+https://github-production-user-asset-6210df.s3.amazonaws.com/141730705/280053335-c164ed57-5d0a-45a7-a05e-1eefe553f268.mp4
 
 #### Article functionality
 
